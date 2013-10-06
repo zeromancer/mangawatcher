@@ -1,0 +1,1337 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Baby Steps Manga - Read Baby Steps Online for free at Mangareader" />
+<meta name="keywords" content="Baby Steps,Baby Steps manga,read Baby Steps manga,Baby Steps manga online" />
+<title>Baby Steps Manga - Read Baby Steps Online For Free</title>
+<!--[if lte IE 7]>
+        <link rel="stylesheet" type="text/css" href="/styles/ie.css">
+<![endif]-->
+<link rel="shortcut icon" href="http://s4.mangareader.net/favicon.ico" />
+<link href="http://s3.mangareader.net/sup/styles/1347525063_f3be9b09fa1e6aa271976f53b9e603c6.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+(function() {
+var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;
+s.src = 'http://s3.mangareader.net/sup/js/1347525063_67e3e49fcf7874b466f16155fd934ce2.js';
+var x = document.getElementsByTagName('script')[0];
+x.parentNode.insertBefore(s, x);
+})();
+</script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-27286164-2']);
+_gaq.push(['_setSampleRate', '80']);
+_gaq.push(['_setDomainName', 'none']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+</head>
+<body>
+<div id="container">
+<div id="wrapper_header">
+<div class="top">
+<div class="logo"><a href="/"></a>
+<div id="logoimg"></div>
+</div>
+<div id="top_navigation">
+<ul>
+<li class="topnav-first topnav-current"><a href="/"><span>Home</span></a></li>
+<li><a href="/search"><span>Advanced Search</span></a></li>
+<li><a href="/popular"><span>Popular Manga</span></a></li>
+<li><a href="/alphabetical"><span>Manga List</span></a></li>
+<li class="topnav-last"><a href="/latest"><span>Latest Releases</span></a></li>
+</ul>
+</div>
+<div id="sec_navigation">
+<ul>
+<li class="secnav-first">
+<div id="fpage"></div>
+</li>
+<li class="aftersearch"><input type="text" id="searchbox" /></li>
+<li class="secnav"><a rel="nofollow" href="/random">Surprise Me!</a></li>
+<li class="secnav"><a href="http://www.animefreak.tv" target="_blank" title="Anime">Anime</a></li>
+<li class="secnav-last"><a href="mailto:&#105;&#110;&#102;&#111;&#064;&#109;&#097;&#110;&#103;&#097;&#114;&#101;&#097;&#100;&#101;&#114;&#046;&#110;&#101;&#116;" title="Contact">Contact Us</a></li>
+</ul>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div id="wrapper_body">
+<div id="bodyust">
+<div id="mangaimg"><img src="http://s2.mangareader.net/cover/baby-steps/baby-steps-l0.jpg" alt="Baby Steps Manga" /></div>
+<div id="mangaproperties">
+<h1>Baby Steps Manga</h1>
+<table>
+<tr>
+<td class="propertytitle">Name:</td>
+<td>
+<h2 class="aname">Baby Steps</h2>
+</td>
+</tr>
+<tr>
+<td class="propertytitle">Alternate Name:</td>
+<td>????????, Baby Steps</td>
+</tr>
+<tr>
+<td class="propertytitle">Year of Release:</td>
+<td>2008</td>
+</tr>
+<tr>
+<td class="propertytitle">Status:</td>
+<td>Ongoing</td>
+</tr>
+<tr>
+<td class="propertytitle">Author:</td>
+<td>Kachiki, Hikaru (Story &amp; Art)</td>
+</tr>
+<tr>
+<td class="propertytitle">Artist:</td>
+<td></td>
+</tr>
+<tr>
+<td class="propertytitle">Reading Direction:</td>
+<td>Right to Left</td>
+</tr>
+<tr>
+<td class="propertytitle">Genre:</td>
+<td><a href="/popular/romance"><span class="genretags">Romance</span></a> <a href="/popular/school-life"><span class="genretags">School Life</span></a> <a href="/popular/shoujo"><span class="genretags">Shoujo</span></a> <a href="/popular/sports"><span class="genretags">Sports</span></a> </td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr>
+<td class="propertytitle">Tweet it:</td>
+<td>
+<div id="tbut"></div>
+</td>
+</tr>
+<tr>
+<td class="propertytitle">Like it:</td>
+<td>
+<div id="fbut"></div>
+</td>
+</tr>
+</table>
+<div id="latestchapters">
+<div id="popularcaption">
+<h3>LATEST CHAPTERS</h3>
+</div>
+<ul><li>
+<div class="chico_manga"></div>
+<a href="/baby-steps/190">Baby Steps 190</a> : Appeal</li>
+<li>
+<div class="chico_manga"></div>
+<a href="/baby-steps/189">Baby Steps 189</a> : Future Roadmap</li>
+<li>
+<div class="chico_manga"></div>
+<a href="/baby-steps/188">Baby Steps 188</a> : Crown Of All-Japan</li>
+<li>
+<div class="chico_manga"></div>
+<a href="/baby-steps/187">Baby Steps 187</a> : Smash!</li>
+<li>
+<div class="chico_manga"></div>
+<a href="/baby-steps/186">Baby Steps 186</a> : Kanada Hisashi</li>
+<li>
+<div class="chico_manga"></div>
+<a href="/baby-steps/185">Baby Steps 185</a> : The Other Championship</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="clear"></div>
+<div id="readmangasum">
+<h2>Read Baby Steps Manga Online</h2>
+<p>Maruo Eiitirou (E-Chan), a first year honor student, one day decides he is unhappy with the way things are and lacks excerise. He finds a flyer for the Tennis Club and decides check it out. He is instantly captivated by it. With no prior experience and poor physical conditioning, join E-Chan as he embarks on a tennis journey using his smarts, dedication and work ethic.</p>
+</div>
+<div id="chapterlist">
+<table id="listing">
+<tr class="table_head">
+<th class="leftgap">Chapter Name</th>
+<th>Date Added</th>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-40545-1/baby-steps/chapter-1.html">Baby Steps 1</a> : Baby Steps</td>
+<td>11/26/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-40546-1/baby-steps/chapter-2.html">Baby Steps 2</a> : </td>
+<td>11/26/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-40547-1/baby-steps/chapter-3.html">Baby Steps 3</a> : </td>
+<td>11/26/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-40548-1/baby-steps/chapter-4.html">Baby Steps 4</a> : Sudden Shot</td>
+<td>11/26/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-40549-1/baby-steps/chapter-5.html">Baby Steps 5</a> : I Understand</td>
+<td>11/26/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-40550-1/baby-steps/chapter-6.html">Baby Steps 6</a> : Can You See It</td>
+<td>11/26/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-40551-1/baby-steps/chapter-7.html">Baby Steps 7</a> : The Life-Changing Natsu</td>
+<td>11/26/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-40552-1/baby-steps/chapter-8.html">Baby Steps 8</a> : Not the Usual Place</td>
+<td>11/26/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-43548-1/baby-steps/chapter-9.html">Baby Steps 9</a> : What?</td>
+<td>12/26/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-46940-1/baby-steps/chapter-10.html">Baby Steps 10</a> : 10</td>
+<td>02/10/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-47264-1/baby-steps/chapter-11.html">Baby Steps 11</a> : More Than Expected</td>
+<td>02/17/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-47875-1/baby-steps/chapter-12.html">Baby Steps 12</a> : Just a Little Bit</td>
+<td>03/04/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-48333-1/baby-steps/chapter-13.html">Baby Steps 13</a> : The Way</td>
+<td>03/14/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-48552-1/baby-steps/chapter-14.html">Baby Steps 14</a> : To Victory</td>
+<td>03/20/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-48902-1/baby-steps/chapter-15.html">Baby Steps 15</a> : To Giant Strides</td>
+<td>03/23/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-49611-1/baby-steps/chapter-16.html">Baby Steps 16</a> : Break Time</td>
+<td>03/27/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-49763-1/baby-steps/chapter-17.html">Baby Steps 17</a> : Summer Tempest</td>
+<td>03/28/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-50448-1/baby-steps/chapter-18.html">Baby Steps 18</a> : Where Are You Looking?</td>
+<td>04/11/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-51240-1/baby-steps/chapter-19.html">Baby Steps 19</a> : The Course of Progress</td>
+<td>05/03/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-51571-1/baby-steps/chapter-20.html">Baby Steps 20</a> : Dangerous Territory</td>
+<td>05/12/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-54567-1/baby-steps/chapter-21.html">Baby Steps 21</a> : Hypothesis</td>
+<td>06/25/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-55579-1/baby-steps/chapter-22.html">Baby Steps 22</a> : Danger</td>
+<td>07/19/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-57626-1/baby-steps/chapter-23.html">Baby Steps 23</a> : A Winning Chance</td>
+<td>09/22/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-57925-1/baby-steps/chapter-24.html">Baby Steps 24</a> : Probabilty</td>
+<td>10/07/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-58042-1/baby-steps/chapter-25.html">Baby Steps 25</a> : Victory or Defeat</td>
+<td>10/14/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-58147-1/baby-steps/chapter-26.html">Baby Steps 26</a> : Foreboding</td>
+<td>10/18/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-58214-1/baby-steps/chapter-27.html">Baby Steps 27</a> : Memory</td>
+<td>10/21/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-58341-1/baby-steps/chapter-28.html">Baby Steps 28</a> : A Break</td>
+<td>10/30/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-58612-1/baby-steps/chapter-29.html">Baby Steps 29</a> : A World of Its Own</td>
+<td>11/13/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-58613-1/baby-steps/chapter-30.html">Baby Steps 30</a> : Not Adding Up, Not Taking Away</td>
+<td>11/13/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-58692-1/baby-steps/chapter-31.html">Baby Steps 31</a> : Latent Energy</td>
+<td>11/16/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-58759-1/baby-steps/chapter-32.html">Baby Steps 32</a> : A Piece of a Smile</td>
+<td>11/19/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/1096-58856-1/baby-steps/chapter-33.html">Baby Steps 33</a> : An Emergent Situation</td>
+<td>11/21/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/34">Baby Steps 34</a> : A New Whole World</td>
+<td>01/31/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/35">Baby Steps 35</a> : The Battle Starts Now</td>
+<td>01/31/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/36">Baby Steps 36</a> : A File To Throw Down Araya</td>
+<td>02/09/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/37">Baby Steps 37</a> : Aggressive Meticulousness</td>
+<td>02/22/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/38">Baby Steps 38</a> : One Giant Step</td>
+<td>03/18/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/39">Baby Steps 39</a> : </td>
+<td>03/25/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/40">Baby Steps 40</a> : A Clue</td>
+<td>04/06/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/41">Baby Steps 41</a> : Progression</td>
+<td>05/14/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/42">Baby Steps 42</a> : One Breaker!</td>
+<td>06/19/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/43">Baby Steps 43</a> : The Skill To Win</td>
+<td>06/19/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/44">Baby Steps 44</a> : Influence</td>
+<td>07/10/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/45">Baby Steps 45</a> : The Judgement</td>
+<td>07/15/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/46">Baby Steps 46</a> : The Strongest</td>
+<td>07/23/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/47">Baby Steps 47</a> : What Would You Do?</td>
+<td>08/03/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/48">Baby Steps 48</a> : A Dangerous Person</td>
+<td>08/06/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/49">Baby Steps 49</a> : The Clincher</td>
+<td>08/12/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/50">Baby Steps 50</a> : The Beginning</td>
+<td>08/23/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/51">Baby Steps 51</a> : An Asset</td>
+<td>10/30/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/52">Baby Steps 52</a> : 16 Years Old</td>
+<td>11/13/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/53">Baby Steps 53</a> : The All-Japan Junior</td>
+<td>12/21/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/54">Baby Steps 54</a> : Grade A</td>
+<td>12/22/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/55">Baby Steps 55</a> : In Progress</td>
+<td>12/25/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/56">Baby Steps 56</a> : Just Getting Started</td>
+<td>01/09/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/57">Baby Steps 57</a> : Power to Transform</td>
+<td>01/10/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/58">Baby Steps 58</a> : First Game</td>
+<td>01/11/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/59">Baby Steps 59</a> : Accumulation</td>
+<td>01/12/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/60">Baby Steps 60</a> : Ideal</td>
+<td>01/13/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/61">Baby Steps 61</a> : Rationality To Fight</td>
+<td>01/16/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/62">Baby Steps 62</a> : Choices</td>
+<td>01/17/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/63">Baby Steps 63</a> : Shred of Doubt</td>
+<td>01/18/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/64">Baby Steps 64</a> : Control</td>
+<td>01/19/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/65">Baby Steps 65</a> : Accuracy</td>
+<td>01/20/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/66">Baby Steps 66</a> : Strategic Ability: D</td>
+<td>01/23/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/67">Baby Steps 67</a> : To The Nationals</td>
+<td>01/23/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/68">Baby Steps 68</a> : Intruder?</td>
+<td>01/25/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/69">Baby Steps 69</a> : What Should I Do?</td>
+<td>01/25/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/70">Baby Steps 70</a> : Without Thinking...</td>
+<td>01/26/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/71">Baby Steps 71</a> : My Two Faces</td>
+<td>01/27/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/72">Baby Steps 72</a> : Different World</td>
+<td>01/30/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/73">Baby Steps 73</a> : In Florida</td>
+<td>01/31/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/74">Baby Steps 74</a> : Professional</td>
+<td>02/03/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/75">Baby Steps 75</a> : Common Sense</td>
+<td>02/03/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/76">Baby Steps 76</a> : Analysis</td>
+<td>02/06/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/77">Baby Steps 77</a> : Strategy</td>
+<td>02/08/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/78">Baby Steps 78</a> : Feeling And Outcome</td>
+<td>02/10/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/79">Baby Steps 79</a> : Wall</td>
+<td>02/13/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/80">Baby Steps 80</a> : Same</td>
+<td>02/15/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/81">Baby Steps 81</a> : Want To Know</td>
+<td>02/17/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/82">Baby Steps 82</a> : Result</td>
+<td>02/20/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/83">Baby Steps 83</a> : 13 Days</td>
+<td>02/22/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/84">Baby Steps 84</a> : Decision Of The 1 Set</td>
+<td>02/24/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/85">Baby Steps 85</a> : Surpass</td>
+<td>02/27/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/86">Baby Steps 86</a> : Awakening</td>
+<td>02/29/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/87">Baby Steps 87</a> : Self-Awareness</td>
+<td>03/02/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/88">Baby Steps 88</a> : Dream</td>
+<td>03/15/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/89">Baby Steps 89</a> : Dumbass</td>
+<td>03/16/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/90">Baby Steps 90</a> : Return Home</td>
+<td>03/19/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/91">Baby Steps 91</a> : Advance</td>
+<td>03/27/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/92">Baby Steps 92</a> : Step</td>
+<td>04/09/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/93">Baby Steps 93</a> : Latent Power</td>
+<td>05/01/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/94">Baby Steps 94</a> : Hard Shot</td>
+<td>05/23/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/95">Baby Steps 95</a> : Strategy</td>
+<td>06/06/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/96">Baby Steps 96</a> : Prioritizing Reason</td>
+<td>06/12/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/97">Baby Steps 97</a> : Power Of The Serve</td>
+<td>06/12/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/98">Baby Steps 98</a> : Analysis Ability</td>
+<td>06/14/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/99">Baby Steps 99</a> : Next Stage</td>
+<td>06/19/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/100">Baby Steps 100</a> : Overcome a Wall</td>
+<td>06/22/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/101">Baby Steps 101</a> : To The Spring Of Battles</td>
+<td>06/25/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/102">Baby Steps 102</a> : Turning Point</td>
+<td>06/28/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/103">Baby Steps 103</a> : Amount Of Change</td>
+<td>07/02/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/104">Baby Steps 104</a> : Critical Battle</td>
+<td>07/05/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/105">Baby Steps 105</a> : Be Myself</td>
+<td>07/07/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/106">Baby Steps 106</a> : Preparation</td>
+<td>07/09/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/107">Baby Steps 107</a> : Different Person</td>
+<td>07/13/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/108">Baby Steps 108</a> : Chance</td>
+<td>07/16/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/109">Baby Steps 109</a> : Beyond</td>
+<td>07/21/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/110">Baby Steps 110</a> : Joy And Tears</td>
+<td>07/24/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/111">Baby Steps 111</a> : Fear</td>
+<td>07/28/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/112">Baby Steps 112</a> : Match-Up</td>
+<td>08/05/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/113">Baby Steps 113</a> : Sensation</td>
+<td>08/10/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/114">Baby Steps 114</a> : Araya Hiroshi</td>
+<td>08/13/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/115">Baby Steps 115</a> : Proof</td>
+<td>08/21/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/116">Baby Steps 116</a> : Default</td>
+<td>08/21/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/117">Baby Steps 117</a> : Imprinting</td>
+<td>08/21/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/118">Baby Steps 118</a> : Correction</td>
+<td>08/24/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/119">Baby Steps 119</a> : Advance</td>
+<td>08/24/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/120">Baby Steps 120</a> : Positive Plan</td>
+<td>08/28/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/121">Baby Steps 121</a> : Decision</td>
+<td>09/01/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/122">Baby Steps 122</a> : Inner Battle</td>
+<td>09/03/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/123">Baby Steps 123</a> : Spirit Of Opposition</td>
+<td>09/06/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/124">Baby Steps 124</a> : True Nature</td>
+<td>09/07/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/125">Baby Steps 125</a> : Memory</td>
+<td>09/10/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/126">Baby Steps 126</a> : Decision</td>
+<td>09/14/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/127">Baby Steps 127</a> : Resolution</td>
+<td>09/17/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/128">Baby Steps 128</a> : Stop</td>
+<td>09/29/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/129">Baby Steps 129</a> : Winner</td>
+<td>09/29/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/130">Baby Steps 130</a> : Changing Mentality</td>
+<td>10/02/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/131">Baby Steps 131</a> : My Pace</td>
+<td>10/08/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/132">Baby Steps 132</a> : Prepping for Summer</td>
+<td>10/08/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/133">Baby Steps 133</a> : Rematch</td>
+<td>10/08/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/134">Baby Steps 134</a> : Expedition</td>
+<td>10/08/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/135">Baby Steps 135</a> : Neverending Moment</td>
+<td>10/08/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/136">Baby Steps 136</a> : Expectations On First Match</td>
+<td>10/16/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/137">Baby Steps 137</a> : Change Of Pace</td>
+<td>10/22/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/138">Baby Steps 138</a> : A Man Who Brings a Storm</td>
+<td>11/07/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/139">Baby Steps 139</a> : Ide Yoshiaki</td>
+<td>11/11/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/140">Baby Steps 140</a> : True Intention</td>
+<td>11/25/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/141">Baby Steps 141</a> : Concentrate</td>
+<td>12/09/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/142">Baby Steps 142</a> : Broad And Vague</td>
+<td>12/25/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/143">Baby Steps 143</a> : Tale Of Invicibility</td>
+<td>12/26/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/144">Baby Steps 144</a> : Development</td>
+<td>01/04/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/145">Baby Steps 145</a> : Projection</td>
+<td>01/04/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/146">Baby Steps 146</a> : Supporting</td>
+<td>01/04/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/147">Baby Steps 147</a> : ?nvisible Enemy</td>
+<td>01/06/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/148">Baby Steps 148</a> : Recognizing The Current Situation</td>
+<td>01/07/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/149">Baby Steps 149</a> : Looking in The Eye</td>
+<td>01/10/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/150">Baby Steps 150</a> : Image</td>
+<td>01/10/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/151">Baby Steps 151</a> : Timing</td>
+<td>01/11/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/152">Baby Steps 152</a> : Opportunity</td>
+<td>01/12/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/153">Baby Steps 153</a> : Everything I Can Do Right Now</td>
+<td>01/13/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/154">Baby Steps 154</a> : Forward</td>
+<td>01/14/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/155">Baby Steps 155</a> : Zone</td>
+<td>01/19/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/156">Baby Steps 156</a> : A Friend's Friend</td>
+<td>01/26/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/157">Baby Steps 157</a> : Heretic</td>
+<td>02/03/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/158">Baby Steps 158</a> : Impulse</td>
+<td>03/05/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/159">Baby Steps 159</a> : Takagi Sakuya</td>
+<td>04/02/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/160">Baby Steps 160</a> : Cards On Hands</td>
+<td>05/02/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/161">Baby Steps 161</a> : </td>
+<td>05/05/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/162">Baby Steps 162</a> : God And Evil</td>
+<td>05/28/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/163">Baby Steps 163</a> : Anger and Pressure</td>
+<td>06/18/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/164">Baby Steps 164</a> : How...?</td>
+<td>06/20/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/165">Baby Steps 165</a> : Power Of Love</td>
+<td>06/24/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/166">Baby Steps 166</a> : Living Tool</td>
+<td>06/27/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/167">Baby Steps 167</a> : Compilation</td>
+<td>06/29/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/168">Baby Steps 168</a> : Valuable Data</td>
+<td>07/02/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/169">Baby Steps 169</a> : Subconscious</td>
+<td>07/03/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/170">Baby Steps 170</a> : The Current Me</td>
+<td>07/06/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/171">Baby Steps 171</a> : Last Minute Power</td>
+<td>07/08/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/172">Baby Steps 172</a> : Unthinkable</td>
+<td>07/13/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/173">Baby Steps 173</a> : Recklessness And Unpredictability</td>
+<td>07/13/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/174">Baby Steps 174</a> : Power Of Determination</td>
+<td>07/16/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/175">Baby Steps 175</a> : All-Out Battle</td>
+<td>07/21/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/176">Baby Steps 176</a> : High Point</td>
+<td>07/23/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/177">Baby Steps 177</a> : Unknown Factor</td>
+<td>07/26/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/178">Baby Steps 178</a> : Vision</td>
+<td>07/26/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/179">Baby Steps 179</a> : Full Attack, Full Defense</td>
+<td>08/01/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/180">Baby Steps 180</a> : Break 2</td>
+<td>08/02/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/181">Baby Steps 181</a> : Acknowledgement</td>
+<td>08/06/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/182">Baby Steps 182</a> : Since When</td>
+<td>08/20/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/183">Baby Steps 183</a> : Where Am I?</td>
+<td>08/22/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/184">Baby Steps 184</a> : Samadhi</td>
+<td>08/29/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/185">Baby Steps 185</a> : The Other Championship</td>
+<td>08/29/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/186">Baby Steps 186</a> : Kanada Hisashi</td>
+<td>08/31/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/187">Baby Steps 187</a> : Smash!</td>
+<td>09/03/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/188">Baby Steps 188</a> : Crown Of All-Japan</td>
+<td>09/05/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/189">Baby Steps 189</a> : Future Roadmap</td>
+<td>09/17/2013</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/baby-steps/190">Baby Steps 190</a> : Appeal</td>
+<td>09/21/2013</td>
+</tr>
+</table>
+</div>
+<div class="clear"></div>
+</div>
+<div class="clear"></div>
+<div id="adfooter"><iframe width="300" height="250" scrolling="no" frameborder="0" id="adbottomleft" src="/ad/left5" name="adbottomleft"></iframe> <iframe width="300" height="250" scrolling="no" frameborder="0" id="adbottomright" src="/ad/right3" name="adbottomright"></iframe></div>
+<div id="wrapper_footer">
+<table cellspacing="0">
+<tbody>
+<tr>
+<td class="footer-column bold c1" align="left" valign="top">2011 AFTV Network</td>
+<td class="footer-column" valign="top" width="20%">
+<ul>
+<li><b>Network</b></li>
+<li><a href="http://www.animefreak.tv" target="_blank">Anime</a></li>
+<li><a href="http://www.animepremium.net" target="_blank">Anime Downloads</a></li>
+<li><a href="/">Manga</a></li>
+<li><a href="/privacy">Privacy Statements</a></li>
+</ul>
+</td>
+<td class="footer-column" align="left" valign="top" width="20%">
+<ul>
+<li><b>Partners</b></li>
+<li><a href="http://www.upload2.com" target="_blank">Free File Hosting</a></li>
+<li><a href="http://www.watchop.com" target="_blank">Watch One Piece</a></li>
+<li><a href="http://www.gogoanime.com" target="_blank">Anime Online</a></li>
+<li><a href="http://www.goodanime.net" target="_blank">Good Anime</a></li>
+<li><a href="http://www.memecenter.com" target="_blank">Memes</a></li>
+</ul>
+</td>
+<td class="footer-column" align="left" valign="top" width="1%"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</body>
+</html>
+</html>

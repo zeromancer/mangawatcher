@@ -1,0 +1,1216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Id Manga - Read Id Online for free at Mangareader" />
+<meta name="keywords" content="Id,Id manga,read Id manga,Id manga online" />
+<title>Id Manga - Read Id Online For Free</title>
+<!--[if lte IE 7]>
+        <link rel="stylesheet" type="text/css" href="/styles/ie.css">
+<![endif]-->
+<link rel="shortcut icon" href="http://s4.mangareader.net/favicon.ico" />
+<link href="http://s3.mangareader.net/sup/styles/1347525063_f3be9b09fa1e6aa271976f53b9e603c6.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+(function() {
+var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;
+s.src = 'http://s3.mangareader.net/sup/js/1347525063_67e3e49fcf7874b466f16155fd934ce2.js';
+var x = document.getElementsByTagName('script')[0];
+x.parentNode.insertBefore(s, x);
+})();
+</script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-27286164-2']);
+_gaq.push(['_setSampleRate', '80']);
+_gaq.push(['_setDomainName', 'none']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+</head>
+<body>
+<div id="container">
+<div id="wrapper_header">
+<div class="top">
+<div class="logo"><a href="/"></a>
+<div id="logoimg"></div>
+</div>
+<div id="top_navigation">
+<ul>
+<li class="topnav-first topnav-current"><a href="/"><span>Home</span></a></li>
+<li><a href="/search"><span>Advanced Search</span></a></li>
+<li><a href="/popular"><span>Popular Manga</span></a></li>
+<li><a href="/alphabetical"><span>Manga List</span></a></li>
+<li class="topnav-last"><a href="/latest"><span>Latest Releases</span></a></li>
+</ul>
+</div>
+<div id="sec_navigation">
+<ul>
+<li class="secnav-first">
+<div id="fpage"></div>
+</li>
+<li class="aftersearch"><input type="text" id="searchbox" /></li>
+<li class="secnav"><a rel="nofollow" href="/random">Surprise Me!</a></li>
+<li class="secnav"><a href="http://www.animefreak.tv" target="_blank" title="Anime">Anime</a></li>
+<li class="secnav-last"><a href="mailto:&#105;&#110;&#102;&#111;&#064;&#109;&#097;&#110;&#103;&#097;&#114;&#101;&#097;&#100;&#101;&#114;&#046;&#110;&#101;&#116;" title="Contact">Contact Us</a></li>
+</ul>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div id="wrapper_body">
+<div id="bodyust">
+<div id="mangaimg"><img src="http://s3.mangareader.net/cover/id/id-l0.jpg" alt="Id Manga" /></div>
+<div id="mangaproperties">
+<h1>Id Manga</h1>
+<table>
+<tr>
+<td class="propertytitle">Name:</td>
+<td>
+<h2 class="aname">Id</h2>
+</td>
+</tr>
+<tr>
+<td class="propertytitle">Alternate Name:</td>
+<td></td>
+</tr>
+<tr>
+<td class="propertytitle">Year of Release:</td>
+<td></td>
+</tr>
+<tr>
+<td class="propertytitle">Status:</td>
+<td>Ongoing</td>
+</tr>
+<tr>
+<td class="propertytitle">Author:</td>
+<td>Kim Daewoo</td>
+</tr>
+<tr>
+<td class="propertytitle">Artist:</td>
+<td>Kim Daewoo</td>
+</tr>
+<tr>
+<td class="propertytitle">Reading Direction:</td>
+<td>Right to Left</td>
+</tr>
+<tr>
+<td class="propertytitle">Genre:</td>
+<td><a href="/popular/action"><span class="genretags">Action</span></a> <a href="/popular/adventure"><span class="genretags">Adventure</span></a> <a href="/popular/fantasy"><span class="genretags">Fantasy</span></a> <a href="/popular/shounen"><span class="genretags">Shounen</span></a> </td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+<tr>
+<td class="propertytitle">Tweet it:</td>
+<td>
+<div id="tbut"></div>
+</td>
+</tr>
+<tr>
+<td class="propertytitle">Like it:</td>
+<td>
+<div id="fbut"></div>
+</td>
+</tr>
+</table>
+<div id="latestchapters">
+<div id="popularcaption">
+<h3>LATEST CHAPTERS</h3>
+</div>
+<ul><li>
+<div class="chico_manga"></div>
+<a href="/id/173">Id 173</a> : V28Ch6</li>
+<li>
+<div class="chico_manga"></div>
+<a href="/id/172">Id 172</a> : V28Ch5</li>
+<li>
+<div class="chico_manga"></div>
+<a href="/id/171">Id 171</a> : V28Ch4</li>
+<li>
+<div class="chico_manga"></div>
+<a href="/id/170">Id 170</a> : V28Ch3</li>
+<li>
+<div class="chico_manga"></div>
+<a href="/id/169">Id 169</a> : V28Ch2</li>
+<li>
+<div class="chico_manga"></div>
+<a href="/id/165">Id 165</a> : V28Ch1</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="clear"></div>
+<div id="readmangasum">
+<h2>Read Id Manga Online</h2>
+<p>Chunwha is plunged into a world beyond his own... There he will struggle to find his own purpose among the many inhabitants of the new world including elves, dwarves, and even mages! Was it fate that had brought him there? Will he ever return to his own world?</p>
+</div>
+<div id="chapterlist">
+<table id="listing">
+<tr class="table_head">
+<th class="leftgap">Chapter Name</th>
+<th>Date Added</th>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21895-1/id/chapter-1.html">Id 1</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21896-1/id/chapter-2.html">Id 2</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21897-1/id/chapter-3.html">Id 3</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21898-1/id/chapter-4.html">Id 4</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21899-1/id/chapter-5.html">Id 5</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21900-1/id/chapter-6.html">Id 6</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21901-1/id/chapter-7.html">Id 7</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21902-1/id/chapter-8.html">Id 8</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21903-1/id/chapter-9.html">Id 9</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21904-1/id/chapter-10.html">Id 10</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21905-1/id/chapter-11.html">Id 11</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21906-1/id/chapter-12.html">Id 12</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21907-1/id/chapter-13.html">Id 13</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21908-1/id/chapter-14.html">Id 14</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21909-1/id/chapter-15.html">Id 15</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21910-1/id/chapter-16.html">Id 16</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21911-1/id/chapter-17.html">Id 17</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21912-1/id/chapter-18.html">Id 18</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21913-1/id/chapter-19.html">Id 19</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21914-1/id/chapter-20.html">Id 20</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21915-1/id/chapter-21.html">Id 21</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21916-1/id/chapter-22.html">Id 22</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21917-1/id/chapter-23.html">Id 23</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21918-1/id/chapter-24.html">Id 24</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21919-1/id/chapter-25.html">Id 25</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21920-1/id/chapter-26.html">Id 26</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21921-1/id/chapter-27.html">Id 27</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21922-1/id/chapter-28.html">Id 28</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21923-1/id/chapter-29.html">Id 29</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21924-1/id/chapter-30.html">Id 30</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21925-1/id/chapter-31.html">Id 31</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21926-1/id/chapter-32.html">Id 32</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21927-1/id/chapter-33.html">Id 33</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21928-1/id/chapter-34.html">Id 34</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21929-1/id/chapter-35.html">Id 35</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21930-1/id/chapter-36.html">Id 36</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21931-1/id/chapter-37.html">Id 37</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21932-1/id/chapter-38.html">Id 38</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21933-1/id/chapter-39.html">Id 39</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21934-1/id/chapter-40.html">Id 40</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21935-1/id/chapter-41.html">Id 41</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21936-1/id/chapter-42.html">Id 42</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21937-1/id/chapter-43.html">Id 43</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21938-1/id/chapter-44.html">Id 44</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21939-1/id/chapter-45.html">Id 45</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21940-1/id/chapter-46.html">Id 46</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21941-1/id/chapter-47.html">Id 47</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21942-1/id/chapter-48.html">Id 48</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21943-1/id/chapter-49.html">Id 49</a> : Volume05 Chapter05</td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21944-1/id/chapter-50.html">Id 50</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21945-1/id/chapter-51.html">Id 51</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21946-1/id/chapter-52.html">Id 52</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21947-1/id/chapter-53.html">Id 53</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21948-1/id/chapter-54.html">Id 54</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21949-1/id/chapter-55.html">Id 55</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21950-1/id/chapter-56.html">Id 56</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21951-1/id/chapter-57.html">Id 57</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21952-1/id/chapter-58.html">Id 58</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21953-1/id/chapter-59.html">Id 59</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21954-1/id/chapter-60.html">Id 60</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21955-1/id/chapter-61.html">Id 61</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21956-1/id/chapter-62.html">Id 62</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21957-1/id/chapter-63.html">Id 63</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21958-1/id/chapter-64.html">Id 64</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21959-1/id/chapter-65.html">Id 65</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21960-1/id/chapter-66.html">Id 66</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21961-1/id/chapter-67.html">Id 67</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21962-1/id/chapter-68.html">Id 68</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21963-1/id/chapter-69.html">Id 69</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21964-1/id/chapter-70.html">Id 70</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21965-1/id/chapter-71.html">Id 71</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21966-1/id/chapter-72.html">Id 72</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21967-1/id/chapter-73.html">Id 73</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21968-1/id/chapter-74.html">Id 74</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21969-1/id/chapter-75.html">Id 75</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21970-1/id/chapter-76.html">Id 76</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21971-1/id/chapter-77.html">Id 77</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21972-1/id/chapter-78.html">Id 78</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21973-1/id/chapter-79.html">Id 79</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21974-1/id/chapter-80.html">Id 80</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21975-1/id/chapter-81.html">Id 81</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21976-1/id/chapter-82.html">Id 82</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21977-1/id/chapter-83.html">Id 83</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-21978-1/id/chapter-84.html">Id 84</a> :  </td>
+<td>08/04/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-40014-1/id/chapter-85.html">Id 85</a> : </td>
+<td>11/16/2009</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-47760-1/id/chapter-86.html">Id 86</a> : </td>
+<td>03/01/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-47761-1/id/chapter-87.html">Id 87</a> : </td>
+<td>03/01/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-47771-1/id/chapter-88.html">Id 88</a> : 88</td>
+<td>03/02/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-48154-1/id/chapter-89.html">Id 89</a> : 89c#</td>
+<td>03/13/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-48428-1/id/chapter-90.html">Id 90</a> : </td>
+<td>03/16/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-50686-1/id/chapter-91.html">Id 91</a> : </td>
+<td>04/18/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-50687-1/id/chapter-92.html">Id 92</a> : </td>
+<td>04/18/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-50688-1/id/chapter-93.html">Id 93</a> : </td>
+<td>04/18/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-50832-1/id/chapter-94.html">Id 94</a> : </td>
+<td>04/22/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-51084-1/id/chapter-95.html">Id 95</a> : 95</td>
+<td>04/29/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-51331-1/id/chapter-96.html">Id 96</a> : v.15 c.4</td>
+<td>05/05/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-51603-1/id/chapter-97.html">Id 97</a> : v.15 c.5</td>
+<td>05/14/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-51815-1/id/chapter-98.html">Id 98</a> : v.15 c.6</td>
+<td>05/19/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-52239-1/id/chapter-99.html">Id 99</a> : v.15 c.7</td>
+<td>05/26/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-52626-1/id/chapter-100.html">Id 100</a> : </td>
+<td>06/05/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-53272-1/id/chapter-101.html">Id 101</a> : </td>
+<td>06/12/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-53900-1/id/chapter-102.html">Id 102</a> : </td>
+<td>06/18/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-54725-1/id/chapter-103.html">Id 103</a> : v.16 c.4</td>
+<td>06/25/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-54971-1/id/chapter-104.html">Id 104</a> : v.16 c.5</td>
+<td>07/02/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-55185-1/id/chapter-105.html">Id 105</a> : </td>
+<td>07/07/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-55259-1/id/chapter-106.html">Id 106</a> : </td>
+<td>07/09/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-55487-1/id/chapter-107.html">Id 107</a> : v.17 c.1</td>
+<td>07/16/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-55847-1/id/chapter-108.html">Id 108</a> : </td>
+<td>07/24/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-55848-1/id/chapter-109.html">Id 109</a> : </td>
+<td>07/24/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-55956-1/id/chapter-110.html">Id 110</a> : </td>
+<td>07/25/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-56026-1/id/chapter-111.html">Id 111</a> : </td>
+<td>07/27/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-56098-1/id/chapter-112.html">Id 112</a> : </td>
+<td>07/29/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-56147-1/id/chapter-113.html">Id 113</a> : </td>
+<td>07/30/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/314-57671-1/id/chapter-114.html">Id 114</a> : 114</td>
+<td>09/24/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/115">Id 115</a> : </td>
+<td>12/27/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/116">Id 116</a> : V18 Ch4</td>
+<td>12/27/2010</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/117">Id 117</a> : V19 Ch1</td>
+<td>02/02/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/118">Id 118</a> : V19 Ch2</td>
+<td>02/02/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/119">Id 119</a> : V19 Ch3</td>
+<td>02/28/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/120">Id 120</a> : V19 Ch4</td>
+<td>03/05/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/121">Id 121</a> : V19 Ch5</td>
+<td>03/11/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/122">Id 122</a> : V19Ch6</td>
+<td>03/19/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/123">Id 123</a> : V20Ch1</td>
+<td>11/23/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/124">Id 124</a> : V20Ch2</td>
+<td>11/23/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/125">Id 125</a> : V20Ch3</td>
+<td>11/23/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/126">Id 126</a> : V20Ch4</td>
+<td>11/23/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/127">Id 127</a> : V20Ch5</td>
+<td>11/23/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/128">Id 128</a> : V20Ch6 + Extra</td>
+<td>11/23/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/129">Id 129</a> : V21Ch1</td>
+<td>12/18/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/130">Id 130</a> : V21Ch2</td>
+<td>12/18/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/131">Id 131</a> : V21Ch3</td>
+<td>12/18/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/132">Id 132</a> : V21Ch4</td>
+<td>12/18/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/133">Id 133</a> : V21Ch5</td>
+<td>12/18/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/134">Id 134</a> : V22Ch1</td>
+<td>12/18/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/135">Id 135</a> : V22Ch2</td>
+<td>12/25/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/136">Id 136</a> : V22Ch3</td>
+<td>12/25/2011</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/137">Id 137</a> : V22Ch4</td>
+<td>01/02/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/138">Id 138</a> : V22Ch5</td>
+<td>01/02/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/139">Id 139</a> : V23Ch1</td>
+<td>01/15/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/140">Id 140</a> : V23Ch2</td>
+<td>01/15/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/141">Id 141</a> : V23Ch3</td>
+<td>01/15/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/142">Id 142</a> : V23Ch4</td>
+<td>01/15/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/143">Id 143</a> : V24Ch1</td>
+<td>01/29/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/144">Id 144</a> : V24Ch2</td>
+<td>01/29/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/145">Id 145</a> : V24Ch3</td>
+<td>02/05/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/146">Id 146</a> : V24Ch4</td>
+<td>02/12/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/147">Id 147</a> : V24Ch5</td>
+<td>02/19/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/148">Id 148</a> : V25Ch1</td>
+<td>02/27/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/149">Id 149</a> : V25Ch2</td>
+<td>03/05/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/150">Id 150</a> : V25Ch3</td>
+<td>03/11/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/151">Id 151</a> : V25Ch4</td>
+<td>03/20/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/152">Id 152</a> : V25Ch5</td>
+<td>03/26/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/153">Id 153</a> : V26Ch1</td>
+<td>04/08/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/154">Id 154</a> : V26Ch2</td>
+<td>04/15/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/155">Id 155</a> : V26Ch3</td>
+<td>04/22/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/156">Id 156</a> : V26Ch4</td>
+<td>04/29/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/157">Id 157</a> : V26Ch5</td>
+<td>05/08/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/158">Id 158</a> : V26Ch6</td>
+<td>05/27/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/159">Id 159</a> : V27Ch1</td>
+<td>06/11/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/160">Id 160</a> : V27Ch2</td>
+<td>06/17/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/161">Id 161</a> : V27Ch3</td>
+<td>06/25/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/162">Id 162</a> : V27Ch4</td>
+<td>07/02/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/163">Id 163</a> : V27Ch5</td>
+<td>07/08/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/164">Id 164</a> : V27Ch6</td>
+<td>07/15/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/165">Id 165</a> : V28Ch1</td>
+<td>10/15/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/169">Id 169</a> : V28Ch2</td>
+<td>10/20/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/170">Id 170</a> : V28Ch3</td>
+<td>10/20/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/171">Id 171</a> : V28Ch4</td>
+<td>10/20/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/172">Id 172</a> : V28Ch5</td>
+<td>10/25/2012</td>
+</tr>
+<tr>
+<td>
+<div class="chico_manga"></div>
+<a href="/id/173">Id 173</a> : V28Ch6</td>
+<td>10/27/2012</td>
+</tr>
+</table>
+</div>
+<div class="clear"></div>
+</div>
+<div class="clear"></div>
+<div id="adfooter"><iframe width="300" height="250" scrolling="no" frameborder="0" id="adbottomleft" src="/ad/left5" name="adbottomleft"></iframe> <iframe width="300" height="250" scrolling="no" frameborder="0" id="adbottomright" src="/ad/right3" name="adbottomright"></iframe></div>
+<div id="wrapper_footer">
+<table cellspacing="0">
+<tbody>
+<tr>
+<td class="footer-column bold c1" align="left" valign="top">2011 AFTV Network</td>
+<td class="footer-column" valign="top" width="20%">
+<ul>
+<li><b>Network</b></li>
+<li><a href="http://www.animefreak.tv" target="_blank">Anime</a></li>
+<li><a href="http://www.animepremium.net" target="_blank">Anime Downloads</a></li>
+<li><a href="/">Manga</a></li>
+<li><a href="/privacy">Privacy Statements</a></li>
+</ul>
+</td>
+<td class="footer-column" align="left" valign="top" width="20%">
+<ul>
+<li><b>Partners</b></li>
+<li><a href="http://www.upload2.com" target="_blank">Free File Hosting</a></li>
+<li><a href="http://www.watchop.com" target="_blank">Watch One Piece</a></li>
+<li><a href="http://www.gogoanime.com" target="_blank">Anime Online</a></li>
+<li><a href="http://www.goodanime.net" target="_blank">Good Anime</a></li>
+<li><a href="http://www.memecenter.com" target="_blank">Memes</a></li>
+</ul>
+</td>
+<td class="footer-column" align="left" valign="top" width="1%"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</body>
+</html>
