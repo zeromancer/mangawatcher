@@ -50,16 +50,9 @@ public class GuiMangaQuick extends JButton {
 			public void actionPerformed(ActionEvent event) {
 				// M.print("" + (String) combo.getSelectedItem());
 				JTabbedPane tabbed = frame.getTabbed();
-				GuiMangaFull full = frame.getAll().get(manga);
-				int index = tabbed.indexOfTab("Manga");
-				if (index == -1)
-					tabbed.addTab("Manga", full);
-				else
-					tabbed.setComponentAt(index, full);
-
-				full.repaint();
+				GuiMangaFull full = frame.getFull();
 				tabbed.setSelectedComponent(full);
-				tabbed.revalidate();
+				full.update(manga);
 				
 				// System.exit(0);
 			}
