@@ -61,9 +61,9 @@ public @Data class Manga {
 	private MangaSource source;
 	private MangaCollection collection;
 	private int read;
+	private int page;
 	private int downloaded;
 	private int released;
-	private int page;
 	private String description;
 	private String author;
 	private String artist;
@@ -83,7 +83,7 @@ public @Data class Manga {
 	}
 	
 	public boolean newAvailable(){
-		return read != downloaded;
+		return read < downloaded;
 	}
 	
 
@@ -94,6 +94,11 @@ public @Data class Manga {
 	public String getMangaDirectory(MangaLibrary library,int chapter){
 		assert library != null;
 		return library.getMangaDirectory()+File.separator+name+File.separator+String.format("%04d", chapter);
+	}
+
+	public String getMangaImagePath(MangaLibrary library) {
+		assert library != null;
+		return library.getMangaDirectory() + File.separator + name + File.separator + name + ".jpg";
 	}
 	
 

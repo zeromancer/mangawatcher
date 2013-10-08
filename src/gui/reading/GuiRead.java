@@ -1,12 +1,12 @@
 package gui.reading;
 
+import gui.GuiFrame;
 import gui.menu.GuiProgressBar;
+import gui.threading.BackgroundExecutors;
 
 import java.awt.BorderLayout;
-import java.io.IOException;
 
 import javax.swing.BoxLayout;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JSlider;
@@ -14,39 +14,23 @@ import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import logic.LibraryManager;
 import lombok.Getter;
 import lombok.Setter;
 import data.Manga;
-import data.Manga.MangaCollection;
-import data.MangaLibrary;
 
 public @Getter @Setter class GuiRead extends JPanel {
 
-	private static final long serialVersionUID = -2034716361151613173L;
-
+	private GuiFrame frame;
 	private GuiProgressBar progress;
+	private BackgroundExecutors executors;
+
 	private JSlider slider;
 	private GuiReadView view;
 	private GuiReadToolBar bar;
 
-	public GuiRead() {
-		// try {
-		// //
-		// UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		// //
-		// UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-		// //
-		// UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
-		// UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-		//
-		// System.setProperty("awt.useSystemAAFontSettings", "on");
-		// System.setProperty("swing.aatext", "true");
-		//
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// M.print(e.getMessage());
-		// }
+	public GuiRead(GuiFrame frame) {
+		this.frame = frame;
+		this.executors = frame.getExecutors();
 
 		setLayout(new BorderLayout());
 
@@ -88,7 +72,7 @@ public @Getter @Setter class GuiRead extends JPanel {
 		});
 		add(slider, BorderLayout.EAST);
 
-		view = new GuiReadView(this, progress, slider, null);
+		view = new GuiReadView(frame, this);
 		view.requestFocus();
 		view.requestFocusInWindow();
 		add(view, BorderLayout.CENTER);
@@ -98,23 +82,27 @@ public @Getter @Setter class GuiRead extends JPanel {
 
 	}
 
-	public static void main(String[] args) throws IOException {
-
-		JFrame frame = new JFrame();
-		frame.setLocationRelativeTo(null);
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-		MangaLibrary library = LibraryManager.loadLibrary("config");
-		Manga manga = library.getCollection(MangaCollection.WATCHING).get(1);
-		GuiRead gui = new GuiRead();
-		gui.getView().view(library, manga, 2, 1);
-		frame.getContentPane().add(gui);
-
-		// frame.pack();
-		frame.setSize(600, 800);
-		frame.setVisible(true);
-		frame.validate();
+	public void view(Manga manga, int chapter, int page) {
+		view.view(manga, chapter, page);
 	}
+
+	// public static void main(String[] args) throws IOException {
+	//
+	// JFrame frame = new JFrame();
+	// frame.setLocationRelativeTo(null);
+	// frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	//
+	// MangaLibrary library = LibraryManager.loadLibrary("config");
+	// Manga manga = library.getCollection(MangaCollection.WATCHING).get(1);
+	// GuiRead gui = new GuiRead();
+	// gui.getView().view(library, manga, 2, 1);
+	// frame.getContentPane().add(gui);
+	//
+	// // frame.pack();
+	// frame.setSize(600, 800);
+	// frame.setVisible(true);
+	// frame.validate();
+	// }
 
 
 }

@@ -3,20 +3,30 @@ package gui;
 import java.awt.Color;
 import java.awt.Font;
 
-import lombok.Data;
+import javax.swing.JPanel;
 
-public @Data class GuiOptions {
+import lombok.Getter;
+import lombok.Setter;
+
+public @Getter @Setter class GuiOptions extends JPanel {
 
 	private int checkInterval; //in min
 
-	Font buttonFont;
-	Font titelFont;
-	Font labelFont;
+	private Font buttonFont;
+	private Font titelFont;
+	private Font subtitelFont;
+	private Font labelFont;
 	
-	Color readingBackgroundColor;
+	private Color readingBackgroundColor;
+	
+	private int scrollAmount;
 	
 	public GuiOptions() {
-		// TODO Auto-generated constructor stub
+		buttonFont = new Font("Sans", Font.PLAIN, 16);
+		titelFont = new Font("Sans", Font.BOLD, 48);
+		subtitelFont = new Font("Sans", Font.BOLD, 24);
+		labelFont = new Font("Sans", Font.PLAIN, 16);
+		scrollAmount = 50;
 	}
 
 }

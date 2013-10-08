@@ -1,5 +1,6 @@
 package gui.reading;
 
+import gui.GuiFrame;
 import gui.menu.GuiProgressBar;
 import gui.threading.BackgroundExecutors;
 
@@ -60,9 +61,13 @@ import data.MangaLibrary;
 
 	}
 
-	private static final long serialVersionUID = 5195762488056129448L;
+	private final GuiFrame frame;
+	private final GuiRead gui;
+	private final GuiProgressBar progress;
+	private final BackgroundExecutors executors;
+	private final JSlider slider;
 
-	private MangaLibrary library;
+	private final MangaLibrary library;
 	private Manga manga;
 	private int chapter = 0;
 	private int page = 0;
@@ -77,17 +82,14 @@ import data.MangaLibrary;
 	final private Map<Integer, List<BufferedImage>> mapImages;
 	final private Map<Integer, List<File>> mapFiles;
 
-	final private GuiRead gui;
-	final private JSlider slider;
-	final private GuiProgressBar progress;
 
-	final private BackgroundExecutors executors;
-
-	public GuiReadView(GuiRead gui, GuiProgressBar progress, JSlider slider, BackgroundExecutors executors) {
+	public GuiReadView(GuiFrame frame, GuiRead gui) {
+		this.frame = frame;
 		this.gui = gui;
-		this.progress = progress;
-		this.slider = slider;
-		this.executors = new BackgroundExecutors();
+		this.progress = gui.getProgress();
+		this.executors = frame.getExecutors();
+		this.slider = gui.getSlider();
+		this.library = frame.getLibrary();
 
 		setFocusable(true);
 		addMouseWheelListener(this);
@@ -106,7 +108,7 @@ import data.MangaLibrary;
 
 	}
 
-	public void view(MangaLibrary library, Manga manga, int chapter, int page) {
+	public void view(Manga manga, int chapter, int page) {
 		if (this.manga != null && this.manga.equals(manga) && mapImages.containsKey(chapter)) {
 			this.chapter = chapter;
 			this.page = page;
@@ -115,7 +117,6 @@ import data.MangaLibrary;
 			mapImages.clear();
 			mapFiles.clear();
 		}
-		this.library = library;
 		this.manga = manga;
 		this.chapter = chapter;
 		this.page = page;
@@ -135,7 +136,10 @@ import data.MangaLibrary;
 				final File folder = new File(path);
 
 				final List<BufferedImage> images = new ArrayList<BufferedImage>();
-				final List<File> files = new ArrayList<File>(Arrays.asList(folder.listFiles(filter)));
+				File[] listed = folder.listFiles(filter);
+				if (listed == null)
+					return;
+				final List<File> files = new ArrayList<File>(Arrays.asList(listed));
 
 				Collections.sort(files);
 
@@ -157,9 +161,7 @@ import data.MangaLibrary;
 			public void run() {
 				// progress.setValue(100);
 				// progress.setText("Loading Complete");
-				progress.setValue((GuiReadView.this.chapter) * 100 / manga.getReleased());
-				progress.setText("Reading " + GuiReadView.this.manga.getName() + " Chapter " + GuiReadView.this.chapter);
-				progress.repaint();
+				defaultProgress();
 
 				mapFiles.put(chapter, files);
 				mapImages.put(chapter, images);
@@ -183,6 +185,12 @@ import data.MangaLibrary;
 				repaint();
 			}
 		});
+	}
+
+	private void defaultProgress() {
+		progress.setValue((GuiReadView.this.chapter) * 100 / manga.getReleased());
+		progress.setText("Reading " + GuiReadView.this.manga.getName() + " Chapter " + GuiReadView.this.chapter);
+		progress.repaint();
 	}
 
 	// Threading:
@@ -233,7 +241,7 @@ import data.MangaLibrary;
 		if (state != ReadingState.READING)
 			return;
 
-		M.print("scroll: " + scroll);
+		// M.print("scroll: " + scroll);
 		int imageHeight = mapImages.get(chapter).get(page).getHeight();
 
 		if (scroll < 0)
@@ -255,14 +263,16 @@ import data.MangaLibrary;
 					scroll = 0;
 			}
 
-		M.print(" scroll: " + scroll);
+		// M.print(" scroll: " + scroll);
 		repaint();
 	}
 
 	public boolean page(int diff) {
+		if (state != ReadingState.READING)
+			return false;
 		int newPage = page + diff;
 		int oldChapter = chapter;
-		M.print("newPage: " + newPage);
+		// M.print("newPage: " + newPage);
 		if (newPage < 0) {
 			if (chapter(-1)) {
 				if (mapImages.containsKey(chapter))
@@ -287,13 +297,14 @@ import data.MangaLibrary;
 			page = newPage;
 		}
 
-		M.print(" page: " + page);
+		// M.print(" page: " + page);
 
 		// if (Math.abs(diff) > 1)
 		// scroll = 0;
 
 		slider.setValue(page);
 		slider.repaint();
+		manga.setPage(page);
 		repaint();
 		return true;
 	}
@@ -312,7 +323,7 @@ import data.MangaLibrary;
 		if (newChapter <= 0 || newChapter > manga.getDownloaded())
 			return false;
 
-		M.print("newChapter: " + newChapter);
+		// M.print("newChapter: " + newChapter);
 
 		if (mapImages.containsKey(newChapter)) {
 			slider.setMaximum(mapImages.get(newChapter).size());
@@ -325,6 +336,11 @@ import data.MangaLibrary;
 		this.chapter = newChapter;
 		repaint();
 
+		defaultProgress();
+
+		manga.setRead(chapter);
+		library.save();
+
 		// preloading
 		newChapter++;
 		if (newChapter <= 0 || newChapter > manga.getDownloaded())
@@ -336,12 +352,12 @@ import data.MangaLibrary;
 	}
 
 	public void previousChapter() {
-		M.print("previousChapter");
+		// M.print("previousChapter");
 		chapter(-1);
 	}
 
 	public void nextChapter() {
-		M.print("nextChapter");
+		// M.print("nextChapter");
 		chapter(+1);
 	}
 
@@ -386,10 +402,10 @@ import data.MangaLibrary;
 	}
 
 	public static BufferedImage loadImage(File file) {
-		try {
-			Thread.sleep((int) (Math.random() * 100));
-		} catch (InterruptedException e1) {
-		}
+		// try {
+		// Thread.sleep((int) (Math.random() * 100));
+		// } catch (InterruptedException e1) {
+		// }
 		try {
 			// M.print("\tloading image: " + file.getName());
 			return ImageIO.read(file);

@@ -1,8 +1,9 @@
 package gui.manga;
 
+import gui.GuiFrame;
+
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -13,22 +14,23 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
+import javax.swing.JTabbedPane;
 
-import logic.LibraryManager;
-import logic.mangareader.ReaderAvailable;
 import data.Manga;
 import data.MangaLibrary;
-import data.Manga.MangaCollection;
 
 public class GuiMangaQuick extends JButton {
 
-	MangaLibrary library;
-	BufferedImage image = null;
-	Manga manga;
+	private final GuiFrame frame;
+	private final MangaLibrary library;
+	private final Manga manga;
+
+	private BufferedImage image;
 	
-	public GuiMangaQuick(MangaLibrary library, Manga manga) {
+
+	public GuiMangaQuick(final GuiFrame frame, final Manga manga) {
+		this.frame = frame;
+		this.library = frame.getLibrary();
 		this.manga = manga;
 		String name = manga.getName();
 
@@ -47,7 +49,19 @@ public class GuiMangaQuick extends JButton {
 			@Override
 			public void actionPerformed(ActionEvent event) {
 				// M.print("" + (String) combo.getSelectedItem());
-				System.exit(0);
+				JTabbedPane tabbed = frame.getTabbed();
+				GuiMangaFull full = frame.getAll().get(manga);
+				int index = tabbed.indexOfTab("Manga");
+				if (index == -1)
+					tabbed.addTab("Manga", full);
+				else
+					tabbed.setComponentAt(index, full);
+
+				full.repaint();
+				tabbed.setSelectedComponent(full);
+				tabbed.revalidate();
+				
+				// System.exit(0);
 			}
 		});
 		//this.setText("Read " + manga.getRead() + " / " + manga.getReleased());
@@ -79,27 +93,4 @@ public class GuiMangaQuick extends JButton {
 		return new Dimension(image.getWidth(), image.getHeight());
 	}
 
-	public static void main(String[] args) {
-
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				JFrame frame = new JFrame("Test Manga Add");
-				// frame.setSize(300, 300);
-				frame.setLocationRelativeTo(null);
-				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-				String configDirectory = "config";
-				MangaLibrary library = LibraryManager.loadLibrary(configDirectory);
-				// MangaAll.try_refresh(library);
-				// LibraryManager.saveLibrary(configDirectory, library);
-				Manga manga = library.getCollection(MangaCollection.WATCHING).get(0);
-				GuiMangaQuick component = new GuiMangaQuick(library, manga);
-				frame.add(component);
-				frame.pack();
-
-				frame.setVisible(true);
-			}
-		});
-	}
 }

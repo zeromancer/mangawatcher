@@ -1,58 +1,56 @@
 package gui.manga;
 
+import gui.GuiFrame;
+import gui.reading.GuiRead;
+
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
+import javax.swing.JTabbedPane;
 
-import logic.LibraryManager;
 import data.Manga;
 import data.MangaLibrary;
-import data.Manga.MangaCollection;
 
 public class GuiMangaQuickNewest extends JPanel{
 
-	GuiMangaQuick image;
-	JButton button;
+	private final GuiFrame frame;
+	private final MangaLibrary library;
+	private final Manga manga;
+
+	private GuiMangaQuick image;
+	private final JButton button;
 	
-	public GuiMangaQuickNewest(MangaLibrary library, Manga manga) {
+	public GuiMangaQuickNewest(final GuiFrame frame, final Manga manga) {
 		super(new BorderLayout());
-		JPanel panel = this;
+		this.frame = frame;
+		this.library = frame.getLibrary();
+		this.manga = manga;
+
 //		setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-		image = new GuiMangaQuick(library, manga);
-		panel.add(image);
-		
-		
-		button = new JButton("Read "+(manga.getRead()+1));
-		panel.add(button,BorderLayout.SOUTH);
-		
-		
-	}
-
-	public static void main(String[] args) {
-
-		SwingUtilities.invokeLater(new Runnable() {
+		image = new GuiMangaQuick(frame, manga);
+		add(image);
+		button = new JButton();
+		add(button,BorderLayout.SOUTH);
+		button.addActionListener(new ActionListener() {
 			@Override
-			public void run() {
-				JFrame frame = new JFrame("Test Manga Add");
-				// frame.setSize(300, 300);
-				frame.setLocationRelativeTo(null);
-				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-				String configDirectory = "config";
-				MangaLibrary library = LibraryManager.loadLibrary(configDirectory);
-				// MangaAll.try_refresh(library);
-				// LibraryManager.saveLibrary(configDirectory, library);
-				Manga manga = library.getCollection(MangaCollection.WATCHING).get(0);
-				GuiMangaQuickNewest component = new GuiMangaQuickNewest(library, manga);
-				frame.add(component);
-				frame.pack();
-
-				frame.setVisible(true);
+			public void actionPerformed(ActionEvent event) {
+				// M.print("" + (String) combo.getSelectedItem());
+				GuiRead read = frame.getRead();
+				JTabbedPane tabbed = frame.getTabbed();
+				read.view(manga, manga.getRead() + 1, manga.getPage());
+				tabbed.setSelectedComponent(read);
+				tabbed.setEnabledAt(tabbed.indexOfComponent(read), true);
 			}
 		});
+
+		update();
 	}
+
+	public void update() {
+		button.setText("Read " + (manga.getRead() + 1));
+	}
+
 }
