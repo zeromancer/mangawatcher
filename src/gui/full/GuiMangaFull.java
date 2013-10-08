@@ -200,13 +200,13 @@ public class GuiMangaFull extends JScrollPane {
 	}
 
 	private void updateButtons() {
-		for (int i = 0; i < buttons.size(); i++) {
+		for (int i = 1; i < buttons.size(); i++) {
 			buttons.get(i).setRead(i <= manga.getRead());
 		}
 	}
 
 	private void addButtons() {
-		for (int i = buttons.size(); i < manga.getDownloaded() + 1; i++) {
+		for (int i = Math.max(buttons.size(),1); i < manga.getDownloaded() + 1; i++) {
 			JGradientButton button = new JGradientButton("" + i, i <= manga.getRead());
 			final int j = i;
 			button.addActionListener(new ActionListener() {

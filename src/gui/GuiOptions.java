@@ -24,7 +24,7 @@ public @Getter @Setter class GuiOptions extends JPanel {
 	public GuiOptions() {
 		buttonFont = new Font("Sans", Font.PLAIN, 16);
 		titelFont = new Font("Sans", Font.BOLD, 48);
-		subtitelFont = new Font("Sans", Font.BOLD, 24);
+		subtitelFont = new Font("Sans", Font.BOLD, 28);
 		labelFont = new Font("Sans", Font.PLAIN, 16);
 		scrollAmount = 50;
 	}

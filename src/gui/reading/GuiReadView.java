@@ -41,7 +41,7 @@ import misc.M;
 import data.Manga;
 import data.MangaLibrary;
 
- public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelListener {
+public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelListener {
 
 	public enum ReadingState {
 		READING(""),
@@ -81,7 +81,6 @@ import data.MangaLibrary;
 	final private FilenameFilter filter;
 	final private Map<Integer, List<BufferedImage>> mapImages;
 	final private Map<Integer, List<File>> mapFiles;
-
 
 	public GuiReadView(GuiFrame frame, GuiRead gui) {
 		this.frame = frame;
@@ -129,6 +128,7 @@ import data.MangaLibrary;
 	}
 
 	public void backgroundLoading(final Manga manga, final int chapter) {
+		final int zoom = this.zoom;
 		Runnable run = new Runnable() {
 			@Override
 			public void run() {
@@ -146,7 +146,11 @@ import data.MangaLibrary;
 				for (int i = 0; i < files.size(); i++) {
 					final File file = files.get(i);
 					// M.print(" loading file: " + file.getName());
-					images.add(loadImage(file));
+					BufferedImage image = loadImage(file);
+					if (zoom == 100)
+						images.add(image);
+					else
+						images.add(scaleImage(image, 100, zoom));
 					progress((i + 1) * 100 / files.size(), "Loading image: " + file.getName());
 				}
 
@@ -188,8 +192,9 @@ import data.MangaLibrary;
 	}
 
 	private void defaultProgress() {
-		progress.setValue((GuiReadView.this.chapter) * 100 / manga.getReleased());
-		progress.setText("Reading " + GuiReadView.this.manga.getName() + " Chapter " + GuiReadView.this.chapter);
+		//progress.setValue((GuiReadView.this.chapter) * 100 / manga.getReleased());
+		progress.setValue(100);
+		progress.setText("" + GuiReadView.this.manga.getName() + " Chapter " + GuiReadView.this.chapter);
 		progress.repaint();
 	}
 
@@ -206,7 +211,8 @@ import data.MangaLibrary;
 	}
 
 	private void paintMessage(Graphics g, String message) {
-		g.drawString(message, (getWidth()) / 2, (getHeight()) / 2);
+		g.setFont(frame.getOptions().getSubtitelFont());
+		g.drawString(message, (getWidth() - g.getFontMetrics().stringWidth(message)) / 2, (getHeight()) / 2);
 	}
 
 	private void paintReading(Graphics g) {
@@ -332,7 +338,6 @@ import data.MangaLibrary;
 			backgroundLoading(manga, newChapter);
 		}
 
-
 		this.chapter = newChapter;
 		repaint();
 
@@ -372,7 +377,7 @@ import data.MangaLibrary;
 			BufferedImage image = images.get(i);
 			if (image == null)
 				continue;
-			BufferedImage newer = scaleImage(image, zoom);
+			BufferedImage newer = scaleImage(image, this.zoom, zoom);
 			// M.print(" "+image.getWidth()+ " -> "+newer.getWidth());
 			images.set(i, newer);
 		}
@@ -391,9 +396,9 @@ import data.MangaLibrary;
 		}
 	}
 
-	public BufferedImage scaleImage(BufferedImage image, int zoom) {
-		int width = (int) ((float) image.getWidth() * zoom / this.zoom);
-		int height = (int) ((float) image.getHeight() * zoom / this.zoom);
+	public BufferedImage scaleImage(BufferedImage image, int fromZoom, int toZoom) {
+		int width = (int) ((float) image.getWidth() * toZoom / fromZoom);
+		int height = (int) ((float) image.getHeight() * toZoom / fromZoom);
 		// M.print("  "+image.getWidth()+ " -> "+width);
 		Image img = image.getScaledInstance(width, height, Image.SCALE_FAST);
 		BufferedImage newer = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);

@@ -21,18 +21,25 @@ public @Getter class GuiEngine {
 
 	public @Getter enum Icons {
 		// Categories
-		ADD("plus2-26.png"),
-		MANGA("dossier-26.png"),
-		READING("literature-26.png"),
-		WATCHING("invisible-26.png"),
-		PLANNING("watch-26.png"),
-		DROPPED("law-26.png"),
-		COMPLETED("ok-26.png"),
-		DOWNLOADING("down-26.png"),
-		OPTIONS("settings2-26.png"),
-		ABOUT("about-26.png"),
+		ADD("categories/plus2-26.png"),
+		MANGA("categories/dossier-26.png"),
+		READING("categories/literature-26.png"),
+		WATCHING("categories/invisible-26.png"),
+		PLANNING("categories/watch-26.png"),
+		DROPPED("categories/law-26.png"),
+		COMPLETED("categories/ok-26.png"),
+		DOWNLOADING("categories/down-26.png"),
+		OPTIONS("categories/settings2-26.png"),
+		ABOUT("categories/about-26.png"),
 
 		// Reading
+		REFRESH("reading/available_updates-26.png"),
+		LEFT("reading/arrow-left-26.png"),
+		RIGHT("reading/arrow-26.png"),
+		DOUBLELEFT("reading/rewind-26.png"),
+		DOUBLERIGHT("reading/fast_forward-26.png"),
+		ZOOM("reading/search-26.png"),
+		SCROLL("reading/line_width-26.png"),
 
 		;
 		private String path;
@@ -76,6 +83,16 @@ public @Getter class GuiEngine {
 		}
 
 	}
+
+	public BufferedImage getCover(Manga manga){
+		assert covers.containsKey(manga);
+		return covers.get(manga);
+	}
+	
+	public BufferedImage getIcon(Icons icon){
+		assert icons.containsKey(icon);
+		return icons.get(icon);
+	}
 	
 	public void loadAll() {
 		for (MangaCollection collection : MangaCollection.values())
@@ -97,7 +114,7 @@ public @Getter class GuiEngine {
 	}
 
 	public void load(Icons icon) {
-		final String path = "icons/categories/" + icon.getPath();
+		final String path = "icons/" + icon.getPath();
 		try {
 			BufferedImage image = ImageIO.read(new File(path));
 			icons.put(icon, image);

@@ -41,12 +41,12 @@ public @Getter @Setter class GuiRead extends JPanel {
 		add(panel, BorderLayout.SOUTH);
 
 
-		progress = new GuiProgressBar();
+		progress = new GuiProgressBar(frame);
 		progress.setOrientation(JProgressBar.HORIZONTAL);
 		progress.setMinimum(0);
 		progress.setMaximum(100);
 		progress.setText("test");
-		panel.add(progress, "");
+		//panel.add(progress, "");
 
 
 		slider = new JSlider();
@@ -77,7 +77,7 @@ public @Getter @Setter class GuiRead extends JPanel {
 		view.requestFocusInWindow();
 		add(view, BorderLayout.CENTER);
 
-		bar = new GuiReadToolBar(this, view);
+		bar = new GuiReadToolBar(frame, this, view);
 		add(bar, BorderLayout.NORTH);
 
 	}
