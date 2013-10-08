@@ -47,7 +47,7 @@ import data.MangaLibrary;
 		READING(""),
 		LOADING("Loading images..."),
 		RESIZING("Resizing images..."),
-		ERROR("Error...");
+		ERROR("Please select manga");
 
 		String message;
 
@@ -268,7 +268,7 @@ import data.MangaLibrary;
 	}
 
 	public boolean page(int diff) {
-		if (state != ReadingState.READING)
+		if (manga == null || state != ReadingState.READING)
 			return false;
 		int newPage = page + diff;
 		int oldChapter = chapter;
@@ -320,7 +320,7 @@ import data.MangaLibrary;
 	public boolean chapter(int diff) {
 		int newChapter = chapter + diff;
 
-		if (newChapter <= 0 || newChapter > manga.getDownloaded())
+		if (manga == null || newChapter <= 0 || newChapter > manga.getDownloaded())
 			return false;
 
 		// M.print("newChapter: " + newChapter);

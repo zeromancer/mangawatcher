@@ -2,10 +2,10 @@ package gui;
 
 import gui.GuiEngine.Icons;
 import gui.about.GuiAbout;
+import gui.add.GuiMangaAdd;
+import gui.collection.GuiMangaCollectionGrid;
 import gui.downloading.GuiDownloading;
-import gui.manga.GuiMangaAdd;
-import gui.manga.GuiMangaCollectionGrid;
-import gui.manga.GuiMangaFull;
+import gui.full.GuiMangaFull;
 import gui.reading.GuiRead;
 import gui.threading.BackgroundExecutors;
 
@@ -20,6 +20,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingUtilities;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import logic.LibraryManager;
 import lombok.Getter;
@@ -98,7 +100,8 @@ public @Getter class GuiFrame extends JFrame {
 
 		full = new GuiMangaFull(this);
 		addTab("Manga", Icons.MANGA, full);
-		tabbed.setSelectedComponent(full);
+//		tabbed.setEnabledAt(tabbed.indexOfComponent(full), false);
+//		tabbed.setSelectedComponent(full);
 		
 		collections = new HashMap<Manga.MangaCollection, GuiMangaCollectionGrid>();
 		for (MangaCollection collection : MangaCollection.values()) {
@@ -119,7 +122,18 @@ public @Getter class GuiFrame extends JFrame {
 		about = new GuiAbout();
 		addTab("About", Icons.ABOUT, about);
 		
-		
+
+		tabbed.addChangeListener(new ChangeListener() {
+	        public void stateChanged(ChangeEvent e) {
+	            //System.out.println("Tab: " + tabbed.getSelectedIndex());
+	            Component component = tabbed.getSelectedComponent();
+	            if(component == full)
+	            	((GuiMangaFull)component).update();
+	            for(MangaCollection collection : MangaCollection.values())
+	            if(component == collections.get(collection))
+	            	((GuiMangaCollectionGrid)component).update();
+	        }
+	    });
 	}
 	
 	

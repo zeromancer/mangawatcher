@@ -29,7 +29,7 @@ public class GuiReadToolBar extends JPanel {
 
 	private JToggleButton showZoom;
 	private JToggleButton showScroll;
-	private JButton save;
+	private JButton resync;
 	private JButton previousChapter;
 	private JButton previousPage;
 	private JButton nextChapter;
@@ -44,17 +44,20 @@ public class GuiReadToolBar extends JPanel {
 	public void constructGuiOptions() {
 		setLayout(new MigLayout());
 		setBorder(new EmptyBorder(0, 0, 0, 0));
-		save = new JButton("Save");
+		
+		resync = new JButton("Resync");
 		showZoom = new JToggleButton("Show Zoom");
 		showScroll = new JToggleButton("Show Scroll");
 		previousChapter = new JButton("Chapter--");
 		previousPage = new JButton("Page--");
 		nextPage = new JButton("Page++");
 		nextChapter = new JButton("Chapter++");
+		
 		zoom = new JSlider(10, 400, view.getZoom());
 		zoom.setPaintTicks(true);
 		zoom.setMinorTickSpacing(10);
 		zoom.setSnapToTicks(true);
+		
 		scroll = new JSlider(1, 500, view.getScrollAmount());
 		scroll.setPaintTicks(true);
 		scroll.setMinorTickSpacing(10);
@@ -68,6 +71,7 @@ public class GuiReadToolBar extends JPanel {
 		labelTable.put(new Integer(400), new JLabel("400%"));
 		zoom.setLabelTable(labelTable);
 		zoom.setPaintLabels(true);
+		
 		labelTable = new Hashtable<Integer, JLabel>();
 		labelTable.put(new Integer(0), new JLabel("10 px"));
 		labelTable.put(new Integer(100), new JLabel("100 px"));
@@ -78,7 +82,7 @@ public class GuiReadToolBar extends JPanel {
 		scroll.setLabelTable(labelTable);
 		scroll.setPaintLabels(true);
 
-		add(save);
+		add(resync);
 		add(showZoom);
 		add(showScroll);
 		add(previousChapter);
@@ -88,7 +92,7 @@ public class GuiReadToolBar extends JPanel {
 		final String sliderOptions = "growx, span";
 		// add(zoom, zoomAdd);
 
-		save.addActionListener(new ActionListener() {
+		resync.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				M.print("TODO: manga save");
 			}
