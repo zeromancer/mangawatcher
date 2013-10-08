@@ -5,18 +5,37 @@ import gui.menu.GuiProgressBar;
 import gui.reading.GuiReadView.ReadingState;
 import gui.threading.BackgroundExecutors;
 
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FilenameFilter;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
+import javax.imageio.ImageIO;
+import javax.swing.AbstractAction;
+import javax.swing.ActionMap;
+import javax.swing.InputMap;
+import javax.swing.JComponent;
 import javax.swing.JSlider;
+import javax.swing.KeyStroke;
+import javax.swing.SwingUtilities;
 
+import data.Manga;
 import data.MangaLibrary;
 
 public class GuiReadViewOperations {
-
 
 	private final GuiFrame frame;
 	private final GuiRead gui;
@@ -27,12 +46,9 @@ public class GuiReadViewOperations {
 
 	private final MangaLibrary library;
 
-	private ReadingState state = ReadingState.ERROR;
-
-	final private FilenameFilter filter;
-	final private Map<Integer, List<BufferedImage>> mapImages;
-	final private Map<Integer, List<File>> mapFiles;
-	
+	private final FilenameFilter filter;
+	private final Map<Integer, List<BufferedImage>> mapImages;
+	private final Map<Integer, List<File>> mapFiles;
 	
 	public GuiReadViewOperations(GuiFrame frame, GuiRead gui, GuiReadView view) {
 			this.frame = frame;
@@ -53,5 +69,250 @@ public class GuiReadViewOperations {
 			mapFiles = view.getMapFiles();
 			
 	}
+
+	protected void backgroundLoading(final Manga manga, final int chapter) {
+		final int zoom = this.view.getZoom();
+		executors.runOnFileThread(new Runnable() {
+			@Override
+			public void run() {
+				final String path = manga.getMangaDirectory(library, chapter);
+				final File folder = new File(path);
+
+				final List<BufferedImage> images = new ArrayList<BufferedImage>();
+				File[] listed = folder.listFiles(filter);
+				if (listed == null)
+					return;
+				final List<File> files = new ArrayList<File>(Arrays.asList(listed));
+
+				Collections.sort(files);
+
+				for (int i = 0; i < files.size(); i++) {
+					final File file = files.get(i);
+					// M.print(" loading file: " + file.getName());
+					BufferedImage image = loadImage(file);
+					if (zoom == 100)
+						images.add(image);
+					else
+						images.add(scaleImage(image, 100, zoom));
+					progress((i + 1) * 100 / files.size(), "Loading image: " + file.getName());
+				}
+
+				backgroundLoadingFinish(chapter, images, files);
+			}
+		});
+	}
+
+	private void backgroundLoadingFinish(final int chapter, final List<BufferedImage> images, final List<File> files) {
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				defaultProgress();
+
+				mapFiles.put(chapter, files);
+				mapImages.put(chapter, images);
+
+				if (view.getState() == ReadingState.LOADING) {
+					view.setState(ReadingState.READING);
+					slider.setMinimum(0);
+					slider.setValue(view.getManga().getPage());
+					slider.setMaximum(files.size() - 1);
+				}
+				view.repaint();
+			}
+		});
+	}
+
+
+	public void backgroundZooming(final int newZoom) {
+		final int oldZoom = view.getZoom();
+		int count = 0;
+		final Map<Integer, List<BufferedImage>> mapCopy = new HashMap<>();
+		for (Entry<Integer, List<BufferedImage>> entry : mapImages.entrySet()) {
+			List<BufferedImage> list = new ArrayList<>();
+			for(BufferedImage image : entry.getValue()){
+				list.add(image);
+				count++;
+			}
+			mapCopy.put(entry.getKey(), list);
+		}
+		final Map<Integer, List<BufferedImage>> mapNew = new HashMap<>();
+		final int totalCount = count;
+		executors.runOnFileThread(new Runnable() {
+			@Override
+			public void run() {
+				int count = 0;
+				for (Entry<Integer, List<BufferedImage>> entry : mapCopy.entrySet()) {
+					List<BufferedImage> list = new ArrayList<>();
+					for(BufferedImage oldImage : entry.getValue()){
+						BufferedImage newimage = scaleImage(oldImage, oldZoom, newZoom);
+						list.add(newimage);
+						count++;
+						progress(count*100/totalCount,"Resizing Image "+count+" / "+totalCount);
+					}
+					mapNew.put(entry.getKey(), list);
+				}
+				backgroundZoomingFinish(mapNew);
+			}
+		});
+		// TODO Auto-generated method stub
+//		M.print("zoom: " + this.zoom + " -> " + zoom);
+//		if (this.zoom == zoom)
+//			return;
+//		state = ReadingState.RESIZING;
+//		repaint();
+//		List<BufferedImage> images = mapImages.get(chapter);
+//		for (int i = 0; i < images.size(); i++) {
+//			BufferedImage image = images.get(i);
+//			if (image == null)
+//				continue;
+//			BufferedImage newer = operations.scaleImage(image, this.zoom, zoom);
+//			// M.print(" "+image.getWidth()+ " -> "+newer.getWidth());
+//			images.set(i, newer);
+//		}
+//		this.zoom = zoom;
+//		state = ReadingState.READING;
+	}
+	
+
+	public void backgroundZoomingFinish(final Map<Integer, List<BufferedImage>> mapNew) {
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				for (Entry<Integer, List<BufferedImage>> entry : mapNew.entrySet()) {
+					Integer key = entry.getKey();
+					List<BufferedImage> list = entry.getValue();
+					for (int i = 0; i < list.size(); i++) {
+						mapImages.get(key).set(i, list.get(i));
+					}
+				}
+				view.setState(ReadingState.READING);
+				view.repaint();
+				defaultProgress();
+			}
+		});
+	}
+	
+	private void progress(final int percent, final String text) {
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				progress.setValue(percent);
+				progress.setText(text);
+				progress.repaint();
+			}
+		});
+	}
+
+	protected void defaultProgress() {
+		//progress.setValue((GuiReadView.this.chapter) * 100 / manga.getReleased());
+		progress.setValue(100);
+		progress.setText("" + view.getManga().getName() + " Chapter " + view.getChapter());
+		progress.repaint();
+	}
+	
+	
+
+	public BufferedImage scaleImage(BufferedImage image, int fromZoom, int toZoom) {
+		int width = (int) ((float) image.getWidth() * toZoom / fromZoom);
+		int height = (int) ((float) image.getHeight() * toZoom / fromZoom);
+		// M.print("  "+image.getWidth()+ " -> "+width);
+		Image img = image.getScaledInstance(width, height, Image.SCALE_FAST);
+		BufferedImage newer = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+		newer.getGraphics().drawImage(img, 0, 0, null);
+		return newer;
+	}
+
+	public static BufferedImage loadImage(File file) {
+		// try {
+		// Thread.sleep((int) (Math.random() * 100));
+		// } catch (InterruptedException e1) {
+		// }
+		try {
+			// M.print("\tloading image: " + file.getName());
+			return ImageIO.read(file);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	protected void initializeKeyShortcuts() {
+
+		ActionMap actionMap = view.getActionMap();
+		InputMap inputMap = view.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+
+		AbstractAction scrollUp = new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				view.scroll(-view.getScrollAmount());
+			}
+		};
+
+		AbstractAction scrollDown = new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				view.scroll(view.getScrollAmount());
+			}
+		};
+
+		AbstractAction heightUp = new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				view.scroll(-view.getHeight());
+			}
+		};
+
+		AbstractAction heightDown = new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				view.scroll(view.getHeight());
+			}
+		};
+
+		AbstractAction pageDown = new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				view.nextPage();
+			}
+		};
+
+		Map<Integer, AbstractAction> actions = new HashMap<>();
+		actions.put(KeyEvent.VK_W, scrollUp);
+		actions.put(KeyEvent.VK_S, scrollDown);
+		actions.put(KeyEvent.VK_PAGE_UP, heightUp);
+		actions.put(KeyEvent.VK_PAGE_DOWN, heightDown);
+		actions.put(KeyEvent.VK_SPACE, pageDown);
+
+		for (Entry<Integer, AbstractAction> entry : actions.entrySet()) {
+			Integer key = entry.getKey();
+			AbstractAction value = entry.getValue();
+			inputMap.put(KeyStroke.getKeyStroke(key, 0), "" + key);
+			actionMap.put("" + key, value);
+		}
+	}
+
+	@SuppressWarnings("resource")
+	public static void fileCopy(File in, File out) throws IOException {
+		FileChannel inChannel = new FileInputStream(in).getChannel();
+		FileChannel outChannel = new FileOutputStream(out).getChannel();
+		try {
+			// inChannel.transferTo(0, inChannel.size(), outChannel); //
+			// original -- apparently has trouble copying large files on Windows
+
+			// magic number for Windows, 64Mb - 32Kb)
+			int maxCount = (64 * 1024 * 1024) - (32 * 1024);
+			long size = inChannel.size();
+			long position = 0;
+			while (position < size) {
+				position += inChannel.transferTo(position, maxCount, outChannel);
+			}
+		} finally {
+			if (inChannel != null) {
+				inChannel.close();
+			}
+			if (outChannel != null) {
+				outChannel.close();
+			}
+		}
+	}
+
 
 }

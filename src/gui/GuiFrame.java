@@ -11,6 +11,7 @@ import gui.threading.BackgroundExecutors;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -64,7 +65,6 @@ public @Getter class GuiFrame extends JFrame {
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(new BorderLayout());
-		
 		// general
 		library = LibraryManager.loadLibrary("config");
 		executors = new BackgroundExecutors();
@@ -92,6 +92,7 @@ public @Getter class GuiFrame extends JFrame {
 		// content
 		tabbed = new JTabbedPane(JTabbedPane.LEFT);
 		tabbed.setBorder(BorderFactory.createEmptyBorder());
+		tabbed.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		getContentPane().add(tabbed, BorderLayout.CENTER);
 
 		add = new GuiMangaAdd(this);
@@ -116,7 +117,7 @@ public @Getter class GuiFrame extends JFrame {
 		tabbed.setSelectedComponent(read);
 		
 		downloading = new GuiDownloading();
-		addTab("Downloading", Icons.DOWNLOADING, downloading);
+		addTab("Download", Icons.DOWNLOADING, downloading);
 
 		addTab("Options", Icons.OPTIONS, options);
 
@@ -144,8 +145,13 @@ public @Getter class GuiFrame extends JFrame {
 		JLabel label = new JLabel(text, i, JLabel.CENTER);
 		label.setHorizontalTextPosition(JLabel.CENTER);
 		label.setVerticalTextPosition(JLabel.BOTTOM);
+//		label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		label.setIconTextGap(10);
+		label.setPreferredSize(new Dimension(80, 70));
 		tabbed.addTab(text, i, component);
 		tabbed.setTabComponentAt(tabbed.indexOfComponent(component), label);
+//		tabbed.addTab("<html><body leftmargin=10 topmargin=20 rightmargin=10 bottommargin=20>Tab1</body></html>", i, component);
+//		tabbed.addTab("<html><div style=\"height: "+getHeight()/20+"px\">"+text+"</div></html>", i, component);
 		return label;
 	}
 

@@ -45,7 +45,6 @@ public @Getter @Setter class GuiRead extends JPanel {
 		progress.setOrientation(JProgressBar.HORIZONTAL);
 		progress.setMinimum(0);
 		progress.setMaximum(100);
-		progress.setText("test");
 		//panel.add(progress, "");
 
 

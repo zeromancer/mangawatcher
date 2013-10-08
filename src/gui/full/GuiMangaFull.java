@@ -143,7 +143,7 @@ public class GuiMangaFull extends JScrollPane {
 		panel.add(collection, optionsAddComponent);
 
 		// Sync Title
-		label = new JLabel("Reync:");
+		label = new JLabel("Recheck:");
 		label.setFont(frame.getOptions().getLabelFont());
 		panel.add(label, optionsAddLabel);
 		sync = new JButton("Now");
