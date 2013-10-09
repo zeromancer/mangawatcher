@@ -2,15 +2,20 @@ package gui.threading;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
-public class BackgroundExecutors {
+import lombok.Getter;
+
+public @Getter class BackgroundExecutors {
 
 	ExecutorService networkExecuter;
 	ExecutorService fileExecuter;
+	ScheduledExecutorService scheduler;
 	
 	public BackgroundExecutors() {
 		networkExecuter = Executors.newSingleThreadExecutor();
 		fileExecuter = Executors.newSingleThreadExecutor();
+		scheduler = Executors.newScheduledThreadPool(1);
 //		networkExecuter.
 	}
 	

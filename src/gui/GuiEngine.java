@@ -69,9 +69,9 @@ public @Getter class GuiEngine {
 
 	public void setLookAndFeel() {
 		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 			// UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-			// UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
+			 UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
 			// UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
 
 			System.setProperty("awt.useSystemAAFontSettings", "on");

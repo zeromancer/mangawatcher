@@ -3,6 +3,7 @@ package gui.menu;
 import gui.GuiFrame;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 
@@ -39,6 +40,13 @@ public @Getter @Setter class GuiProgressBar extends JProgressBar {
 //		M.print("metrics.getDescent(): " + metrics.getDescent() + " , metrics.getAscent(): " + metrics.getAscent());
 //		M.print("metrics.width: " + width + " , metrics.height: " + height);
 //		M.print("");
+	}
+	
+	@Override
+	public Dimension getPreferredSize() {
+		Dimension d = super.getPreferredSize();
+		return new Dimension((int)d.getWidth(), (int)frame.getOptions().getSubtitelFont().getSize()+3);
+//		return super.getPreferredSize();
 	}
 
 	//	public void setText(String text){

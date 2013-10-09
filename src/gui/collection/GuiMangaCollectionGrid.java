@@ -45,6 +45,7 @@ public class GuiMangaCollectionGrid extends JScrollPane {
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		
 		setViewportView(panel);
+		setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		getVerticalScrollBar().setUnitIncrement(frame.getOptions().getScrollAmount());
 		setWheelScrollingEnabled(true);
 
@@ -109,7 +110,7 @@ public class GuiMangaCollectionGrid extends JScrollPane {
 			newerLabel.setVisible(true);
 			newerPanel.setVisible(true);
 			for (Manga manga : newer) {
-				JComponent component = new GuiMangaQuickNewest(frame, manga);
+				JComponent component = new GuiMangaCoverButton(frame, manga);
 				newerPanel.add(component);
 				newerMap.put(manga, component);
 			}
@@ -122,7 +123,7 @@ public class GuiMangaCollectionGrid extends JScrollPane {
 			olderLabel.setVisible(true);
 			olderPanel.setVisible(true);
 			for (Manga manga : older) {
-				JComponent component = new GuiMangaQuick(frame, manga);
+				JComponent component = new GuiMangaCover(frame, manga);
 				olderPanel.add(component);
 				olderMap.put(manga, component);
 			}

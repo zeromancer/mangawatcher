@@ -72,6 +72,21 @@ public class GuiReadViewOperations {
 
 	protected void backgroundLoading(final Manga manga, final int chapter) {
 		final int zoom = this.view.getZoom();
+		
+		
+		if(mapImages.size()>10){
+			int doNotDelete = view.getChapter();
+			List<Integer> delete = new ArrayList<>();
+			for(Integer index : mapImages.keySet())
+				if(Math.abs(index.intValue() - doNotDelete)>1)
+					delete.add(index);
+			for(Integer index : delete){
+				mapImages.remove(index);
+				mapFiles.remove(index);
+			}
+				
+		}
+		
 		executors.runOnFileThread(new Runnable() {
 			@Override
 			public void run() {
@@ -213,7 +228,7 @@ public class GuiReadViewOperations {
 		int width = (int) ((float) image.getWidth() * toZoom / fromZoom);
 		int height = (int) ((float) image.getHeight() * toZoom / fromZoom);
 		// M.print("  "+image.getWidth()+ " -> "+width);
-		Image img = image.getScaledInstance(width, height, Image.SCALE_FAST);
+		Image img = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
 		BufferedImage newer = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		newer.getGraphics().drawImage(img, 0, 0, null);
 		return newer;

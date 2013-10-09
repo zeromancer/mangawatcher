@@ -70,7 +70,7 @@ public @Getter class GuiFrame extends JFrame {
 		executors = new BackgroundExecutors();
 		options = new GuiOptions();
 		engine = new GuiEngine(this);
-//		engine.setLookAndFeel();
+		engine.setLookAndFeel();
 		engine.loadAll();
 		
 
@@ -114,11 +114,12 @@ public @Getter class GuiFrame extends JFrame {
 		read = new GuiRead(this);
 		addTab("Reading", Icons.READING, read);
 		//		tabbed.setEnabledAt(tabbed.indexOfComponent(read), false);
-		tabbed.setSelectedComponent(read);
 		
-		downloading = new GuiDownloading();
+		downloading = new GuiDownloading(this);
 		addTab("Download", Icons.DOWNLOADING, downloading);
-
+		tabbed.setSelectedComponent(downloading);
+		
+		
 		addTab("Options", Icons.OPTIONS, options);
 
 		about = new GuiAbout();

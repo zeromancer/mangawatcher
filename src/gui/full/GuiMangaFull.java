@@ -71,8 +71,9 @@ public class GuiMangaFull extends JScrollPane {
 
 	// Options
 	private JComboBox<String> collection;
-	private JButton redownload;
 	private JButton sync;
+	private JButton redownload;
+	private JButton remove;
 
 	public GuiMangaFull(GuiFrame frame) {
 		this.frame = frame;
@@ -114,19 +115,17 @@ public class GuiMangaFull extends JScrollPane {
 		JLabel label = new JLabel("Chapters");
 		label.setFont(frame.getOptions().getSubtitelFont());
 		panel.add(label, subheaderAddLabel);
-
-		// Chapters
 		grid = new JPanel(new GridLayout(0, 10));
 		grid.setBorder(BorderFactory.createEmptyBorder());
 		panel.add(grid, "align center, growx, shrink, span 2, wrap");
 		buttons = new ArrayList<>();
 
-		// Options Title
+		// Options
 		label = new JLabel("Options");
 		label.setFont(frame.getOptions().getSubtitelFont());
 		panel.add(label, subheaderAddLabel);
 
-		// Change Collection Title
+		// Change Collection
 		label = new JLabel("Change Colllection:");
 		label.setFont(frame.getOptions().getLabelFont());
 		panel.add(label, optionsAddLabel);
@@ -142,20 +141,26 @@ public class GuiMangaFull extends JScrollPane {
 		});
 		panel.add(collection, optionsAddComponent);
 
-		// Sync Title
+		// Sync
 		label = new JLabel("Recheck:");
 		label.setFont(frame.getOptions().getLabelFont());
 		panel.add(label, optionsAddLabel);
 		sync = new JButton("Now");
 		panel.add(sync, optionsAddComponent);
 
-		// Redownload Title
+		// Redownload
 		label = new JLabel("Redownload:");
 		label.setFont(frame.getOptions().getLabelFont());
 		panel.add(label, optionsAddLabel);
 		redownload = new JButton("All Chapters");
 		panel.add(redownload, optionsAddComponent);
 
+		// Remove
+		label = new JLabel("Remove:");
+		label.setFont(frame.getOptions().getLabelFont());
+		panel.add(label, optionsAddLabel);
+		remove = new JButton("Manga");
+		panel.add(remove, optionsAddComponent);
 	}
 
 	public void update() {

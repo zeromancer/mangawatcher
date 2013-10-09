@@ -21,7 +21,7 @@ public class JSliderVertical extends JPanel {
         // Creates a vertical JSlider that accept value in the
         // range between 0 and 20. The initial value is set to 4.
         //
-        JSlider slider = new JSlider(JSlider.HORIZONTAL, 0, 20, 4);
+        JSlider slider = new JSlider(JSlider.VERTICAL, 0, 20, 4);
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
         slider.setMinorTickSpacing(1);
