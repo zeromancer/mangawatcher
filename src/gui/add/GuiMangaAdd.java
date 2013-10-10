@@ -57,8 +57,9 @@ public class GuiMangaAdd extends JPanel {
 		Collections.sort(all);
 		String[] array = all.toArray(new String[0]);
 		combo = new JComboBox<>(array);
-		add(combo, "wrap");
 		combo.setMaximumRowCount(35);
+		combo.setSelectedIndex(-1);
+		add(combo, "wrap");
 		
 		
 		label = new JLabel("Add to Colllection:");

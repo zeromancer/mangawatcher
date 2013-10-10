@@ -120,7 +120,6 @@ public @Getter class GuiFrame extends JFrame {
 		downloading = new GuiDownloading(this);
 		addTab("Download", Icons.DOWNLOADING, downloading);
 		logic.setGui(downloading);
-		tabbed.setSelectedComponent(downloading);
 		
 		
 		addTab("Options", Icons.OPTIONS, options);
@@ -141,6 +140,7 @@ public @Getter class GuiFrame extends JFrame {
 	        }
 	    });
 
+		tabbed.setSelectedComponent(collections.get(MangaCollection.WATCHING));
 	}
 	
 	

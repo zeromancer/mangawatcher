@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
-import javax.swing.UIManager;
 
 import lombok.Getter;
 import misc.M;
@@ -71,7 +70,7 @@ public @Getter class GuiEngine {
 		try {
 //			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 			// UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-			 UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
+//			 UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
 //			 UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
 
 			System.setProperty("awt.useSystemAAFontSettings", "on");

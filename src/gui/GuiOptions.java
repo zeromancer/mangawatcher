@@ -16,6 +16,7 @@ public @Getter @Setter class GuiOptions extends JPanel {
 	private Font titelFont;
 	private Font subtitelFont;
 	private Font labelFont;
+	private Font textFont;
 	
 	private Color readingBackgroundColor;
 	
@@ -28,6 +29,7 @@ public @Getter @Setter class GuiOptions extends JPanel {
 		titelFont = new Font("Sans", Font.BOLD, 48);
 		subtitelFont = new Font("Sans", Font.BOLD, 28);
 		labelFont = new Font("Sans", Font.PLAIN, 16);
+		textFont = new Font("Sans", Font.PLAIN, 12);
 		scrollAmount = 50;
 	}
 

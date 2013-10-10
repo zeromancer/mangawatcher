@@ -29,17 +29,21 @@ public @Setter class ReaderAvailable implements MangaAvailable {
 	}
 
 	public void tryRefresh(){
+		progressStartIndeterminate("Refreshing mangareader.net list");
 		try {
 			refresh();
+			print("Successfully refreshed available mangareader.net manga list");
+			progressEnd("Successfully refreshed manga list");
 		} catch (IOException e) {
-			e.printStackTrace();
-			M.print(e.getMessage());
+			print("Error: \n"+e.getMessage());
+			print("Failed to refresh available mangareader.net manga list");
+			progressEnd("Failed to refresh manga list");
 		}
 	}
 	
 	public void refresh() throws IOException{
-
 		ArrayList<String> tobooList = new ArrayList<>(Arrays.asList(
+				"Home","Contact Us",
 				"Advanced Search", "Popular Manga", "Manga List",
 				"Latest Releases", "Surprise Me!", "Anime", "Anime Downloads",
 				"Manga", "Privacy Statements", "Free File Hosting",
@@ -51,38 +55,65 @@ public @Setter class ReaderAvailable implements MangaAvailable {
 		Document doc = Jsoup.connect("http://www.mangareader.net/alphabetical").userAgent("Mozilla").get();
 		//Document doc = Jsoup.parse(new File("test-data/mangareader-all.txt"), "UTF-8");
 		Elements elements = doc.select("a[href]");
+		
 		for(Element element : elements){
 			String destination = element.attr("href");
 			String text = element.text();
 			
 			if(text.length()>2 && !tobooList.contains(text)){
-				print(text+" , "+destination);
-				//all.add(text);
+				print(text+"  ,  "+"www.mangareader.net"+destination);
 				all.put(text, "http://www.mangareader.net"+destination);
 			}
 		}
-		
-//		HashSet<String> set = new HashSet<>(library.getAll());
-//		set.addAll(all);
-//		library.setAll(all);
 		library.getAvailable().get(MangaSource.MANGAREADER).clear();
-		library.getAvailable().get(MangaSource.MANGAREADER).putAll(all);;
-		print("all size: "+all.size());
+		library.getAvailable().get(MangaSource.MANGAREADER).putAll(all);
+		print("Number of Mangas in Database: "+all.size());
 	}
 
-	private void progress(int progress, String text){
-		if(gui == null){
+
+	public void progressStart(String text) {
+		if(gui == null)
 			M.print(text);
-		}else{
-			gui.progress(source(), progress, text);
+		else{
+			gui.textInvoked(text);
+			gui.progressStartInvoked(text);
 		}
-	}	
-	private void print(String text){
-		if(gui == null){
+	}
+
+	public void progressStartIndeterminate(String text) {
+		if(gui == null)
 			M.print(text);
-		}else{
-			gui.text(source(), text);
+		else{
+			gui.textInvoked(text);
+			gui.progressStartIndeterminateInvoked(text);
 		}
+	}
+
+	public void progress(int percent, String text) {
+		if(gui == null)
+			M.print(text);
+		else
+			gui.progressInvoked(percent,text);
+	}
+	public void progress(int percent) {
+		if(gui != null)
+			gui.progressInvoked(percent);
+	}
+
+	public void progressEnd(String text) {
+		text +="\n";
+		if(gui == null)
+			M.print(text);
+		else
+			gui.progressEndInvoked(text);
+	}
+	
+	public void print(String text) {
+		text = "    "+text;
+		if(gui == null)
+			M.print(text);
+		else
+			gui.textInvoked(text);
 	}
 
 	public static MangaSource source(){

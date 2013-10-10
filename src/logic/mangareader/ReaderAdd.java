@@ -34,19 +34,23 @@ public class ReaderAdd implements MangaAdd{
 	}
 	
 	public void tryAdd(String name, MangaCollection collection){
+		progressStartIndeterminate("Adding "+name);
+		print("Adding "+name);
 		try{
 			add(name,collection);
+			print("Successfully added \""+name+"\" manga to library collection \""+collection.getName()+"\"");
+			progressEnd("Successfully added "+name);
 		}catch (IOException e){
-			e.printStackTrace();
-			print("Error: "+e.getMessage());
+			print("Error: \n"+e.getMessage());
+			print("Failed to add \""+name+"\"");
+			progressEnd("Failed to add "+name+"");
 		}
+		
 	}
 	
 	public void add(String name, MangaCollection collection) throws IOException{
-		progress(0,"Adding Manga: "+name);
 		Document doc = Jsoup.connect(library.getAvailable(source(), name)).userAgent("Mozilla").get();
 		//Document doc = Jsoup.parse(new File("test-data/mangareader-baby-steps.txt"), "UTF-8");
-		
 		
 		Manga manga = new Manga(name,source());
 		library.getCollections().get(collection).add(manga);
@@ -54,7 +58,7 @@ public class ReaderAdd implements MangaAdd{
 		//Directory
 		String manga_directory = manga.getMangaDirectory(library);
 		File manga_dir = new File(manga_directory);
-		progress(25,"Creating "+name+" Directory: "+manga_dir.getAbsolutePath());
+		print("Creating \""+name+"\" Manga Directory: "+manga_dir.getAbsolutePath());
 		if(!Files.exists(Paths.get(manga_directory)))
 			manga_dir.mkdirs();
 		
@@ -64,7 +68,7 @@ public class ReaderAdd implements MangaAdd{
 		for (Element element: links){
 			String url = element.attr("src");
 			String filename = String.format("%s.jpg",manga.getName());
-			progress(50,"Downloading Image: "+filename+" from "+url);
+			print("Downloading Cover: "+filename+" from "+url);
 			BufferedImage image = ImageIO.read(new URL(url));
 			BufferedImage scaled = M.scale(image, image.getHeight(), 340);
 			ImageIO.write(scaled, "jpg",new File(manga_dir.getAbsolutePath(),filename));
@@ -75,30 +79,59 @@ public class ReaderAdd implements MangaAdd{
 		for (Element element: links){
 			String description = element.text();
 			description = description.replace("Read "+name+" Manga Online ", "");
-			progress(75,"Parsing Description: "+description.substring(0, Math.min(30, description.length())));
+			print("Parsing Description: "+description.substring(0, Math.min(30, description.length()))+"...");
 			manga.setDescription(description);
 		}
 		
-		progress(75,"Successfully added "+name+" to Library Collection "+collection.getName());
 		//print(manga.getHomePage(library));
 		
 		// Content
 		//MangaUpdater.downloadChapters(library, manga, 0, Integer.MAX_VALUE);
 	}
 
-	private void progress(int progress, String text){
-		if(gui == null){
+	public void progressStart(String text) {
+		if(gui == null)
 			M.print(text);
-		}else{
-			gui.progress(source(), progress, text);
+		else{
+			gui.textInvoked(text);
+			gui.progressStartInvoked(text);
 		}
-	}	
-	private void print(String text){
-		if(gui == null){
+	}
+
+	public void progressStartIndeterminate(String text) {
+		if(gui == null)
 			M.print(text);
-		}else{
-			gui.text(source(), text);
+		else{
+			gui.textInvoked(text);
+			gui.progressStartIndeterminateInvoked(text);
 		}
+	}
+
+	public void progress(int percent, String text) {
+		if(gui == null)
+			M.print(text);
+		else
+			gui.progressInvoked(percent,text);
+	}
+	public void progress(int percent) {
+		if(gui != null)
+			gui.progressInvoked(percent);
+	}
+
+	public void progressEnd(String text) {
+		text +="\n";
+		if(gui == null)
+			M.print(text);
+		else
+			gui.progressEndInvoked(text);
+	}
+	
+	public void print(String text) {
+		text = "    "+text;
+		if(gui == null)
+			M.print(text);
+		else
+			gui.textInvoked(text);
 	}
 
 	public static MangaSource source(){

@@ -34,6 +34,7 @@ public @Setter class ReaderUpdate implements MangaUpdate {
 
 	private final MangaLibrary library;
 	private GuiDownloading gui;
+	private boolean spacing = false;
 	
 	public ReaderUpdate(MangaLibrary library) {
 		this.library = library;
@@ -41,15 +42,21 @@ public @Setter class ReaderUpdate implements MangaUpdate {
 
 
 	public void tryUpdateShallow() {
+		progressStart("Updating from latest releases");
+		print("Updating mangas from latest mangareader.net releases");
 		try {
 			updateShallow();
+			print("Successfully updated mangas from latest mangareader.net releases");
+			progressEnd("Successfully updated latest releases");
 		} catch (IOException e) {
-			e.printStackTrace();
-			progress(100,"Error: " + e.getMessage());
+			print("Error: \n" + e.getMessage());
+			print("Failed to update mangas from latest mangareader.net releases");
+			progressEnd("Failed to update from latest releases");
 		}
 	}
 
 	public void updateShallow() throws IOException {
+		
 		Document doc = Jsoup.connect("http://www.mangareader.net/latest").userAgent("Mozilla").get();
 		//Document doc = Jsoup.parse(new File("test-data/mangareader-releases.txt"), "UTF-8");
 		Elements links = doc.select("a[class=chaptersrec]"); // a with href
@@ -65,19 +72,15 @@ public @Setter class ReaderUpdate implements MangaUpdate {
 		for (Element e : links) {
 			for (Manga manga : mangas)
 				if (e.text().startsWith(manga.getName())) {
-					print("manga=" + manga.toString());
-					int released = Integer.parseInt(e.text().replace(manga.getName() + " ", ""));
-					manga.setReleased(released);
-					print("new release=" + released);
+					int release = Integer.parseInt(e.text().replace(manga.getName() + " ", ""));
 					int downloaded = manga.getDownloaded();
-					if (downloaded < released) {
+					if (downloaded < release) {
+						print("Found new manga release: "+manga.getName()+" "+release);
 						try {
-							downloadChapters(manga, downloaded + 1, released);
-							manga.setDownloaded(downloaded);
+							downloaded = downloadChapters(manga, downloaded + 1, release);
 						} catch (IOException error) {
-							error.printStackTrace();
-							M.print("Error: " + error.getMessage());
-
+							print("Error: \n" + error.getMessage());
+							print("Error downloading "+manga.getName()+" , chapter = "+release);
 						}
 					}
 				}
@@ -85,20 +88,37 @@ public @Setter class ReaderUpdate implements MangaUpdate {
 	}
 
 	public void tryUpdateDeep(Manga manga, int from, int to) {
+		progressStart("Updating manga "+manga.getName());
+		print("Updating manga "+manga.getName());
 		try {
-			downloadChapters(manga, from, to);
+			int downloaded = downloadChapters(manga, from, to);
+			manga.setDownloaded(downloaded);
+			print("Successfully updated Manga "+manga.getName());
+			progressEnd("Successfully updated "+manga.getName());
 		} catch (IOException e) {
 			e.printStackTrace();
-			print("Error: " + e.getMessage());
+			print("Error: \n" + e.getMessage());
+			progressEnd("Failed to update manga "+manga.getName());
+			progressEnd("Failed to update "+manga.getName());
 		}
+		
 	}
 
-	public void downloadChapters(Manga manga, int from, int to) throws IOException {
-		print("downloading " + manga.getName() + " chapters: " + from + " -> " + to);
+	public int downloadChapters(Manga manga, int from, int to) throws IOException {
 
+		int maxReleased = to;
+		int maxDownloaded = to;
+		if(to==Integer.MAX_VALUE){
+			maxDownloaded = from;
+			maxReleased = from;
+			//			progress("Downloading "+manga.getName()+" "+from + " -> " + "max");
+			print("Downloading " + manga.getName() + " chapters: " + from + " -> " + "max");
+		} else {
+			//			progress("Downloading "+manga.getName()+" "+from + " -> " + to);
+			print("Downloading " + manga.getName() + " chapters: " + from + " -> " + to);
+		}
 		HashSet<Integer> downloaded = new HashSet<>();
-		int max = to == Integer.MAX_VALUE ? from : to;
-
+		
 		Document doc = Jsoup.connect(manga.getHomePage(library)).userAgent("Mozilla").get();
 		//Document doc = Jsoup.parse(new File("test-data/mangareader-baby-steps.txt"), "UTF-8");
 		Elements elements = doc.select("a[href]");
@@ -108,24 +128,38 @@ public @Setter class ReaderUpdate implements MangaUpdate {
 
 			if (text.startsWith(manga.getName())) {
 				int release = Integer.parseInt(text.replace(manga.getName() + " ", ""));
-				max = Math.max(max, release);
+				
 
+				int releasedNew = Integer.parseInt(text.replace(manga.getName() + " ", ""));
+				int releasedOld = manga.getReleased();
+				if(releasedOld < releasedNew)
+					manga.setReleased(releasedNew);
+				
+				
+				
+				maxDownloaded = Math.max(maxDownloaded, release);
+				
 				if (release >= from && !downloaded.contains(release)) {
 					print("" + manga.getName() + " " + release + " -> " + link);
 					downloaded.add(release);
 					downloadChapterPages( manga, release, "http://www.mangareader.net" + link);
+					
+					
 				}
 
 			}
 
 		}
 
-		generateMangaHTML(manga, from, max);
+		generateMangaHTML(manga, from, maxDownloaded);
+		return maxDownloaded;
 	}
 
 	public void downloadChapterPages(Manga manga, int chapter, String chapterLink) throws IOException {
-		String name = manga.getName();
-		String filename = library.getMangaDirectory() + File.separator + name + File.separator + String.format("%04d", chapter);
+		
+		progress("Downloading "+manga.getName()+" "+chapter);
+		
+		String filename = manga.getMangaDirectory(library, chapter);
 		File destination = new File(filename);
 		if (!Files.exists(Paths.get(filename)))
 			destination.mkdirs();
@@ -136,9 +170,11 @@ public @Setter class ReaderUpdate implements MangaUpdate {
 		//Document doc = Jsoup.parse(new File("test-data/mangareader-baby-steps-10.txt"), "UTF-8");
 		Elements elements = doc.select("option");
 
-		for (Element element : elements) {
+		for(int i = 0; i < elements.size();i++){
+			progress((i+1)*100/elements.size());
+			
+			Element element = elements.get(i);
 			int page = Integer.parseInt(element.text());
-
 			String link = element.attr("value");
 			String image = downloadChapterPageImage(manga, chapter, page, "http://www.mangareader.net" + link, destination);
 			images.add(image);
@@ -154,11 +190,9 @@ public @Setter class ReaderUpdate implements MangaUpdate {
 		Elements elements = doc.select("img[id=img]");
 		for (Element element : elements) {
 			String url = element.attr("src");
-
-			print("\t" + url);
 			String extension = url.substring(url.length() - 3);
 			String filename = String.format("%s_%04d_%03d.%s", manga.getName(), chapter, page, extension);
-			print("" + filename);
+			print("Downloading image: "+filename+"  from: "+url);
 			BufferedImage image = ImageIO.read(new URL(url));
 			ImageIO.write(image, extension, new File(destination.getAbsolutePath(), filename));
 			return filename;
@@ -193,7 +227,7 @@ public @Setter class ReaderUpdate implements MangaUpdate {
 		// save
 		String filename = String.format("%s_%04d.html", name, chapter);
 		File file = new File(destination.getAbsolutePath(), filename);
-		print("Saving html index file to: "+file.getAbsolutePath());
+		print("Generating chapter html file in: "+file.getAbsolutePath());
 		BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 		writer.write(string);
 		writer.close();
@@ -203,19 +237,54 @@ public @Setter class ReaderUpdate implements MangaUpdate {
 
 	}
 
-	private void progress(int progress, String text){
-		if(gui == null){
+
+	public void progressStart(String text) {
+		if(gui == null)
 			M.print(text);
-		}else{
-			gui.progress(source(), progress, text);
+		else{
+			gui.textInvoked(text);
+			gui.progressStartInvoked(text);
 		}
-	}	
-	private void print(String text){
-		if(gui == null){
+	}
+
+	public void progressStartIndeterminate(String text) {
+		if(gui == null)
 			M.print(text);
-		}else{
-			gui.text(source(), text);
+		else{
+			gui.textInvoked(text);
+			gui.progressStartIndeterminateInvoked(text);
 		}
+	}
+
+	public void progress(int percent, String text) {
+		if(gui == null)
+			M.print(text);
+		else
+			gui.progressInvoked(percent,text);
+	}
+	public void progress(int percent) {
+		if(gui != null)
+			gui.progressInvoked(percent);
+	}
+	public void progress(String text) {
+		if(gui != null)
+			gui.progressInvoked(text);
+	}
+
+	public void progressEnd(String text) {
+		text +="\n";
+		if(gui == null)
+			M.print(text);
+		else
+			gui.progressEndInvoked(text);
+	}
+	
+	public void print(String text) {
+		text = "    "+text;
+		if(gui == null)
+			M.print(text);
+		else
+			gui.textInvoked(text);
 	}
 
 	public static MangaSource source(){

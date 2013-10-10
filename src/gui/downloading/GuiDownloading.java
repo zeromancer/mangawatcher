@@ -23,7 +23,6 @@ import javax.swing.SwingUtilities;
 import javax.swing.text.DefaultCaret;
 
 import logic.MangaLogic;
-import data.Manga.MangaSource;
 import data.MangaLibrary;
 
 public class GuiDownloading extends JPanel {
@@ -85,6 +84,7 @@ public class GuiDownloading extends JPanel {
 		text = new JTextArea();
 		text.setColumns(30);
 		text.setWrapStyleWord(true);
+		text.setFont(frame.getOptions().getTextFont());
 		DefaultCaret caret = (DefaultCaret)text.getCaret();
 		caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
 
@@ -95,11 +95,11 @@ public class GuiDownloading extends JPanel {
 		JPanel panel = new JPanel(new GridLayout());
 		this.add(panel,BorderLayout.SOUTH);
 
-		available = new JButton("Available");
+		available = new JButton("Refresh Manga List");
 		available.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(final ActionEvent e) {
-				scheduler.schedule(waitingCancel, 0, SECONDS);
+				waitingHandler.cancel(false);
 				((JButton)e.getSource()).setEnabled(false);
 				executors.runOnNetworkThread(new Runnable() {
 					@Override
@@ -115,11 +115,11 @@ public class GuiDownloading extends JPanel {
 		});
 		panel.add(available);
 		
-		shallow = new JButton("Shallow");
+		shallow = new JButton("Update from Latest");
 		shallow.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(final ActionEvent e) {
-				scheduler.schedule(waitingCancel, 0, SECONDS);
+				waitingHandler.cancel(false);
 				((JButton)e.getSource()).setEnabled(false);
 				executors.runOnNetworkThread(new Runnable() {
 					@Override
@@ -133,11 +133,11 @@ public class GuiDownloading extends JPanel {
 		});
 		panel.add(shallow);
 		
-		deep = new JButton("Deep");
+		deep = new JButton("Update the Hard Way");
 		deep.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(final ActionEvent e) {
-				scheduler.schedule(waitingCancel, 0, SECONDS);
+				waitingHandler.cancel(false);
 				((JButton)e.getSource()).setEnabled(false);
 				executors.runOnNetworkThread(new Runnable() {
 					@Override
@@ -169,14 +169,14 @@ public class GuiDownloading extends JPanel {
 
 	}
 
-	public void progressInvoked(final int percent, final String text) {
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				progress(percent, text);
-			}
-		});
-	}
+//	public void progressInvoked(final int percent, final String text) {
+//		SwingUtilities.invokeLater(new Runnable() {
+//			@Override
+//			public void run() {
+//				progressInvoked(percent, text);
+//			}
+//		});
+//	}
 	
 	public void enableInvoked(final JButton button){
 		SwingUtilities.invokeLater(new Runnable() {
@@ -188,46 +188,115 @@ public class GuiDownloading extends JPanel {
 		
 	}
 
-	public void progress(int percent, String txt) {
-		progress.setValue(percent);
-		progress.setText(txt);
-		progress.repaint();
+
+	public void progressStartInvoked(final String txt) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				progress.setValue(100);
+				progress.setText(txt);
+				progress.repaint();
+			}
+		});
 	}
 
-	public void printInvoked(final MangaSource source, final  int percent, final String txt) {
+	public void progressStartIndeterminateInvoked(final String txt) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				progress.setText(txt);
+				progress.setIndeterminate(true);
+				progress.repaint();
+			}
+		});
+	}
+
+	public void progressInvoked(final int percent, final String txt) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
 				progress.setValue(percent);
 				progress.setText(txt);
-				text.append(txt);
-				repaint();
-			}
-		});
-	}	
-	
-	public void printInvoked(final MangaSource source, final String txt) {
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				progress.setText(txt);
-				text.append(txt);
-				repaint();
+				progress.repaint();
 			}
 		});
 	}
 	
-	public void progress(MangaSource source, int percent, String txt) {
-		progress.setValue(percent);
-		progress.setText(txt);
-		text(source, txt);
-		progress.repaint();
-	}	
+	public void progressInvoked(final String txt) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				progress.setText(txt);
+				progress.repaint();
+			}
+		});
+	}
+	public void progressInvoked(final int percent) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				progress.setValue(percent);
+				progress.repaint();
+			}
+		});
+	}
 
-	public void text(MangaSource source, String txt) {
-		text.append(txt+"\n");
-		text.repaint();
+	public void progressEndInvoked(final String txt) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				progress.setIndeterminate(false);
+				progress.setValue(100);
+				progress.setText(txt);
+				progress.repaint();
+			}
+		});
+	}
+
+	public void textInvoked(final String txt) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				text.append(txt+"\n");
+				text.repaint();
+			}
+		});
 	}	
+	
+//	public void printInvoked(final MangaSource source, final  int percent, final String txt) {
+//		SwingUtilities.invokeLater(new Runnable() {
+//			@Override
+//			public void run() {
+//				progress.setValue(percent);
+//				progress.setText(txt);
+//				text.append(txt);
+//				repaint();
+//			}
+//		});
+//	}	
+//	
+//	public void printInvoked(final MangaSource source, final String txt) {
+//		SwingUtilities.invokeLater(new Runnable() {
+//			@Override
+//			public void run() {
+//				progress.setText(txt);
+//				text.append(txt);
+//				repaint();
+//			}
+//		});
+//	}
+	
+//	public void progress(MangaSource source, int percent, String txt) {
+//		progress.setValue(percent);
+//		progress.setText(txt);
+//		text(source, txt);
+//		progress.repaint();
+//	}	
+//
+//	public void text(MangaSource source, String txt) {
+//		text.append(txt+"\n");
+//		text.repaint();
+//	}	
 	
 
 	public static String getTime(long millis) {
