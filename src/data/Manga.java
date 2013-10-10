@@ -2,7 +2,6 @@ package data;
 
 import java.io.File;
 
-import logic.MangaLogic;
 import lombok.Data;
 import lombok.Getter;
 
@@ -11,8 +10,9 @@ public @Data class Manga {
 	public enum MangaSource {
 
 		MANGAREADER("http://www.mangareader.net"),
-		MANGAFOX("http://mangafox.me"),
-		MANGAHERE("http://www.mangahere.com");
+//		MANGAFOX("http://mangafox.me"),
+//		MANGAHERE("http://www.mangahere.com")
+		;
 
 		private String link;
 
@@ -42,9 +42,15 @@ public @Data class Manga {
 			MangaCollection[] collections = MangaCollection.values();
 			String[] strings = new String[collections.length];
 			for (int i = 0; i < strings.length; i++) {
-				strings[i] = collections[i].toString();
+				strings[i] = collections[i].getName();
 			}
 			return strings;
+		}
+		public static MangaCollection parse(String name){
+			for(MangaCollection collection : MangaCollection.values())
+				if(collection.name.equals(name))
+					return collection;
+			return null;
 		}
 	}
 
@@ -73,10 +79,6 @@ public @Data class Manga {
 	private String author;
 	private String artist;
 	private String releaseYear;
-
-	public void updateDeep(MangaLibrary library) {
-		MangaLogic.updateDeep(library, source, this, downloaded, Integer.MAX_VALUE);
-	}
 
 	public void changeCollection(MangaLibrary library, MangaCollection newCollection) {
 		library.getCollections().get(collection).remove(this);

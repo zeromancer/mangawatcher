@@ -21,20 +21,20 @@ public class GuiMangaCollectionGrid extends JScrollPane {
 
 	private static final long serialVersionUID = 566167950981962725L;
 	
-	GuiFrame frame;
-	MangaLibrary library;
-	MangaCollection collection;
+	private final GuiFrame frame;
+	private final MangaLibrary library;
+	private final MangaCollection collection;
 
-	Map<Manga, JComponent> olderMap;
-	Map<Manga, JComponent> newerMap;
+	private final Map<Manga, JComponent> olderMap;
+	private final Map<Manga, JComponent> newerMap;
 
-	JLabel titel;
+	private final JLabel titel;
 	
-	JLabel newerLabel;
-	JLabel olderLabel;
+	private final JLabel newerLabel;
+	private final JLabel olderLabel;
 
-	JPanel newerPanel;
-	JPanel olderPanel;
+	private final JPanel newerPanel;
+	private final JPanel olderPanel;
 
 	public GuiMangaCollectionGrid(GuiFrame frame, MangaCollection collection) {
 		this.frame = frame;

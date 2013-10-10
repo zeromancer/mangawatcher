@@ -1,6 +1,8 @@
 package gui.add;
 
 import gui.GuiFrame;
+import gui.downloading.GuiDownloading;
+import gui.full.GuiMangaFull;
 import gui.threading.BackgroundExecutors;
 
 import java.awt.event.ActionEvent;
@@ -13,9 +15,12 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+import javax.swing.SwingUtilities;
 
-import misc.M;
+import logic.MangaLogic;
 import net.miginfocom.swing.MigLayout;
+import data.Manga;
 import data.Manga.MangaCollection;
 import data.Manga.MangaSource;
 import data.MangaLibrary;
@@ -24,10 +29,14 @@ public class GuiMangaAdd extends JPanel {
 
 	final private GuiFrame frame;
 	final private MangaLibrary library;
+	final private MangaLogic logic;
 	final private BackgroundExecutors executors;
 
 	final private JLabel source;
 	final private JComboBox<String> combo;
+	
+	final private JLabel label;
+	final private JComboBox<String> collection;
 	final private JButton button;
 
 	public GuiMangaAdd(final GuiFrame frame) {
@@ -36,6 +45,7 @@ public class GuiMangaAdd extends JPanel {
 		// setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.frame = frame;
 		this.library = frame.getLibrary();
+		this.logic = frame.getLogic();
 		this.executors = frame.getExecutors();
 
 		source = new JLabel("MangaReader.net");
@@ -49,44 +59,56 @@ public class GuiMangaAdd extends JPanel {
 		combo = new JComboBox<>(array);
 		add(combo, "wrap");
 		combo.setMaximumRowCount(35);
-
+		
+		
+		label = new JLabel("Add to Colllection:");
+		label.setFont(frame.getOptions().getLabelFont());
+		add(label, "split 2");
+		collection = new JComboBox<String>(MangaCollection.strings());
+		collection.setSelectedIndex(0);
+		add(collection, "wrap");
+		
 		// button
 		button = new JButton("Add");
 		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				String name = (String) combo.getSelectedItem();
-				M.print("selected: " + name);
-				library.add(MangaSource.MANGAREADER, name, MangaCollection.WATCHING);
-				library.save();
-				// System.exit(0);
+				final String name = (String) combo.getSelectedItem();
+				final MangaCollection addCollection = MangaCollection.parse((String) collection.getSelectedItem());
+				final JTabbedPane tabbed = frame.getTabbed();
+				final GuiDownloading down = frame.getDownloading();
+				tabbed.setSelectedComponent(down);
+				combo.setSelectedIndex(-1);
+				executors.runOnNetworkThread(new Runnable() {
+					@Override
+					public void run() {
+						
+						Manga manga = library.getManga(name);
+						if(manga != null){
+							switchToExisting(manga);
+							return;
+						}
+						
+						logic.add(MangaSource.MANGAREADER, name, addCollection);
+						library.save(executors);
+					}
+				});
 			}
 		});
 		add(button);
-		//panel.add(button, "growx, span 2");
 	}
+	
+	private void switchToExisting(final Manga manga){
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				final GuiMangaFull full = frame.getFull();
+				frame.getTabbed().setSelectedComponent(full);
+				full.update(manga);
+			}
+		});
+	}
+	
+	
 
-	// public static void main(String[] args) {
-	//
-	// SwingUtilities.invokeLater(new Runnable() {
-	// @Override
-	// public void run() {
-	// JFrame frame = new JFrame("Test Manga Add");
-	// frame.setSize(300, 300);
-	// frame.setLocationRelativeTo(null);
-	// frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	//
-	//
-	// String configDirectory = "config";
-	// MangaLibrary library = LibraryManager.loadLibrary(configDirectory);
-	// //ReaderAvailable.tryRefresh(library);
-	// // LibraryManager.saveLibrary(configDirectory, library);
-	// GuiMangaAdd component = new GuiMangaAdd(library);
-	//
-	// frame.add(component);
-	// frame.pack();
-	// frame.setVisible(true);
-	// }
-	// });
-	// }
 }

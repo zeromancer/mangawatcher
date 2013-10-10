@@ -1,10 +1,11 @@
 package data;
 
+import gui.threading.BackgroundExecutors;
+
 import java.util.List;
 import java.util.Map;
 
 import logic.LibraryManager;
-import logic.MangaLogic;
 import lombok.Data;
 import data.Manga.MangaCollection;
 import data.Manga.MangaSource;
@@ -43,19 +44,22 @@ public @Data class MangaLibrary {
 		return available.get(source).get(name);
 	}
 	
-	public void updateShallow(){
-		for (MangaSource source : MangaSource.values())
-			MangaLogic.updateShallow(this, source);
+	public void save(BackgroundExecutors executors){
+		executors.runOnFileThread(new Runnable() {
+			@Override
+			public void run() {
+				LibraryManager.saveLibrary(configDirectory, MangaLibrary.this);
+			}
+		});
+		
 	}
-	public void updateAvailable(){
-		for (MangaSource source : MangaSource.values())
-			MangaLogic.updateAvailable(this, source);
-	}
-	public void add(MangaSource source, String name, MangaCollection collection){
-		MangaLogic.add(this, source, name,collection);
-	}
-	public void save(){
-		LibraryManager.saveLibrary(configDirectory, this);
+	
+	public Manga getManga(String name){
+		for(MangaCollection collection : MangaCollection.values())
+			for(Manga manga : getCollection(collection))
+				if(manga.getName().equals(name))
+					return manga;
+		return null;
 	}
 	
 }

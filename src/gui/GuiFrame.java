@@ -11,7 +11,6 @@ import gui.threading.BackgroundExecutors;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,6 +24,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import logic.LibraryManager;
+import logic.MangaLogic;
 import lombok.Getter;
 import data.Manga;
 import data.Manga.MangaCollection;
@@ -34,6 +34,7 @@ public @Getter class GuiFrame extends JFrame {
 
 	// General
 	private final MangaLibrary library;
+	private final MangaLogic logic;
 	private final BackgroundExecutors executors;
 	private final GuiEngine engine;
 	
@@ -67,6 +68,7 @@ public @Getter class GuiFrame extends JFrame {
 		getContentPane().setLayout(new BorderLayout());
 		// general
 		library = LibraryManager.loadLibrary("config");
+		logic = new MangaLogic(library);
 		executors = new BackgroundExecutors();
 		options = new GuiOptions();
 		engine = new GuiEngine(this);
@@ -117,6 +119,7 @@ public @Getter class GuiFrame extends JFrame {
 		
 		downloading = new GuiDownloading(this);
 		addTab("Download", Icons.DOWNLOADING, downloading);
+		logic.setGui(downloading);
 		tabbed.setSelectedComponent(downloading);
 		
 		
@@ -137,6 +140,7 @@ public @Getter class GuiFrame extends JFrame {
 	            	((GuiMangaCollectionGrid)component).update();
 	        }
 	    });
+
 	}
 	
 	
@@ -147,8 +151,8 @@ public @Getter class GuiFrame extends JFrame {
 		label.setHorizontalTextPosition(JLabel.CENTER);
 		label.setVerticalTextPosition(JLabel.BOTTOM);
 //		label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		label.setIconTextGap(10);
-		label.setPreferredSize(new Dimension(80, 70));
+//		label.setIconTextGap(10);
+//		label.setPreferredSize(new Dimension(80, 70));
 		tabbed.addTab(text, i, component);
 		tabbed.setTabComponentAt(tabbed.indexOfComponent(component), label);
 //		tabbed.addTab("<html><body leftmargin=10 topmargin=20 rightmargin=10 bottommargin=20>Tab1</body></html>", i, component);

@@ -135,7 +135,7 @@ public class GuiMangaFull extends JScrollPane {
 			public void actionPerformed(ActionEvent e) {
 				if(manga==null) return;
 				String selection = (String) collection.getSelectedItem();
-				MangaCollection newCollection = MangaCollection.valueOf(selection);
+				MangaCollection newCollection = MangaCollection.parse(selection);
 				manga.changeCollection(library, newCollection);
 			}
 		});

@@ -251,7 +251,7 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 		operations.defaultProgress();
 
 		manga.setRead(chapter);
-		library.save();
+		library.save(executors);
 
 		// preloading
 		newChapter++;

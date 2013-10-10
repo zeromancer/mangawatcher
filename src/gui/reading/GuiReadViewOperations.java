@@ -5,16 +5,12 @@ import gui.menu.GuiProgressBar;
 import gui.reading.GuiReadView.ReadingState;
 import gui.threading.BackgroundExecutors;
 
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -32,6 +28,7 @@ import javax.swing.JSlider;
 import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 
+import misc.M;
 import data.Manga;
 import data.MangaLibrary;
 
@@ -108,7 +105,7 @@ public class GuiReadViewOperations {
 					if (zoom == 100)
 						images.add(image);
 					else
-						images.add(scaleImage(image, 100, zoom));
+						images.add(M.scale(image, 100, zoom));
 					progress((i + 1) * 100 / files.size(), "Loading image: " + file.getName());
 				}
 
@@ -158,7 +155,7 @@ public class GuiReadViewOperations {
 				for (Entry<Integer, List<BufferedImage>> entry : mapCopy.entrySet()) {
 					List<BufferedImage> list = new ArrayList<>();
 					for(BufferedImage oldImage : entry.getValue()){
-						BufferedImage newimage = scaleImage(oldImage, oldZoom, newZoom);
+						BufferedImage newimage = M.scale(oldImage, oldZoom, newZoom);
 						list.add(newimage);
 						count++;
 						progress(count*100/totalCount,"Resizing Image "+count+" / "+totalCount);
@@ -224,15 +221,6 @@ public class GuiReadViewOperations {
 	
 	
 
-	public BufferedImage scaleImage(BufferedImage image, int fromZoom, int toZoom) {
-		int width = (int) ((float) image.getWidth() * toZoom / fromZoom);
-		int height = (int) ((float) image.getHeight() * toZoom / fromZoom);
-		// M.print("  "+image.getWidth()+ " -> "+width);
-		Image img = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-		BufferedImage newer = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-		newer.getGraphics().drawImage(img, 0, 0, null);
-		return newer;
-	}
 
 	public static BufferedImage loadImage(File file) {
 		// try {
@@ -304,30 +292,6 @@ public class GuiReadViewOperations {
 		}
 	}
 
-	@SuppressWarnings("resource")
-	public static void fileCopy(File in, File out) throws IOException {
-		FileChannel inChannel = new FileInputStream(in).getChannel();
-		FileChannel outChannel = new FileOutputStream(out).getChannel();
-		try {
-			// inChannel.transferTo(0, inChannel.size(), outChannel); //
-			// original -- apparently has trouble copying large files on Windows
-
-			// magic number for Windows, 64Mb - 32Kb)
-			int maxCount = (64 * 1024 * 1024) - (32 * 1024);
-			long size = inChannel.size();
-			long position = 0;
-			while (position < size) {
-				position += inChannel.transferTo(position, maxCount, outChannel);
-			}
-		} finally {
-			if (inChannel != null) {
-				inChannel.close();
-			}
-			if (outChannel != null) {
-				outChannel.close();
-			}
-		}
-	}
 
 
 }

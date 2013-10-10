@@ -105,6 +105,9 @@ public class LibraryManager {
 //		library.setCurrent(current);
 		library.setAvailable(available);
 		
+		MangaLogic logic = new MangaLogic(library);
+		logic.updateAvailable();
+		
 		return library;
 	}
 	
