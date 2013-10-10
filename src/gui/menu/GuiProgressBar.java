@@ -20,7 +20,7 @@ public @Getter @Setter class GuiProgressBar extends JProgressBar {
 
 	public GuiProgressBar(GuiFrame frame) {
 		this.frame = frame;
-		text = "unselected";
+		text = "Unselected";
 		//setStringPainted(true);
 	}
 

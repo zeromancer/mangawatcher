@@ -47,16 +47,16 @@ public class MangaLogic {
 	public void updateDeep() {
 		for (MangaCollection collection : MangaCollection.values())
 			for(Manga manga : library.getCollection(collection))
-				map.get(manga.getSource()).getUpdate().tryUpdateDeep(manga, manga.getDownloaded()+1, Integer.MAX_VALUE);;
+				map.get(manga.getSource()).getUpdate().tryUpdateDeep(manga, manga.getDownloaded()+1);
 	}
 
 	public void updateDeep(Manga manga) {
-		updateDeep(manga, manga.getDownloaded() + 1, Integer.MAX_VALUE);
+		updateDeep(manga, manga.getDownloaded() + 1);
 	}
 
-	public void updateDeep(Manga manga, int from, int to) {
+	public void updateDeep(Manga manga, int from) {
 		MangaSource source = manga.getSource();
-		map.get(source).getUpdate().tryUpdateDeep(manga, from, to);
+		map.get(source).getUpdate().tryUpdateDeep(manga, from);
 	}
 
 	public void updateAvailable() {

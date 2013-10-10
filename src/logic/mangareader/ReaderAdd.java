@@ -41,6 +41,7 @@ public class ReaderAdd implements MangaAdd{
 			print("Successfully added \""+name+"\" manga to library collection \""+collection.getName()+"\"");
 			progressEnd("Successfully added "+name);
 		}catch (IOException e){
+			e.printStackTrace();
 			print("Error: \n"+e.getMessage());
 			print("Failed to add \""+name+"\"");
 			progressEnd("Failed to add "+name+"");

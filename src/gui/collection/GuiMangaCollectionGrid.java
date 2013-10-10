@@ -65,7 +65,7 @@ public class GuiMangaCollectionGrid extends JScrollPane {
 		newerMap = new HashMap<>();
 		olderMap = new HashMap<>();
 
-		titel = new JLabel(collection.getName());
+		titel = new JLabel(collection.getName()+" Collection");
 		titel.setFont(frame.getOptions().getTitelFont());
 //		titel.setPreferredSize(new Dimension(1000,40));
 		titel.setAlignmentX(0.5f);

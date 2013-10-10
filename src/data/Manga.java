@@ -63,9 +63,9 @@ public @Data class Manga {
 		this.downloaded = 0;
 		this.released = 0;
 		this.description = "";
-		this.author = "";
-		this.artist = "";
-		this.releaseYear = "";
+//		this.author = "";
+//		this.artist = "";
+//		this.releaseYear = "";
 	}
 
 	private String name;
@@ -76,9 +76,9 @@ public @Data class Manga {
 	private int downloaded;
 	private int released;
 	private String description;
-	private String author;
-	private String artist;
-	private String releaseYear;
+//	private String author;
+//	private String artist;
+//	private String releaseYear;
 
 	public void changeCollection(MangaLibrary library, MangaCollection newCollection) {
 		library.getCollections().get(collection).remove(this);

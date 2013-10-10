@@ -11,6 +11,8 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -49,6 +51,7 @@ public @Setter class ReaderUpdate implements MangaUpdate {
 			print("Successfully updated mangas from latest mangareader.net releases");
 			progressEnd("Successfully updated latest releases");
 		} catch (IOException e) {
+			e.printStackTrace();
 			print("Error: \n" + e.getMessage());
 			print("Failed to update mangas from latest mangareader.net releases");
 			progressEnd("Failed to update from latest releases");
@@ -69,30 +72,19 @@ public @Setter class ReaderUpdate implements MangaUpdate {
 				if (manga.getSource() == source())
 					mangas.add(manga);
 
-		for (Element e : links) {
-			for (Manga manga : mangas)
-				if (e.text().startsWith(manga.getName())) {
-					int release = Integer.parseInt(e.text().replace(manga.getName() + " ", ""));
-					int downloaded = manga.getDownloaded();
-					if (downloaded < release) {
-						print("Found new manga release: "+manga.getName()+" "+release);
-						try {
-							downloaded = downloadChapters(manga, downloaded + 1, release);
-						} catch (IOException error) {
-							print("Error: \n" + error.getMessage());
-							print("Error downloading "+manga.getName()+" , chapter = "+release);
-						}
-					}
-				}
+		for (Element element : links) {
+			for (Manga manga : mangas) {
+				if (element.text().startsWith(manga.getName()))
+					downloadChapters(manga, manga.getDownloaded() + 1);
+			}
 		}
 	}
 
-	public void tryUpdateDeep(Manga manga, int from, int to) {
+	public void tryUpdateDeep(Manga manga, int from) {
 		progressStart("Updating manga "+manga.getName());
 		print("Updating manga "+manga.getName());
 		try {
-			int downloaded = downloadChapters(manga, from, to);
-			manga.setDownloaded(downloaded);
+			downloadChapters(manga, from);
 			print("Successfully updated Manga "+manga.getName());
 			progressEnd("Successfully updated "+manga.getName());
 		} catch (IOException e) {
@@ -104,55 +96,57 @@ public @Setter class ReaderUpdate implements MangaUpdate {
 		
 	}
 
-	public int downloadChapters(Manga manga, int from, int to) throws IOException {
-
-		int maxReleased = to;
-		int maxDownloaded = to;
-		if(to==Integer.MAX_VALUE){
-			maxDownloaded = from;
-			maxReleased = from;
-			//			progress("Downloading "+manga.getName()+" "+from + " -> " + "max");
-			print("Downloading " + manga.getName() + " chapters: " + from + " -> " + "max");
-		} else {
-			//			progress("Downloading "+manga.getName()+" "+from + " -> " + to);
-			print("Downloading " + manga.getName() + " chapters: " + from + " -> " + to);
-		}
+	public void downloadChapters(final Manga manga, final int from) throws IOException {
+		assert manga != null;
 		HashSet<Integer> downloaded = new HashSet<>();
 		
 		Document doc = Jsoup.connect(manga.getHomePage(library)).userAgent("Mozilla").get();
 		//Document doc = Jsoup.parse(new File("test-data/mangareader-baby-steps.txt"), "UTF-8");
 		Elements elements = doc.select("a[href]");
+		
+		for(int i = elements.size()-1; i>=0; i--){
+			Element element = elements.get(i);
+			String text = element.text();
+			if(!text.startsWith(manga.getName()))
+				elements.remove(i);
+		}
+		
+		Collections.sort(elements, new Comparator<Element>() {
+			@Override
+			public int compare(Element e1, Element e2) {
+				int release1 = Integer.parseInt(e1.text().replace(manga.getName() + " ", ""));
+				int release2 = Integer.parseInt(e2.text().replace(manga.getName() + " ", ""));
+				return release1 - release2;
+			}
+		});
+		
 		for (Element element : elements) {
 			String text = element.text();
-			String link = element.attr("href");
-
-			if (text.startsWith(manga.getName())) {
-				int release = Integer.parseInt(text.replace(manga.getName() + " ", ""));
+			String link = "http://www.mangareader.net" + element.attr("href");
+			
+			int newRelease = Integer.parseInt(text.replace(manga.getName() + " ", ""));
+			int oldRelease = manga.getReleased();
+			if(newRelease > oldRelease)
+				manga.setReleased(newRelease);
+			
+			if(newRelease >= from && !downloaded.contains(newRelease)){
+				print("" + manga.getName() + " " + newRelease + " -> " + link);
 				
-
-				int releasedNew = Integer.parseInt(text.replace(manga.getName() + " ", ""));
-				int releasedOld = manga.getReleased();
-				if(releasedOld < releasedNew)
-					manga.setReleased(releasedNew);
+				downloaded.add(newRelease);
+				downloadChapterPages( manga, newRelease, link);
 				
+				if(newRelease>manga.getDownloaded())
+					manga.setDownloaded(newRelease);
 				
-				
-				maxDownloaded = Math.max(maxDownloaded, release);
-				
-				if (release >= from && !downloaded.contains(release)) {
-					print("" + manga.getName() + " " + release + " -> " + link);
-					downloaded.add(release);
-					downloadChapterPages( manga, release, "http://www.mangareader.net" + link);
-					
-					
+				if(downloaded.size()%11 == 10){
+					print("Downloaded more 10 Chapters");
+					print("Saving Library to "+library.getConfigDirectory());
+					library.save();
 				}
-
 			}
-
 		}
 
-		generateMangaHTML(manga, from, maxDownloaded);
-		return maxDownloaded;
+		generateMangaHTML(manga, from, manga.getDownloaded());
 	}
 
 	public void downloadChapterPages(Manga manga, int chapter, String chapterLink) throws IOException {

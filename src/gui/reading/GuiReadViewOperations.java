@@ -87,6 +87,8 @@ public class GuiReadViewOperations {
 		executors.runOnFileThread(new Runnable() {
 			@Override
 			public void run() {
+				if(manga == null)
+					return;
 				final String path = manga.getMangaDirectory(library, chapter);
 				final File folder = new File(path);
 

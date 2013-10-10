@@ -32,6 +32,7 @@ public class GuiMangaAdd extends JPanel {
 	final private MangaLogic logic;
 	final private BackgroundExecutors executors;
 
+	final private JLabel title;
 	final private JLabel source;
 	final private JComboBox<String> combo;
 	
@@ -48,8 +49,13 @@ public class GuiMangaAdd extends JPanel {
 		this.logic = frame.getLogic();
 		this.executors = frame.getExecutors();
 
+
+		title = new JLabel("Add New Manga");
+		title.setFont(frame.getOptions().getTitelFont());
+		add(title, "wrap");
+		
 		source = new JLabel("MangaReader.net");
-		source.setFont(frame.getOptions().getTitelFont());
+		source.setFont(frame.getOptions().getSubtitelFont());
 		add(source, "wrap");
 
 		// combo box

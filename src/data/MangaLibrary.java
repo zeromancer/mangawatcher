@@ -53,6 +53,9 @@ public @Data class MangaLibrary {
 		});
 		
 	}
+	public void save() {
+		LibraryManager.saveLibrary(configDirectory, MangaLibrary.this);
+	}
 	
 	public Manga getManga(String name){
 		for(MangaCollection collection : MangaCollection.values())
