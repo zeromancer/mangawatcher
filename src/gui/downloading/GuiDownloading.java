@@ -95,7 +95,7 @@ public class GuiDownloading extends JPanel {
 		JPanel panel = new JPanel(new GridLayout());
 		this.add(panel,BorderLayout.SOUTH);
 
-		available = new JButton("Refresh Manga List");
+		available = new JButton("Refresh manga list");
 		available.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(final ActionEvent e) {
@@ -115,7 +115,7 @@ public class GuiDownloading extends JPanel {
 		});
 		panel.add(available);
 		
-		shallow = new JButton("Update from Latest");
+		shallow = new JButton("Update from latest releases");
 		shallow.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(final ActionEvent e) {
@@ -133,7 +133,7 @@ public class GuiDownloading extends JPanel {
 		});
 		panel.add(shallow);
 		
-		deep = new JButton("Update the Hard Way");
+		deep = new JButton("Update all");
 		deep.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(final ActionEvent e) {

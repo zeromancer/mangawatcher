@@ -18,7 +18,6 @@ import javax.swing.JSlider;
 
 import lombok.Getter;
 import lombok.Setter;
-import misc.M;
 import data.Manga;
 import data.MangaLibrary;
 
@@ -70,7 +69,7 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 		this.executors = frame.getExecutors();
 		this.slider = gui.getSlider();
 		this.library = frame.getLibrary();
-
+		
 		setFocusable(true);
 		addMouseWheelListener(this);
 
@@ -97,8 +96,8 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 
 		load();
 	}
-
-	public void load() {
+	
+	public void load(){
 		state = ReadingState.LOADING;
 		operations.backgroundLoading(manga, chapter);
 		operations.backgroundLoading(manga, chapter - 1);
@@ -155,17 +154,17 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 		if (state != ReadingState.READING)
 			return;
 
-		M.print("scroll: " + scroll);
+		// M.print("scroll: " + scroll);
 		int imageHeight = mapImages.get(chapter).get(page).getHeight();
 
 		if (scroll < 0)
 			while (scroll < 0 && page(-1)) {
-				M.print(" <" + scroll + " + " + imageHeight + " = " + (scroll + imageHeight));
-				scroll += imageHeight;
+				//M.print(" <" + scroll + " + " + imageHeight + " = " + (scroll + imageHeight));
 				if (mapImages.containsKey(chapter) && page < mapImages.get(chapter).size())
 					imageHeight = mapImages.get(chapter).get(page).getHeight();
 				else
 					scroll = 0;
+				scroll += imageHeight;
 			}
 		else
 			while (scroll > imageHeight && page(+1)) {
@@ -177,7 +176,7 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 					scroll = 0;
 			}
 
-		M.print(" scroll: " + scroll);
+		// M.print(" scroll: " + scroll);
 		repaint();
 	}
 
@@ -186,7 +185,7 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 			return false;
 		int newPage = page + diff;
 		int oldChapter = chapter;
-		M.print("newPage: " + newPage);
+		// M.print("newPage: " + newPage);
 		if (newPage < 0) {
 			if (chapter(-1)) {
 				if (mapImages.containsKey(chapter))
@@ -211,7 +210,7 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 			page = newPage;
 		}
 
-		M.print(" page: " + page);
+		// M.print(" page: " + page);
 
 		// if (Math.abs(diff) > 1)
 		// scroll = 0;
@@ -255,11 +254,10 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 		library.save(executors);
 
 		// preloading
-		newChapter++;
-		if (newChapter <= 0 || newChapter > manga.getDownloaded())
-			return true;
-		if (!mapImages.containsKey(newChapter))
-			operations.backgroundLoading(manga, newChapter);
+		if (!mapImages.containsKey(newChapter-1))
+			operations.backgroundLoading(manga, newChapter-1);
+		if (!mapImages.containsKey(newChapter+1))
+			operations.backgroundLoading(manga, newChapter+1);
 
 		return true;
 	}
@@ -273,7 +271,7 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 	}
 
 	public void setZoom(int zoom) {
-		if (this.zoom == zoom)
+		if(this.zoom == zoom)
 			return;
 		state = ReadingState.RESIZING;
 		operations.backgroundZooming(zoom);

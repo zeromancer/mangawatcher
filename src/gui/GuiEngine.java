@@ -53,7 +53,7 @@ public @Getter class GuiEngine {
 	private final MangaLibrary library;
 	private final BackgroundExecutors executors;
 
-	private final Map<Manga, BufferedImage> covers;
+	private final Map<String, BufferedImage> covers;
 	private final Map<Icons, BufferedImage> icons;
 
 	public GuiEngine(GuiFrame frame) {
@@ -61,7 +61,7 @@ public @Getter class GuiEngine {
 		this.library = frame.getLibrary();
 		this.executors = frame.getExecutors();
 
-		covers = new HashMap<Manga, BufferedImage>();
+		covers = new HashMap<String, BufferedImage>();
 		icons = new HashMap<>();
 	}
 
@@ -84,8 +84,8 @@ public @Getter class GuiEngine {
 	}
 
 	public BufferedImage getCover(Manga manga){
-		assert covers.containsKey(manga);
-		return covers.get(manga);
+		assert covers.containsKey(manga.getName()) : covers.toString();
+		return covers.get(manga.getName());
 	}
 	
 	public BufferedImage getIcon(Icons icon){
@@ -105,7 +105,8 @@ public @Getter class GuiEngine {
 		final String path = manga.getMangaImagePath(library);
 		try {
 			BufferedImage image = ImageIO.read(new File(path));
-			covers.put(manga, image);
+			assert image != null;
+			covers.put(manga.getName(), image);
 		} catch (IOException e) {
 			e.printStackTrace();
 			M.print(e.getMessage());
@@ -139,7 +140,7 @@ public @Getter class GuiEngine {
 
 				try {
 					BufferedImage image = ImageIO.read(new File(path));
-					covers.put(manga, image);
+					covers.put(manga.getName(), image);
 				} catch (IOException e) {
 					e.printStackTrace();
 					M.print(e.getMessage());

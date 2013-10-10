@@ -7,14 +7,25 @@
         "name": "World Trigger",
         "source": "MANGAREADER",
         "collection": "WATCHING",
-        "read": 5,
+        "read": 9,
         "page": 2,
         "downloaded": 33,
         "released": 33,
         "description": "A gate to another dimension has burst open, and from it emerge gigantic invincible creatures that threaten all of humanity. Earth\u0027s only defense is a mysterious group of warriors who have co-opted the alien technology in order to fight back!"
       }
     ],
-    "PLANNING": [],
+    "PLANNING": [
+      {
+        "name": "Naruto",
+        "source": "MANGAREADER",
+        "collection": "WATCHING",
+        "read": 0,
+        "page": 0,
+        "downloaded": 0,
+        "released": 0,
+        "description": "Before Naruto\u0027s birth, a great demon fox had attacked the Hidden Leaf Village. A man known as the 4th Hokage sealed the demon inside the newly born Naruto, causing him to unknowingly grow up detested by his fellow villagers. Despite his lack of talent in many areas of ninjutsu, Naruto strives for only one goal: to gain the title of Hokage, the strongest ninja in his village. Desiring the respect he never received, Naruto works towards his dream with fellow friends Sasuke and Sakura and mentor Kakashi as they go through many trials and battles that come with being a ninja."
+      }
+    ],
     "DROPPED": [],
     "COMPLETED": []
   },

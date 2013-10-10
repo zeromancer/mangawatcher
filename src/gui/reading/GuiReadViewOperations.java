@@ -69,7 +69,9 @@ public class GuiReadViewOperations {
 
 	protected void backgroundLoading(final Manga manga, final int chapter) {
 		final int zoom = this.view.getZoom();
-		
+
+		if(manga == null || chapter < 1 || chapter > manga.getDownloaded())
+			return;
 		
 		if(mapImages.size()>10){
 			int doNotDelete = view.getChapter();
@@ -87,8 +89,6 @@ public class GuiReadViewOperations {
 		executors.runOnFileThread(new Runnable() {
 			@Override
 			public void run() {
-				if(manga == null)
-					return;
 				final String path = manga.getMangaDirectory(library, chapter);
 				final File folder = new File(path);
 

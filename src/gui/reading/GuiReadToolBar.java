@@ -118,6 +118,8 @@ public class GuiReadToolBar extends JToolBar {
 
 		resync.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(view.getManga()== null)
+					return;
 				view.getMapImages().clear();
 				view.getMapFiles().clear();
 				view.load();

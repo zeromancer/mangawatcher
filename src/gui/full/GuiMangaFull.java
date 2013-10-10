@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -23,6 +24,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
+import javax.swing.JToggleButton;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -60,20 +62,30 @@ public class GuiMangaFull extends JScrollPane {
 	private Manga manga;
 
 	// Description
-	private JLabel title;
+	private final JLabel title;
 	private JLabel icon;
-	private JTextArea description;
-	private JScrollPane scroll;
+	private final JTextArea description;
+	private final JScrollPane scroll;
 
 	// Chapters
-	private List<JGradientButton> buttons;
-	private JPanel grid;
+	private final List<JGradientButton> buttons;
+	private final JPanel grid;
 
 	// Options
-	private JComboBox<String> collection;
-	private JButton sync;
-	private JButton redownload;
-	private JButton remove;
+	private final JLabel options;
+	private final JToggleButton show;
+	
+	private final JComboBox<String> collection;
+	private final JLabel collectionLabel;
+	
+	private final JButton sync;
+	private final JLabel syncLabel;
+	
+	private final JButton redownload;
+	private final JLabel redownloadLabel;
+	
+	private final JButton remove;
+	private final JLabel removeLabel;
 
 	public GuiMangaFull(GuiFrame frame) {
 		this.frame = frame;
@@ -121,14 +133,19 @@ public class GuiMangaFull extends JScrollPane {
 		buttons = new ArrayList<>();
 
 		// Options
-		label = new JLabel("Options");
-		label.setFont(frame.getOptions().getSubtitelFont());
-		panel.add(label, subheaderAddLabel);
+		
+		
+		options = new JLabel("Options");
+		options.setFont(frame.getOptions().getSubtitelFont());
+		panel.add(options, "align left");
 
+		show = new JToggleButton("Show");
+		panel.add(show, optionsAddComponent);
+		
 		// Change Collection
-		label = new JLabel("Change Colllection:");
-		label.setFont(frame.getOptions().getLabelFont());
-		panel.add(label, optionsAddLabel);
+		collectionLabel = new JLabel("Change Colllection:");
+		collectionLabel.setFont(frame.getOptions().getLabelFont());
+		panel.add(collectionLabel, optionsAddLabel);
 		collection = new JComboBox<String>(MangaCollection.strings());
 		collection.addActionListener(new ActionListener() {
 			@Override
@@ -142,30 +159,66 @@ public class GuiMangaFull extends JScrollPane {
 		panel.add(collection, optionsAddComponent);
 
 		// Sync
-		label = new JLabel("Recheck:");
-		label.setFont(frame.getOptions().getLabelFont());
-		panel.add(label, optionsAddLabel);
+		syncLabel = new JLabel("Recheck:");
+		syncLabel.setFont(frame.getOptions().getLabelFont());
+		panel.add(syncLabel, optionsAddLabel);
 		sync = new JButton("Now");
 		panel.add(sync, optionsAddComponent);
 
 		// Redownload
-		label = new JLabel("Redownload:");
-		label.setFont(frame.getOptions().getLabelFont());
-		panel.add(label, optionsAddLabel);
+		redownloadLabel = new JLabel("Redownload:");
+		redownloadLabel.setFont(frame.getOptions().getLabelFont());
+		panel.add(redownloadLabel, optionsAddLabel);
 		redownload = new JButton("All Chapters");
 		panel.add(redownload, optionsAddComponent);
 
 		// Remove
-		label = new JLabel("Remove:");
-		label.setFont(frame.getOptions().getLabelFont());
-		panel.add(label, optionsAddLabel);
-		remove = new JButton("Manga");
+		removeLabel = new JLabel("Remove:");
+		removeLabel.setFont(frame.getOptions().getLabelFont());
+		panel.add(removeLabel, optionsAddLabel);
+		remove = new JButton("This Manga");
 		panel.add(remove, optionsAddComponent);
+		
+		
+		setOptionVisibility(false);
+		show.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AbstractButton abstractButton = (AbstractButton) e.getSource();
+				boolean selected = abstractButton.getModel().isSelected();
+				if (selected)
+					abstractButton.setText("Hide");
+				else
+					abstractButton.setText("Show");
+				
+				setOptionVisibility(selected);
+				
+				revalidate();
+				repaint();
+			}
+		});
+		show.setEnabled(false);
+		
+	}
+	
+	private void setOptionVisibility(boolean selected){
+		collection.setVisible(selected);
+		collectionLabel.setVisible(selected);
+		
+		sync.setVisible(selected);
+		syncLabel.setVisible(selected);
+		
+		redownload.setVisible(selected);
+		redownloadLabel.setVisible(selected);
+
+		remove.setVisible(selected);
+		removeLabel.setVisible(selected);
 	}
 
 	public void update() {
 		if(manga ==null)
 			return;
+		show.setEnabled(true);
 		updateMinor();
 		revalidate();
 		repaint();
@@ -180,6 +233,7 @@ public class GuiMangaFull extends JScrollPane {
 			updateMinor();
 		}
 
+		show.setEnabled(true);
 		revalidate();
 		repaint();
 	}
@@ -187,7 +241,7 @@ public class GuiMangaFull extends JScrollPane {
 	private void updateMajor() {
 		//		M.print("updating Major: "+manga.getName());
 		title.setText(manga.getName());
-		icon.setIcon(new ImageIcon(frame.getEngine().getCovers().get(manga)));
+		icon.setIcon(new ImageIcon(frame.getEngine().getCover(manga)));
 		description.setText(manga.getDescription());
 
 //		String selection = (String) collection.getSelectedItem();
@@ -278,7 +332,7 @@ public class GuiMangaFull extends JScrollPane {
 		protected void paintComponent(Graphics g) {
 			Color color = read ? colorRead : colorUnread;
 			Graphics2D g2 = (Graphics2D) g.create();
-			g2.setPaint(new GradientPaint(new Point(0, 0), color, new Point(0, getHeight()), color2));
+			g2.setPaint(new GradientPaint(new Point(0, 0), color, new Point(0, getHeight()*2), color2));
 			g2.fillRect(0, 0, getWidth(), getHeight());
 			g2.drawString(getText(), getWidth() / 2, getHeight());
 			g2.dispose();
