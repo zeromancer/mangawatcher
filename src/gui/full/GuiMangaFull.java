@@ -293,28 +293,6 @@ public class GuiMangaFull extends JScrollPane {
 		}
 	}
 
-	// public static void main(String[] args) {
-	//
-	// SwingUtilities.invokeLater(new Runnable() {
-	// @Override
-	// public void run() {
-	// JFrame frame = new JFrame("Test Manga Add");
-	// // frame.setSize(300, 300);
-	// frame.setLocationRelativeTo(null);
-	// frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	//
-	// MangaLibrary library = LibraryManager.loadLibrary("config");
-	// Manga manga = library.getCollection(MangaCollection.WATCHING).get(0);
-	// // LibraryManager.saveLibrary(configDirectory, library);
-	// GuiMangaFull component = new GuiMangaFull(library, manga);
-	// frame.add(component);
-	// frame.pack();
-	//
-	// frame.setVisible(true);
-	// }
-	// });
-	// }
-
 	private static final @Getter @Setter class JGradientButton extends JButton {
 
 		boolean read = false;

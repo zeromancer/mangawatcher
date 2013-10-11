@@ -6,11 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 import logic.LibraryManager;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import data.Manga.MangaCollection;
 import data.Manga.MangaSource;
 
-public @Data class MangaLibrary {
+public @Getter @Setter class MangaLibrary {
 
 	//Configs
 	String mangaDirectory;

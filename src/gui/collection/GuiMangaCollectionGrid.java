@@ -90,7 +90,7 @@ public class GuiMangaCollectionGrid extends JScrollPane {
 	}
 
 	public void update() {
-
+		
 		//Update button text
 		Component[] components = panel.getComponents();
 		for(Component component : components)
@@ -108,6 +108,8 @@ public class GuiMangaCollectionGrid extends JScrollPane {
 		//Check if no inter-collection movements
 		if(newerSize == newer.size() && olderSize == older.size())
 			return;
+		
+		//M.print("Rebuilding: "+newer.size()+" , "+older.size());
 		
 		//Reset
 		newerSize = newer.size();

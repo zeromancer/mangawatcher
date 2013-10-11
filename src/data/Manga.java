@@ -2,10 +2,10 @@ package data;
 
 import java.io.File;
 
-import lombok.Data;
 import lombok.Getter;
+import lombok.Setter;
 
-public @Data class Manga {
+public @Getter @Setter class Manga {
 
 	public enum MangaSource {
 
@@ -82,6 +82,7 @@ public @Data class Manga {
 
 	public void changeCollection(MangaLibrary library, MangaCollection newCollection) {
 		library.getCollections().get(collection).remove(this);
+		this.collection = newCollection;
 		library.getCollections().get(newCollection).add(this);
 	}
 
@@ -108,6 +109,12 @@ public @Data class Manga {
 		return library.getMangaDirectory() + File.separator + name + File.separator + name + ".jpg";
 	}
 
+	@Override
+	public String toString() {
+		return name+" ("+collection.name+")";
+	}
+	
+	
 }
 
 //public enum MangaStatus{

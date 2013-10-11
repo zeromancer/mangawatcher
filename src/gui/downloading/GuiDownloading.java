@@ -115,7 +115,7 @@ public class GuiDownloading extends JPanel {
 		});
 		panel.add(available);
 		
-		shallow = new JButton("Update from latest releases");
+		shallow = new JButton("Update latest releases");
 		shallow.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(final ActionEvent e) {
