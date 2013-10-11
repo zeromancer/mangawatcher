@@ -2,6 +2,7 @@ package gui.collection;
 
 import gui.GuiFrame;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ComponentEvent;
@@ -55,6 +56,7 @@ public class GuiMangaCollectionGrid extends JScrollPane {
 		titel.setFont(frame.getOptions().getTitelFont());
 		titel.setAlignmentX(0.5f);
 		titel.setHorizontalAlignment(SwingConstants.CENTER);
+		titel.setBackground(Color.green);
 		panel.add(titel);
 		
 		newerLabel = new JLabel("New:");

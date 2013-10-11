@@ -13,22 +13,14 @@ import data.Manga.MangaSource;
 
 public @Getter @Setter class MangaLibrary {
 
-	//Configs
+	// Configs
 	String mangaDirectory;
 	String configDirectory;
 
-	//Collections
+	// Mangas
 	Map<MangaCollection, List<Manga>> collections;
-	
-	//Mangas
-	//EnumMap<MangaSource, HashMap<String, Manga>> current;
 	Map<MangaSource, Map<String, String>> available;
 	
-	
-//	public Manga getManga(MangaSource source, String name){
-//		assert current.get(source).containsKey(name);
-//		return current.get(source).get(name);
-//	}
 
 	public List<Manga> getCollection(MangaCollection collection){
 		assert collections.containsKey(collection);

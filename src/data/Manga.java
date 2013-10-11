@@ -116,19 +116,3 @@ public @Getter @Setter class Manga {
 	
 	
 }
-
-//public enum MangaStatus{
-//	BEHIND("New"),
-//	UP_TO_DATE("Up-to-Date"),
-//	;
-//	
-//	public String name;
-//	
-//	private MangaStatus(String print){
-//		this.name = print;
-//	}
-//
-//	public String getName() {
-//		return name;
-//	}
-//}

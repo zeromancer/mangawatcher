@@ -87,7 +87,7 @@ public class GuiMangaFull extends JScrollPane {
 	private final JButton remove;
 	private final JLabel removeLabel;
 
-	public GuiMangaFull(GuiFrame frame) {
+	public GuiMangaFull(final GuiFrame frame) {
 		this.frame = frame;
 		this.library = frame.getLibrary();
 		this.manga = null;
@@ -154,6 +154,12 @@ public class GuiMangaFull extends JScrollPane {
 				String selection = (String) collection.getSelectedItem();
 				MangaCollection newCollection = MangaCollection.parse(selection);
 				manga.changeCollection(library, newCollection);
+				frame.getExecutors().runOnFileThread(new Runnable() {
+					@Override
+					public void run() {
+						library.save();
+					}
+				});
 			}
 		});
 		panel.add(collection, optionsAddComponent);
@@ -170,6 +176,14 @@ public class GuiMangaFull extends JScrollPane {
 		redownloadLabel.setFont(frame.getOptions().getLabelFont());
 		panel.add(redownloadLabel, optionsAddLabel);
 		redownload = new JButton("All Chapters");
+		redownload.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				manga.setDownloaded(0);
+				frame.getTabbed().setSelectedComponent(frame.getDownloading());
+				frame.getDownloading().getDeep().doClick();
+			}
+		});
 		panel.add(redownload, optionsAddComponent);
 
 		// Remove
@@ -177,6 +191,13 @@ public class GuiMangaFull extends JScrollPane {
 		removeLabel.setFont(frame.getOptions().getLabelFont());
 		panel.add(removeLabel, optionsAddLabel);
 		remove = new JButton("This Manga");
+		remove.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MangaCollection collection = manga.getCollection();
+				library.getCollection(collection).remove(manga);
+			}
+		});
 		panel.add(remove, optionsAddComponent);
 		
 		

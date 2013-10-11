@@ -23,9 +23,10 @@ import javax.swing.SwingUtilities;
 import javax.swing.text.DefaultCaret;
 
 import logic.MangaLogic;
+import lombok.Getter;
 import data.MangaLibrary;
 
-public class GuiDownloading extends JPanel {
+public @Getter class GuiDownloading extends JPanel {
 
 	private final GuiFrame frame;
 	private final MangaLogic logic;
@@ -41,10 +42,10 @@ public class GuiDownloading extends JPanel {
 	private final JButton available;
 	
 
-	Date waitingDate;
-	ScheduledFuture<?> waitingHandler;
+	private Date waitingDate;
+	private ScheduledFuture<?> waitingHandler;
 	
-	Runnable waitingProcess = new Runnable() {
+	private Runnable waitingProcess = new Runnable() {
 		public void run() {
 
 			Date nowDate = new Date();
@@ -58,7 +59,7 @@ public class GuiDownloading extends JPanel {
 			progressInvoked(percent, "Recheck in "+output);
 		}
 	};
-	Runnable waitingCancel = new Runnable() {
+	private Runnable waitingCancel = new Runnable() {
 		public void run() {
 			waitingHandler.cancel(false);
 //			SwingUtilities.invokeLater(new Runnable() {
@@ -100,17 +101,15 @@ public class GuiDownloading extends JPanel {
 			@Override
 			public void actionPerformed(final ActionEvent e) {
 				waitingHandler.cancel(false);
-				((JButton)e.getSource()).setEnabled(false);
+				enableButtons(false);
 				executors.runOnNetworkThread(new Runnable() {
 					@Override
 					public void run() {
 						logic.updateAvailable();
 						library.save(executors);
-						enableInvoked((JButton)e.getSource());
-						
+						enableButtonsInvoked(true);
 					}
 				});
-				
 			}
 		});
 		panel.add(available);
@@ -120,15 +119,15 @@ public class GuiDownloading extends JPanel {
 			@Override
 			public void actionPerformed(final ActionEvent e) {
 				waitingHandler.cancel(false);
-				((JButton)e.getSource()).setEnabled(false);
+				enableButtons(false);
 				executors.runOnNetworkThread(new Runnable() {
 					@Override
 					public void run() {
 						logic.updateShallow();
 						library.save(executors);
-						enableInvoked((JButton)e.getSource());
+						enableButtonsInvoked(true);	
 					}
-				});			
+				});		
 			}
 		});
 		panel.add(shallow);
@@ -138,15 +137,15 @@ public class GuiDownloading extends JPanel {
 			@Override
 			public void actionPerformed(final ActionEvent e) {
 				waitingHandler.cancel(false);
-				((JButton)e.getSource()).setEnabled(false);
+				enableButtons(false);
 				executors.runOnNetworkThread(new Runnable() {
 					@Override
 					public void run() {
 						logic.updateDeep();	
 						library.save(executors);
-						enableInvoked((JButton)e.getSource());
+						enableButtonsInvoked(true);	
 					}
-				});			
+				});		
 			}
 		});
 		panel.add(deep);
@@ -165,29 +164,29 @@ public class GuiDownloading extends JPanel {
 		scheduler.schedule(waitingCancel, wait * 60+1, SECONDS);
 	}
 
-	public void scheduleDownloading() {
-
+	private void scheduleDownloading() {
+		
 	}
-
-//	public void progressInvoked(final int percent, final String text) {
-//		SwingUtilities.invokeLater(new Runnable() {
-//			@Override
-//			public void run() {
-//				progressInvoked(percent, text);
-//			}
-//		});
-//	}
 	
-	public void enableInvoked(final JButton button){
+
+	
+	public void enableButtons(boolean enabled){
+		available.setEnabled(enabled);
+		shallow.setEnabled(enabled);
+		deep.setEnabled(enabled);
+	}
+	
+	public void enableButtonsInvoked(final boolean enabled){
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				button.setEnabled(true);
+				available.setEnabled(enabled);
+				shallow.setEnabled(enabled);
+				deep.setEnabled(enabled);				
 			}
 		});
-		
 	}
-
+	
 
 	public void progressStartInvoked(final String txt) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -262,62 +261,9 @@ public class GuiDownloading extends JPanel {
 			}
 		});
 	}	
-	
-//	public void printInvoked(final MangaSource source, final  int percent, final String txt) {
-//		SwingUtilities.invokeLater(new Runnable() {
-//			@Override
-//			public void run() {
-//				progress.setValue(percent);
-//				progress.setText(txt);
-//				text.append(txt);
-//				repaint();
-//			}
-//		});
-//	}	
-//	
-//	public void printInvoked(final MangaSource source, final String txt) {
-//		SwingUtilities.invokeLater(new Runnable() {
-//			@Override
-//			public void run() {
-//				progress.setText(txt);
-//				text.append(txt);
-//				repaint();
-//			}
-//		});
-//	}
-	
-//	public void progress(MangaSource source, int percent, String txt) {
-//		progress.setValue(percent);
-//		progress.setText(txt);
-//		text(source, txt);
-//		progress.repaint();
-//	}	
-//
-//	public void text(MangaSource source, String txt) {
-//		text.append(txt+"\n");
-//		text.repaint();
-//	}	
-	
-
 	public static String getTime(long millis) {
 		return String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millis), TimeUnit.MILLISECONDS.toMinutes(millis)
 				- TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)), TimeUnit.MILLISECONDS.toSeconds(millis)
 				- TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
 	}
 }
-
-/*
-
-
-
-	private void progress(final int percent, final String text) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				progress.setValue(percent);
-				progress.setText(text);
-				progress.repaint();
-			}
-		});
-	}
-
-*/
