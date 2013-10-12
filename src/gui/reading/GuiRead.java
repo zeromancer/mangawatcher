@@ -85,23 +85,4 @@ public @Getter @Setter class GuiRead extends JPanel {
 		view.view(manga, chapter, page);
 	}
 
-	// public static void main(String[] args) throws IOException {
-	//
-	// JFrame frame = new JFrame();
-	// frame.setLocationRelativeTo(null);
-	// frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-	//
-	// MangaLibrary library = LibraryManager.loadLibrary("config");
-	// Manga manga = library.getCollection(MangaCollection.WATCHING).get(1);
-	// GuiRead gui = new GuiRead();
-	// gui.getView().view(library, manga, 2, 1);
-	// frame.getContentPane().add(gui);
-	//
-	// // frame.pack();
-	// frame.setSize(600, 800);
-	// frame.setVisible(true);
-	// frame.validate();
-	// }
-
-
 }

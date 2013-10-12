@@ -99,7 +99,7 @@ public class GuiMangaFull extends JScrollPane {
 		setViewportView(panel);
 
 		// Layout
-		panel.setLayout(new MigLayout("", "5:50:200[align right,grow,200::300][align left,grow,100::400,shrink]5:50:200", "[top][top]"));
+		panel.setLayout(new MigLayout("", "5:50:200[align right,grow,200::500][align left,grow,100::400,shrink]5:50:200", "[top][top]"));
 		String subheaderAddLabel = "growx, span 2, wrap";
 		String optionsAddLabel = "gapleft 40, align left";
 		String optionsAddComponent = "width 200!, wrap";
@@ -140,7 +140,7 @@ public class GuiMangaFull extends JScrollPane {
 		panel.add(options, "align left");
 
 		show = new JToggleButton("Show");
-		panel.add(show, optionsAddComponent);
+		panel.add(show, optionsAddComponent+", gaptop 7");
 		
 		// Change Collection
 		collectionLabel = new JLabel("Change Colllection:");
@@ -154,12 +154,7 @@ public class GuiMangaFull extends JScrollPane {
 				String selection = (String) collection.getSelectedItem();
 				MangaCollection newCollection = MangaCollection.parse(selection);
 				manga.changeCollection(library, newCollection);
-				frame.getExecutors().runOnFileThread(new Runnable() {
-					@Override
-					public void run() {
-						library.save();
-					}
-				});
+				library.save(frame.getExecutors());
 			}
 		});
 		panel.add(collection, optionsAddComponent);

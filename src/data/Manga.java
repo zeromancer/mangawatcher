@@ -5,6 +5,8 @@ import java.io.File;
 import lombok.Getter;
 import lombok.Setter;
 
+import com.google.gson.annotations.Expose;
+
 public @Getter @Setter class Manga {
 
 	public enum MangaSource {
@@ -111,7 +113,8 @@ public @Getter @Setter class Manga {
 
 	@Override
 	public String toString() {
-		return name+" ("+collection.name+")";
+//		return name+" ("+collection.name+")";
+		return name;
 	}
 	
 	

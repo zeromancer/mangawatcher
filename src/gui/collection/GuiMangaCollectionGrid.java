@@ -61,12 +61,12 @@ public class GuiMangaCollectionGrid extends JScrollPane {
 		
 		newerLabel = new JLabel("New:");
 		newerLabel.setFont(frame.getOptions().getSubtitelFont());
-		panel.add(newerLabel);
+		//panel.add(newerLabel);
 
 		olderLabel = new JLabel("Up to Date:");
 		olderLabel.setFont(frame.getOptions().getSubtitelFont());
 		olderLabel.setPreferredSize(new Dimension(getWidth(),titel.getPreferredSize().height));
-		panel.add(olderLabel);
+		//panel.add(olderLabel);
 		
 		addComponentListener(new ComponentListener() {
 		    public void componentResized(ComponentEvent e) {

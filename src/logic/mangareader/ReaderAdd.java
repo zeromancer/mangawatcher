@@ -69,10 +69,15 @@ public class ReaderAdd implements MangaAdd{
 		for (Element element: links){
 			String url = element.attr("src");
 			String filename = String.format("%s.jpg",manga.getName());
-			print("Downloading Cover: "+filename+" from "+url);
-			BufferedImage image = ImageIO.read(new URL(url));
-			BufferedImage scaled = M.scale(image, image.getHeight(), 340);
-			ImageIO.write(scaled, "jpg",new File(manga_dir.getAbsolutePath(),filename));
+			File file = new File(manga_dir.getAbsolutePath(),filename);
+			if(Files.exists(Paths.get(file.toURI()))){
+				print("Using Existing Cover: "+filename);
+			}else{
+				print("Downloading Cover: "+filename+" from "+url);
+				BufferedImage image = ImageIO.read(new URL(url));
+				BufferedImage scaled = M.scale(image, image.getHeight(), 340);
+				ImageIO.write(scaled, "jpg",file);	
+			}
 		}
 		
 		// Description

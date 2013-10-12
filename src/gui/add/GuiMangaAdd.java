@@ -53,7 +53,7 @@ public class GuiMangaAdd extends JPanel {
 		title.setFont(frame.getOptions().getTitelFont());
 		add(title, "wrap");
 
-		source = new JLabel("MangaReader.net");
+		source = new JLabel("mangareader.net");
 		source.setFont(frame.getOptions().getSubtitelFont());
 		add(source, "wrap");
 

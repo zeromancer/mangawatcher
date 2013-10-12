@@ -106,7 +106,7 @@ public @Getter class GuiDownloading extends JPanel {
 					@Override
 					public void run() {
 						logic.updateAvailable();
-						library.save(executors);
+						library.saveAvailable(executors);
 						enableButtonsInvoked(true);
 					}
 				});

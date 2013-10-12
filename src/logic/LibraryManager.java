@@ -8,20 +8,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 import misc.M;
 
+import com.google.gson.ExclusionStrategy;
+import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
 
-import data.Manga;
-import data.Manga.MangaCollection;
 import data.Manga.MangaSource;
 import data.MangaLibrary;
 
@@ -33,15 +30,33 @@ public class LibraryManager {
 		if(!Files.exists(Paths.get(configDir.toURI())))
 			configDir.mkdirs();
 		
-		File configFile = new File(configDirectory+File.separator+"config.json");
+		File configLibrary = new File(configDirectory+File.separator+"library.json");
+		File configAvailable = new File(configDirectory+File.separator+"available.json");
 		
-		if(!Files.exists(Paths.get(configFile.toURI())))
-			return initLibrary(configDirectory);
+		if(	!Files.exists(Paths.get(configLibrary.toURI())) ||
+			!Files.exists(Paths.get(configAvailable.toURI()))){
+			MangaLibrary library = new MangaLibrary(configDirectory);
+			library.save();
+			library.saveAvailable();
+			return library;
+		}
 		
 		try {
-			JsonReader reader = new JsonReader(new FileReader(configFile));
+			JsonReader reader;
 			Gson gson = new Gson();
+			
+			reader = new JsonReader(new FileReader(configLibrary));
 			MangaLibrary library = gson.fromJson(reader, MangaLibrary.class);
+			
+			reader = new JsonReader(new FileReader(configAvailable));
+			Map<String, Map<String, String>> availableParsed = gson.fromJson(reader, LinkedHashMap.class);
+			Map<MangaSource, Map<String, String>> available = new LinkedHashMap<>();
+			for(String source : availableParsed.keySet())
+				available.put(MangaSource.valueOf(source), availableParsed.get(source));
+
+			library.setConfigDirectory(configDirectory);
+			library.setAvailable(available);
+			
 			assert library != null;
 			return library;
 		} catch (FileNotFoundException e) {
@@ -51,71 +66,62 @@ public class LibraryManager {
 		}
 	}
 
-	public static void saveLibrary(String configDirectory, MangaLibrary library){
+	
+	private enum SavePart{
+		COLLECTIONS,
+		AVAILABLE
+	}
+
+	public static void saveLibrary(MangaLibrary library){
+		saveLibrary(library, SavePart.COLLECTIONS);
+	}
+	public static void saveLibraryAvailable(MangaLibrary library){
+		saveLibrary(library, SavePart.AVAILABLE);
+	}
+	public static void saveLibrary(MangaLibrary library,SavePart part){
 		try {
+			String configDirectory = library.getConfigDirectory();
 			File configDir = new File(configDirectory);
 			if(!Files.exists(Paths.get(configDir.toURI())))
 				configDir.mkdirs();
 			
 			assert library != null;
-			Gson gson = new GsonBuilder().setPrettyPrinting().create();
-			String output = gson.toJson(library);
+			Gson gson = new GsonBuilder().setPrettyPrinting().setExclusionStrategies(new ExclusionStrategy() {
+				public boolean shouldSkipClass(Class<?> clazz) {
+					return false;
+				}
+				public boolean shouldSkipField(FieldAttributes f) {
+					return (f.getName().equals("configDirectory"))||
+				            (f.getName().equals("available"));
+				}
+			}).create();
 			
-			File file = new File(configDirectory+File.separator+"config.json");
-			//M.print(file.getAbsolutePath());
-			BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-	        writer.write(output);
-	        writer.close();
+			String generatedLibrary = gson.toJson(library,library.getClass());
+			String generatedAvailable = gson.toJson(library.getAvailable(),library.getAvailable().getClass());
+			
+			if(part == SavePart.COLLECTIONS)
+				saveLibraryPart(generatedLibrary, configDirectory, "library.json");
+			if(part == SavePart.AVAILABLE)
+				saveLibraryPart(generatedAvailable, configDirectory, "available.json");
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 			M.print(e.getMessage());
 		}
 	}
 	
-	public static MangaLibrary initLibrary(String configDirectory){
-		MangaLibrary library = new MangaLibrary();
-		
-		//mangaDirectory
-		String os = (System.getProperty("os.name")).toUpperCase();
-		String mangaDirectory = null;
-		if(os.contains("WIN"))
-			mangaDirectory = "C://Mangas/";
-		else
-			mangaDirectory = System.getProperty("user.home")+File.separator+"Mangas";
-		library.setMangaDirectory(mangaDirectory);
-		
-		//configDirectory
-		library.setConfigDirectory(new File(configDirectory).getAbsolutePath());
-		
-		//maps
-		Map<MangaCollection, List<Manga>> collections = new LinkedHashMap<>();
-//		Map<MangaSource, Map<String, Manga>> current = new EnumMap<>(MangaSource.class);
-		Map<MangaSource, Map<String, String>> available = new LinkedHashMap<>();
-		
-		for(MangaCollection collection : MangaCollection.values())
-			collections.put(collection, new ArrayList<Manga>());
-		
-//		for(MangaSource source: MangaSource.values())
-//			current.put(source, new HashMap<String,Manga>());
-
-		for(MangaSource source: MangaSource.values())
-			available.put(source, new HashMap<String,String>());
-		
-		library.setCollections(collections);
-//		library.setCurrent(current);
-		library.setAvailable(available);
-		
-		MangaLogic logic = new MangaLogic(library);
-		logic.updateAvailable();
-		
-		return library;
+	private static void saveLibraryPart(String output, String configDirectory, String filename) throws IOException{
+		File file = new File(configDirectory+File.separator+filename);
+		BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+        writer.write(output);
+        writer.close();
 	}
 	
-	public static void main(String[] args) {
-		String configDirectory = "config";
-		MangaLibrary library = loadLibrary(configDirectory);
-		saveLibrary(configDirectory, library);
-	}
+//	public static void main(String[] args) {
+//		String configDirectory = "config";
+//		MangaLibrary library = loadLibrary(configDirectory);
+//		saveLibrary(library);
+//	}
 	
 }
 /*
