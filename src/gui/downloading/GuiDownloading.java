@@ -59,15 +59,24 @@ public @Getter class GuiDownloading extends JPanel {
 			progressInvoked(percent, "Recheck in "+output);
 		}
 	};
-	private Runnable waitingCancel = new Runnable() {
+	private Runnable downloadingProcess = new Runnable() {
 		public void run() {
 			waitingHandler.cancel(false);
-//			SwingUtilities.invokeLater(new Runnable() {
-//				@Override
-//				public void run() {
-//					progress.setIndeterminate(true);
-//				}
-//			});
+			SwingUtilities.invokeLater(new Runnable() {
+				public void run() {
+					enableButtons(false);
+					executors.runOnNetworkThread(new Runnable() {
+						@Override
+						public void run() {
+							logic.updateShallow();
+							library.save(executors);
+							enableButtonsInvoked(true);
+							scheduleWaiting();
+						}
+					});
+				}
+			});
+			
 		}
 	};
 
@@ -108,6 +117,7 @@ public @Getter class GuiDownloading extends JPanel {
 						logic.updateAvailable();
 						library.saveAvailable(executors);
 						enableButtonsInvoked(true);
+						enableCountdownDisplayInvoked();
 					}
 				});
 			}
@@ -126,6 +136,7 @@ public @Getter class GuiDownloading extends JPanel {
 						logic.updateShallow();
 						library.save(executors);
 						enableButtonsInvoked(true);	
+						enableCountdownDisplayInvoked();
 					}
 				});		
 			}
@@ -144,6 +155,7 @@ public @Getter class GuiDownloading extends JPanel {
 						logic.updateDeep();	
 						library.save(executors);
 						enableButtonsInvoked(true);	
+						enableCountdownDisplayInvoked();
 					}
 				});		
 			}
@@ -161,7 +173,8 @@ public @Getter class GuiDownloading extends JPanel {
 
 		//		scheduler.schedule(waitingProgress, 1, SECONDS);
 		waitingHandler = scheduler.scheduleAtFixedRate(waitingProcess, 0, 1, SECONDS);
-		scheduler.schedule(waitingCancel, wait * 60+1, SECONDS);
+		scheduler.schedule(downloadingProcess, wait * 60+1, SECONDS);
+		
 	}
 
 	private void scheduleDownloading() {
@@ -185,6 +198,15 @@ public @Getter class GuiDownloading extends JPanel {
 				deep.setEnabled(enabled);				
 			}
 		});
+	}
+	public void enableCountdownDisplayInvoked(){
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		if(!waitingHandler.isDone())
+			waitingHandler = scheduler.scheduleAtFixedRate(waitingProcess, 0, 1, SECONDS);
 	}
 	
 
