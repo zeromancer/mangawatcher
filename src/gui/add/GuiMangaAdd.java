@@ -1,6 +1,5 @@
 package gui.add;
 
-import gui.GuiEngine;
 import gui.GuiFrame;
 import gui.downloading.GuiDownloading;
 import gui.full.GuiMangaFull;
@@ -20,6 +19,7 @@ import javax.swing.JTabbedPane;
 
 import logic.MangaLogic;
 import net.miginfocom.swing.MigLayout;
+import data.Engine;
 import data.Manga;
 import data.Manga.MangaCollection;
 import data.Manga.MangaSource;
@@ -82,7 +82,11 @@ public class GuiMangaAdd extends JPanel {
 				final MangaCollection addCollection = MangaCollection.parse((String) collection.getSelectedItem());
 				final JTabbedPane tabbed = frame.getTabbed();
 				final GuiDownloading down = frame.getDownloading();
-				final GuiEngine engine = frame.getEngine();
+				final Engine engine = frame.getEngine();
+				
+				if(combo.getSelectedIndex()==-1)
+					return;
+				
 				tabbed.setSelectedComponent(down);
 				combo.setSelectedIndex(-1);
 

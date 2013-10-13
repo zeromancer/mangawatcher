@@ -18,5 +18,8 @@
 	<classpathentry kind="lib" path="Libraries/XML/xpp3_min-1.1.4c.jar"/>
 	<classpathentry kind="lib" path="Libraries/YAML/snakeyaml-1.11.jar" sourcepath="Libraries/YAML/snakeyaml-1.11-sources.jar"/>
 	<classpathentry kind="lib" path="Libraries/JSON/gson-2.2.4.jar" sourcepath="Libraries/JSON/gson-2.2.4-sources.jar"/>
+	<classpathentry kind="lib" path="Libraries/Swing/jfontchooser-1.0.5-bin.zip" sourcepath="Libraries/Swing/jfontchooser-1.0.5-src.zip"/>
+	<classpathentry kind="lib" path="Libraries/Swing/jfontchooser-1.0.5/jfontchooser-1.0.5.jar"/>
+	<classpathentry kind="lib" path="Libraries/Swing/jmc-java1_0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

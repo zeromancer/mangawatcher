@@ -9,7 +9,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import logic.LibraryManager;
+import logic.DiskIOManager;
 import logic.MangaLogic;
 import lombok.Getter;
 import lombok.Setter;
@@ -84,10 +84,10 @@ public @Getter @Setter class MangaLibrary {
 
 
 	public void save() {
-		LibraryManager.saveLibrary(MangaLibrary.this);
+		DiskIOManager.saveLibrary(MangaLibrary.this);
 	}
 	public void saveAvailable() {
-		LibraryManager.saveLibraryAvailable(MangaLibrary.this);
+		DiskIOManager.saveLibraryAvailable(MangaLibrary.this);
 	}
 
 	public void save(BackgroundExecutors executors) {
@@ -116,6 +116,13 @@ public @Getter @Setter class MangaLibrary {
 		return null;
 	}
 
+	
+	public boolean newAvailable(){
+		for(Manga manga : collections.get(MangaCollection.WATCHING))
+			if(manga.newAvailable())
+				return true;
+		return false;
+	}
 
 
 

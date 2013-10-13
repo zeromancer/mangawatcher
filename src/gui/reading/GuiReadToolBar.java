@@ -1,7 +1,5 @@
 package gui.reading;
 
-import gui.GuiEngine;
-import gui.GuiEngine.Icons;
 import gui.GuiFrame;
 
 import java.awt.event.ActionEvent;
@@ -21,6 +19,9 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import net.miginfocom.swing.MigLayout;
+import data.Engine;
+import data.Engine.Icons;
+import data.Options;
 
 @SuppressWarnings("unused")
 public class GuiReadToolBar extends JToolBar {
@@ -28,6 +29,7 @@ public class GuiReadToolBar extends JToolBar {
 	private static final long serialVersionUID = 5673903268744027432L;
 
 	private final GuiFrame frame;
+	private final Options options;
 	
 	private JSlider zoom;
 	private JSlider scroll;
@@ -44,6 +46,7 @@ public class GuiReadToolBar extends JToolBar {
 
 	public GuiReadToolBar(GuiFrame frame, GuiRead gui, GuiReadView view) {
 		this.frame = frame;
+		this.options = frame.getOptions();
 		this.gui = gui;
 		this.view = view;
 		constructGuiOptions();
@@ -66,7 +69,7 @@ public class GuiReadToolBar extends JToolBar {
 		
 		add(gui.getProgress(),"span 7, grow, shrink, h 30, wrap");
 		
-		GuiEngine engine = frame.getEngine();
+		Engine engine = frame.getEngine();
 		
 		resync = new JButton(new ImageIcon(engine.getIcon(Icons.REFRESH)));
 //		resync.setMargin(new Insets(0, 0, 0, 0));
@@ -77,12 +80,12 @@ public class GuiReadToolBar extends JToolBar {
 		nextPage = new JButton(new ImageIcon(engine.getIcon(Icons.RIGHT)));
 		nextChapter = new JButton(new ImageIcon(engine.getIcon(Icons.DOUBLERIGHT)));
 		
-		zoom = new JSlider(10, 400, view.getZoom());
+		zoom = new JSlider(10, 400, options.getReadingZoom());
 		zoom.setPaintTicks(true);
 		zoom.setMinorTickSpacing(10);
 		zoom.setSnapToTicks(true);
 		
-		scroll = new JSlider(1, 500, view.getScrollAmount());
+		scroll = new JSlider(1, 500, options.getReadingScroll());
 		scroll.setPaintTicks(true);
 		scroll.setMinorTickSpacing(10);
 		scroll.setSnapToTicks(true);
@@ -193,7 +196,7 @@ public class GuiReadToolBar extends JToolBar {
 				if (scroll.getValueIsAdjusting())
 					return;
 				int value = scroll.getValue();
-				view.setScrollAmount(value);
+				options.setReadingScroll(value);
 			}
 		});
 	}

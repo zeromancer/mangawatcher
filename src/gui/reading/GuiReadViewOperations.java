@@ -31,11 +31,13 @@ import javax.swing.SwingUtilities;
 import misc.M;
 import data.Manga;
 import data.MangaLibrary;
+import data.Options;
 
 public class GuiReadViewOperations {
 
 	private final GuiFrame frame;
 	private final GuiRead gui;
+	private final Options options;
 	private final GuiReadView view;
 	private final GuiProgressBar progress;
 	private final BackgroundExecutors executors;
@@ -49,6 +51,7 @@ public class GuiReadViewOperations {
 	
 	public GuiReadViewOperations(GuiFrame frame, GuiRead gui, GuiReadView view) {
 			this.frame = frame;
+			this.options = frame.getOptions();
 			this.gui = gui;
 			this.view = view;
 			this.progress = gui.getProgress();
@@ -68,11 +71,12 @@ public class GuiReadViewOperations {
 	}
 
 	protected void backgroundLoading(final Manga manga, final int chapter) {
-		final int zoom = this.view.getZoom();
+		final int zoom = options.getReadingZoom();
 
 		if(manga == null || chapter < 1 || chapter > manga.getDownloaded())
 			return;
 		
+		// Clean up if to many chapters loaded
 		if(mapImages.size()>10){
 			int doNotDelete = view.getChapter();
 			List<Integer> delete = new ArrayList<>();
@@ -83,7 +87,6 @@ public class GuiReadViewOperations {
 				mapImages.remove(index);
 				mapFiles.remove(index);
 			}
-				
 		}
 		
 		executors.runOnFileThread(new Runnable() {
@@ -94,8 +97,10 @@ public class GuiReadViewOperations {
 
 				final List<BufferedImage> images = new ArrayList<BufferedImage>();
 				File[] listed = folder.listFiles(filter);
-				if (listed == null)
+				if (listed == null){
+					view.setState(ReadingState.NOTFOUND);
 					return;
+				}
 				final List<File> files = new ArrayList<File>(Arrays.asList(listed));
 
 				Collections.sort(files);
@@ -110,7 +115,6 @@ public class GuiReadViewOperations {
 						images.add(M.scale(image, 100, zoom));
 					progress((i + 1) * 100 / files.size(), "Loading image: " + file.getName());
 				}
-
 				backgroundLoadingFinish(chapter, images, files);
 			}
 		});
@@ -137,7 +141,7 @@ public class GuiReadViewOperations {
 
 
 	public void backgroundZooming(final int newZoom) {
-		final int oldZoom = view.getZoom();
+		final int oldZoom = options.getReadingZoom();
 		int count = 0;
 		final Map<Integer, List<BufferedImage>> mapCopy = new HashMap<>();
 		for (Entry<Integer, List<BufferedImage>> entry : mapImages.entrySet()) {
@@ -247,21 +251,21 @@ public class GuiReadViewOperations {
 		AbstractAction scrollUp = new AbstractAction() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				view.scroll(-view.getScrollAmount());
+				view.scroll(-options.getReadingScroll());
 			}
 		};
 
 		AbstractAction scrollDown = new AbstractAction() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				view.scroll(view.getScrollAmount());
+				view.scroll(options.getScrollAmount());
 			}
 		};
 
 		AbstractAction heightUp = new AbstractAction() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				view.scroll(-view.getHeight());
+				view.scroll(-options.getReadingScroll());
 			}
 		};
 

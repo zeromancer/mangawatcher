@@ -20,6 +20,7 @@ import lombok.Getter;
 import lombok.Setter;
 import data.Manga;
 import data.MangaLibrary;
+import data.Options;
 
 public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelListener {
 
@@ -27,7 +28,8 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 		READING(""),
 		LOADING("Loading images..."),
 		RESIZING("Resizing images..."),
-		ERROR("Please select manga");
+		NOTFOUND("No Images found."),
+		ERROR("Please select a manga");
 
 		String message;
 
@@ -43,6 +45,7 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 
 	private final GuiFrame frame;
 	private final GuiRead gui;
+	private final Options options;
 	private final GuiProgressBar progress;
 	private final BackgroundExecutors executors;
 	private final JSlider slider;
@@ -54,8 +57,8 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 	private int page = 0;
 
 	private int scroll = 0;
-	private int scrollAmount = 100;
-	private int zoom = 100;
+//	private int scrollAmount = 100;
+//	private int zoom = 100;
 
 	private ReadingState state = ReadingState.ERROR;
 
@@ -65,6 +68,7 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 	public GuiReadView(GuiFrame frame, GuiRead gui) {
 		this.frame = frame;
 		this.gui = gui;
+		this.options = frame.getOptions();
 		this.progress = gui.getProgress();
 		this.executors = frame.getExecutors();
 		this.slider = gui.getSlider();
@@ -79,6 +83,9 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 		operations = new GuiReadViewOperations(frame, gui, this);
 		operations.initializeKeyShortcuts();
 
+//		this.zoom = options.getReadingZoom();
+//		this.scrollAmount = frame.getOptions().getReadingScroll();
+		
 	}
 
 	public void view(Manga manga, int chapter, int page) {
@@ -151,7 +158,7 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 
 	public void scroll(int scrollAmount) {
 		this.scroll += scrollAmount;
-		if (state != ReadingState.READING)
+		if (state != ReadingState.READING || !mapImages.containsKey(chapter))
 			return;
 
 		// M.print("scroll: " + scroll);
@@ -271,11 +278,12 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 	}
 
 	public void setZoom(int zoom) {
-		if(this.zoom == zoom)
+		if(this.options.getReadingZoom() == zoom)
 			return;
 		state = ReadingState.RESIZING;
 		operations.backgroundZooming(zoom);
-		this.zoom = zoom;
+//		this.zoom = zoom;
+		options.setReadingZoom(zoom);
 		repaint();
 	}
 
@@ -283,9 +291,9 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 	public void mouseWheelMoved(MouseWheelEvent e) {
 		int notches = e.getWheelRotation();
 		if (notches < 0) {
-			scroll(-scrollAmount);
+			scroll(-options.getReadingScroll());
 		} else {
-			scroll(scrollAmount);
+			scroll(options.getReadingScroll());
 		}
 	}
 

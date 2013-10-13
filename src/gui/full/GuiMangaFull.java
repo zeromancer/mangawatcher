@@ -22,9 +22,14 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JToggleButton;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -84,8 +89,14 @@ public class GuiMangaFull extends JScrollPane {
 	private final JButton redownload;
 	private final JLabel redownloadLabel;
 	
+	private final JSpinner setDownload;
+	private final JLabel setDownloadLabel;
+	
 	private final JButton remove;
 	private final JLabel removeLabel;
+
+	private final JButton save;
+	private final JLabel saveLabel;
 
 	public GuiMangaFull(final GuiFrame frame) {
 		this.frame = frame;
@@ -133,13 +144,27 @@ public class GuiMangaFull extends JScrollPane {
 		buttons = new ArrayList<>();
 
 		// Options
-		
-		
 		options = new JLabel("Options");
 		options.setFont(frame.getOptions().getSubtitelFont());
 		panel.add(options, "align left");
 
 		show = new JToggleButton("Show");
+		show.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AbstractButton abstractButton = (AbstractButton) e.getSource();
+				boolean selected = abstractButton.getModel().isSelected();
+				if (selected)
+					abstractButton.setText("Hide");
+				else
+					abstractButton.setText("Show");
+				
+				setOptionVisibility(selected);
+				
+				revalidate();
+				repaint();
+			}
+		});
 		panel.add(show, optionsAddComponent+", gaptop 7");
 		
 		// Change Collection
@@ -164,6 +189,13 @@ public class GuiMangaFull extends JScrollPane {
 		syncLabel.setFont(frame.getOptions().getLabelFont());
 		panel.add(syncLabel, optionsAddLabel);
 		sync = new JButton("Now");
+		sync.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.getTabbed().setSelectedComponent(frame.getDownloading());
+				frame.getDownloading().getDeep().doClick();
+			}
+		});
 		panel.add(sync, optionsAddComponent);
 
 		// Redownload
@@ -181,6 +213,33 @@ public class GuiMangaFull extends JScrollPane {
 		});
 		panel.add(redownload, optionsAddComponent);
 
+		// Set Downloaded
+		setDownloadLabel = new JLabel("Set Downloaded:");
+		setDownloadLabel.setFont(frame.getOptions().getLabelFont());
+		panel.add(setDownloadLabel,optionsAddLabel);
+		SpinnerModel model = new SpinnerNumberModel(0, 0, 9999, 1);
+		setDownload = new JSpinner(model);
+		setDownload.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				JSpinner source = (JSpinner)e.getSource();
+				//M.print(""+source.getValue());
+				int downloaded = (Integer)source.getValue();
+				manga.setDownloaded(downloaded);
+				for (int i = buttons.size() - 1; i >= 0; i--) {
+					grid.remove(i);
+					buttons.remove(i);
+				}
+				addButtons();
+//				updateButtons();
+//				addButtons();
+//				deleteButtons();
+				GuiMangaFull.this.revalidate();
+				GuiMangaFull.this.repaint();;
+			}
+		});
+		panel.add(setDownload,optionsAddComponent);
+		
+		
 		// Remove
 		removeLabel = new JLabel("Remove:");
 		removeLabel.setFont(frame.getOptions().getLabelFont());
@@ -191,28 +250,33 @@ public class GuiMangaFull extends JScrollPane {
 			public void actionPerformed(ActionEvent e) {
 				MangaCollection collection = manga.getCollection();
 				library.getCollection(collection).remove(manga);
+				title.setText("Unselected");
+				icon = new JLabel();
+				description.setText("Please select a Manga");
+				GuiMangaFull.this.manga = null;
+				if(show.isSelected())
+					show.doClick();
+				show.setEnabled(false);
 			}
 		});
 		panel.add(remove, optionsAddComponent);
 		
-		
-		setOptionVisibility(false);
-		show.addActionListener(new ActionListener() {
+
+		// Save
+		saveLabel = new JLabel("Save Changes:");
+		saveLabel.setFont(frame.getOptions().getLabelFont());
+		panel.add(saveLabel, optionsAddLabel);
+		save = new JButton("To Disk");
+		save.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				AbstractButton abstractButton = (AbstractButton) e.getSource();
-				boolean selected = abstractButton.getModel().isSelected();
-				if (selected)
-					abstractButton.setText("Hide");
-				else
-					abstractButton.setText("Show");
-				
-				setOptionVisibility(selected);
-				
-				revalidate();
-				repaint();
+				library.save(frame.getExecutors());
 			}
 		});
+		panel.add(save, optionsAddComponent);
+		
+		
+		setOptionVisibility(false);
 		show.setEnabled(false);
 		
 	}
@@ -226,9 +290,15 @@ public class GuiMangaFull extends JScrollPane {
 		
 		redownload.setVisible(selected);
 		redownloadLabel.setVisible(selected);
+		
+		setDownload.setVisible(selected);
+		setDownloadLabel.setVisible(selected);
 
 		remove.setVisible(selected);
 		removeLabel.setVisible(selected);
+		
+		save.setVisible(selected);
+		saveLabel.setVisible(selected);
 	}
 
 	public void update() {

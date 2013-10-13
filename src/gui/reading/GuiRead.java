@@ -59,8 +59,8 @@ public @Getter @Setter class GuiRead extends JPanel {
 			public void stateChanged(ChangeEvent e) {
 				int value = slider.getValue();
 				int index = view.getPage();
-				if (slider.getValueIsAdjusting())
-					return;
+//				if (slider.getValueIsAdjusting())
+//					return;
 				// M.print("slider: " + value + ", index: " + index);
 				if (value != index) {
 					view.page(value - index);

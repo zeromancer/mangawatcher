@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.nio.channels.FileChannel;
 
 public class M {
@@ -14,7 +16,13 @@ public class M {
 		System.out.println(text);
 	}
 	
-	
+	public static void exception(Exception e){
+		StringWriter sw = new StringWriter();
+		PrintWriter pw = new PrintWriter(sw);
+		e.printStackTrace(pw);
+		print(sw.toString());
+		print(e.getMessage());
+	}
 	
 	
 	
@@ -63,4 +71,13 @@ public class M {
 			print(e.getMessage());
 		}
 	}
+	
+	public static int getBounded(int min,int value, int max){
+		if(value<min)
+			return min;
+		if(value>max)
+			return max;
+		return value;
+	}
+	
 }
