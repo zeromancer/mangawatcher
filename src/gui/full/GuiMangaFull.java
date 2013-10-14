@@ -130,6 +130,8 @@ public class GuiMangaFull extends JScrollPane {
 		description.setLineWrap(true);
 		description.setFont(frame.getOptions().getLabelFont());
 		description.setLineWrap(true);
+		description.setWrapStyleWord(true);
+		description.setEditable(false);
 		scroll = new JScrollPane(description);
 		scroll.setBorder(BorderFactory.createEmptyBorder());
 		panel.add(scroll, "grow, shrink, wrap");
@@ -234,7 +236,8 @@ public class GuiMangaFull extends JScrollPane {
 //				addButtons();
 //				deleteButtons();
 				GuiMangaFull.this.revalidate();
-				GuiMangaFull.this.repaint();;
+				GuiMangaFull.this.repaint();
+				frame.getTray().update();
 			}
 		});
 		panel.add(setDownload,optionsAddComponent);
@@ -333,6 +336,7 @@ public class GuiMangaFull extends JScrollPane {
 //		String selection = (String) collection.getSelectedItem();
 //		M.print("updating Major: "+selection+" , ordinal: "+manga.getCollection().ordinal()+" col: "+manga.getCollection());
 		collection.setSelectedIndex(manga.getCollection().ordinal());
+		setDownload.setValue(manga.getDownloaded());
 		updateButtons();
 		addButtons();
 		deleteButtons();

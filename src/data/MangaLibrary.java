@@ -117,11 +117,12 @@ public @Getter @Setter class MangaLibrary {
 	}
 
 	
-	public boolean newAvailable(){
+	public int newAvailable(){
+		int amount = 0;
 		for(Manga manga : collections.get(MangaCollection.WATCHING))
 			if(manga.newAvailable())
-				return true;
-		return false;
+				amount++;
+		return amount;
 	}
 
 

@@ -134,8 +134,8 @@ public @Getter class GuiFrame extends JFrame {
 		option = new GuiOptions(this);
 		addTab("Options", Icons.OPTIONS, option);
 
-		about = new GuiAbout();
-		addTab("About", Icons.ABOUT, about);
+		about = new GuiAbout(this);
+		addTab("Info", Icons.ABOUT, about);
 
 		tabbed.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
@@ -150,7 +150,7 @@ public @Getter class GuiFrame extends JFrame {
 		});
 
 		//		tabbed.setSelectedComponent(collections.get(MangaCollection.WATCHING));
-		tabbed.setSelectedComponent(option);
+		tabbed.setSelectedComponent(about);
 
 		tray = new GuiTray(this);
 	}

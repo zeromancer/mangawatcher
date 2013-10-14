@@ -80,7 +80,7 @@ public @Getter class GuiDownloading extends JPanel {
 		}
 	};
 
-	public GuiDownloading(GuiFrame frame) {
+	public GuiDownloading(final GuiFrame frame) {
 		this.setLayout(new BorderLayout());
 		this.frame = frame;
 		this.logic = frame.getLogic();
@@ -137,6 +137,7 @@ public @Getter class GuiDownloading extends JPanel {
 						library.save(executors);
 						enableButtonsInvoked(true);	
 						enableCountdownDisplayInvoked();
+						frame.getTray().update();
 					}
 				});		
 			}
@@ -156,6 +157,7 @@ public @Getter class GuiDownloading extends JPanel {
 						library.save(executors);
 						enableButtonsInvoked(true);	
 						enableCountdownDisplayInvoked();
+						frame.getTray().update();
 					}
 				});		
 			}
