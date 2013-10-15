@@ -3,23 +3,10 @@
 	<classpathentry kind="con" path="org.eclipse.xtend.XTEND_CONTAINER"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="Libraries/HTML/jsoup-1.7.2.jar" sourcepath="Libraries/HTML/jsoup-1.7.2-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/MangaWatcher/Libraries/HTML/jsoup-1.7.2-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="Libraries/Lombok/lombok.jar"/>
-	<classpathentry kind="lib" path="Libraries/MigLayout/miglayout-4.0-swing.jar" sourcepath="Libraries/MigLayout/miglayout-4.0-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/MangaWatcher/Libraries/MigLayout/miglayout-4.0-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="Libraries/XML/xstream-1.4.5/lib/xstream-1.4.5.jar"/>
-	<classpathentry kind="lib" path="Libraries/XML/xpp3_min-1.1.4c.jar"/>
-	<classpathentry kind="lib" path="Libraries/YAML/snakeyaml-1.11.jar" sourcepath="Libraries/YAML/snakeyaml-1.11-sources.jar"/>
-	<classpathentry kind="lib" path="Libraries/JSON/gson-2.2.4.jar" sourcepath="Libraries/JSON/gson-2.2.4-sources.jar"/>
-	<classpathentry kind="lib" path="Libraries/Swing/jfontchooser-1.0.5-bin.zip" sourcepath="Libraries/Swing/jfontchooser-1.0.5-src.zip"/>
-	<classpathentry kind="lib" path="Libraries/Swing/jfontchooser-1.0.5/jfontchooser-1.0.5.jar"/>
-	<classpathentry kind="lib" path="Libraries/Swing/jmc-java1_0.jar"/>
+	<classpathentry kind="lib" path="libraries/gson/gson-2.2.4.jar" sourcepath="libraries/gson/gson-2.2.4-sources.jar"/>
+	<classpathentry kind="lib" path="libraries/swing/jmc-java1_0.jar"/>
+	<classpathentry kind="lib" path="libraries/lombok/lombok.jar"/>
+	<classpathentry kind="lib" path="libraries/swing/miglayout/miglayout-4.0-swing.jar" sourcepath="libraries/swing/miglayout/miglayout-4.0-sources.jar"/>
+	<classpathentry kind="lib" path="libraries/html/jsoup-1.7.2.jar" sourcepath="libraries/html/jsoup-1.7.2-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

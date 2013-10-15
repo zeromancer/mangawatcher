@@ -149,8 +149,10 @@ public @Getter class GuiFrame extends JFrame {
 			}
 		});
 
-		//		tabbed.setSelectedComponent(collections.get(MangaCollection.WATCHING));
-		tabbed.setSelectedComponent(about);
+		if(library.getCollection(MangaCollection.WATCHING).size()==0)
+			tabbed.setSelectedComponent(add);
+		else
+			tabbed.setSelectedComponent(collections.get(MangaCollection.WATCHING));
 
 		tray = new GuiTray(this);
 	}
