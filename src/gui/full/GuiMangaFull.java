@@ -1,3 +1,20 @@
+/*
+    MangaWatcher - a manga management program. 
+    Copyright (C) 2013 David Siewert
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 package gui.full;
 
 import gui.GuiFrame;
@@ -37,29 +54,6 @@ import net.miginfocom.swing.MigLayout;
 import data.Manga;
 import data.Manga.MangaCollection;
 import data.MangaLibrary;
-
-/*
- * 
- * Quck View: Image Button "Read Newest" (if new available)
- * 
- * 
- * Full View
- * 
- * // Info
- * 
- * Image Description Reading Progressbar
- * 
- * // Read
- * 
- * Button "Read Newest" (if new available) Righclick -> redownload ? Button
- * Table <- all Chapters
- * 
- * // Change Settings
- * 
- * Button "Check for Updates" ComboBox Change Status Redownload + from
- * ComboBox + to ComboBox + Redownload Button
- */
-
 public class GuiMangaFull extends JScrollPane {
 
 	private final GuiFrame frame;
@@ -195,7 +189,7 @@ public class GuiMangaFull extends JScrollPane {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				frame.getTabbed().setSelectedComponent(frame.getDownloading());
-				frame.getDownloading().getDeep().doClick();
+				frame.getDownloading().updateDeep(manga);;
 			}
 		});
 		panel.add(sync, optionsAddComponent);
