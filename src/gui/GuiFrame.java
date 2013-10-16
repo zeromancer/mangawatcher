@@ -30,6 +30,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Font;
 import java.io.File;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -95,7 +96,7 @@ public @Getter class GuiFrame extends JFrame {
 		getContentPane().setLayout(new BorderLayout());
 		// general
 
-		setUIFont(new javax.swing.plaf.FontUIResource("Arial", Font.PLAIN, 20));
+		setUIFont(new javax.swing.plaf.FontUIResource("Arial", Font.PLAIN, 14));
 
 		executors = new BackgroundExecutors();
 		library = DiskIOManager.loadLibrary(config);
@@ -222,14 +223,32 @@ public @Getter class GuiFrame extends JFrame {
 						UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 				} catch (Exception e) {
 				}
+				
 
-				String config = "config";
-				if (args.length == 2) {
-					config = args[1];
+//				M.print("args: "+Arrays.toString(args));
+				
+				String config = null;
+				
+				if (args.length >= 1) {
+					config = args[0];
 					File file = new File(config);
 					if (Files.exists(Paths.get(file.toURI())) && !file.isDirectory()) {
-						M.print("" + config + " is not a directory, please provide a valid directory");
+						M.print("" + config + " is not a directory, please provide a valid config directory");
+						System.exit(1);
 					}
+				}else{
+
+					URL url = ClassLoader.getSystemResource(".");
+					
+					config = url.toString().substring(5, url.toString().length());
+					
+					if(config.endsWith("bin/"))
+						config = config.substring(0, config.length()-4);
+					
+					if(config.endsWith("MangaWatcher/"))
+						config += "config/";
+					
+//					M.print("config: "+config);
 				}
 				JFrame frame = new GuiFrame(config);
 				//frame.pack();

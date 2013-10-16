@@ -33,8 +33,8 @@ public class GuiTray {
 	private MenuItem item;
 	private TrayIcon trayIcon;
 
-	Image noNewerAvailableIcon;
-	Image newerAvailableIcon;
+	private Image noNewerAvailableIcon;
+	private Image newerAvailableIcon;
 
 	private int oldAvailable;
 

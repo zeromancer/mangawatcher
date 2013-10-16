@@ -24,6 +24,7 @@ import gui.threading.BackgroundExecutors;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -142,9 +143,16 @@ public @Getter class Engine {
 	}
 
 	public void load(Icons icon) {
-		final String path = "icons/" + icon.getPath();
+		URL url = null;
+		if(url == null)
+			url = ClassLoader.getSystemResource(icon.getPath());
+		if(url == null)
+			url = ClassLoader.getSystemResource("../"+icon.getPath());
+		if(url == null)
+			url = ClassLoader.getSystemResource("../"+"icons/"+icon.getPath());
 		try {
-			BufferedImage image = ImageIO.read(new File(path));
+			BufferedImage image = ImageIO.read(url);
+//			BufferedImage image = ImageIO.read(new File(path));
 			icons.put(icon, image);
 		} catch (IOException e) {
 			e.printStackTrace();

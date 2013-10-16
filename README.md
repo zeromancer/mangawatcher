@@ -38,9 +38,9 @@ Systemtray:
 Windows:
 	Click on MangaWatcher.jar
 	
-Linux (in terminal):
-	java -jar MangaWatcher.jar [Optional: config directory]
-
+Linux:
+	java -jar MangaWatcher.jar
+	java -jar MangaWatcher.jar /home/$USER/.config/MangaWatcher
 
 ## New Features ##
 
