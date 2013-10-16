@@ -68,8 +68,8 @@ public @Setter class ReaderUpdate implements MangaUpdate {
 			print("Successfully updated mangas from latest mangareader.net releases");
 			progressEnd("Successfully updated latest releases");
 		} catch (IOException e) {
-			e.printStackTrace();
-			print("Error: \n" + e.getMessage());
+			M.exception(e);
+			print("Error: " + e.getMessage());
 			print("Failed to update mangas from latest mangareader.net releases");
 			progressEnd("Failed to update from latest releases");
 		}
@@ -106,7 +106,7 @@ public @Setter class ReaderUpdate implements MangaUpdate {
 			progressEnd("Successfully updated "+manga.getName());
 		} catch (IOException e) {
 			e.printStackTrace();
-			print("Error: \n" + e.getMessage());
+			print("Error: " + e.getMessage());
 			progressEnd("Failed to update manga "+manga.getName());
 			progressEnd("Failed to update "+manga.getName());
 		}
@@ -204,8 +204,13 @@ public @Setter class ReaderUpdate implements MangaUpdate {
 			String extension = url.substring(url.length() - 3);
 			String filename = String.format("%s_%04d_%03d.%s", manga.getName(), chapter, page, extension);
 			print("Downloading image: "+filename+"  from: "+url);
-			BufferedImage image = ImageIO.read(new URL(url));
-			ImageIO.write(image, extension, new File(destination.getAbsolutePath(), filename));
+			try {
+				BufferedImage image = ImageIO.read(new URL(url));
+				ImageIO.write(image, extension, new File(destination.getAbsolutePath(), filename));	
+			} catch (IOException e) {
+				M.exception(e);
+				print("Error: " + e.getMessage());
+			}
 			return filename;
 		}
 		return ".";

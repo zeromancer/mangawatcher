@@ -53,7 +53,7 @@ public @Setter class ReaderAvailable implements MangaAvailable {
 			progressEnd("Successfully refreshed manga list");
 		} catch (IOException e) {
 			e.printStackTrace();
-			print("Error: \n"+e.getMessage());
+			print("Error: "+e.getMessage());
 			print("Failed to refresh available mangareader.net manga list");
 			progressEnd("Failed to refresh manga list");
 		}

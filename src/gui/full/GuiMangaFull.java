@@ -85,6 +85,9 @@ public class GuiMangaFull extends JScrollPane {
 	
 	private final JSpinner setDownload;
 	private final JLabel setDownloadLabel;
+
+	private final JSpinner setRead;
+	private final JLabel setReadLabel;
 	
 	private final JButton remove;
 	private final JLabel removeLabel;
@@ -235,6 +238,33 @@ public class GuiMangaFull extends JScrollPane {
 			}
 		});
 		panel.add(setDownload,optionsAddComponent);
+
+		// Set Downloaded
+		setReadLabel = new JLabel("Set Read:");
+		setReadLabel.setFont(frame.getOptions().getLabelFont());
+		panel.add(setReadLabel,optionsAddLabel);
+		SpinnerModel model2 = new SpinnerNumberModel(0, 0, 9999, 1);
+		setRead = new JSpinner(model2);
+		setRead.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				JSpinner source = (JSpinner)e.getSource();
+				//M.print(""+source.getValue());
+				int read = (Integer)source.getValue();
+				manga.setRead(read);
+				for (int i = buttons.size() - 1; i >= 0; i--) {
+					grid.remove(i);
+					buttons.remove(i);
+				}
+				addButtons();
+//				updateButtons();
+//				addButtons();
+//				deleteButtons();
+				GuiMangaFull.this.revalidate();
+				GuiMangaFull.this.repaint();
+				frame.getTray().update();
+			}
+		});
+		panel.add(setRead,optionsAddComponent);
 		
 		
 		// Remove
@@ -291,6 +321,9 @@ public class GuiMangaFull extends JScrollPane {
 		setDownload.setVisible(selected);
 		setDownloadLabel.setVisible(selected);
 
+		setRead.setVisible(selected);
+		setReadLabel.setVisible(selected);
+		
 		remove.setVisible(selected);
 		removeLabel.setVisible(selected);
 		
@@ -331,6 +364,7 @@ public class GuiMangaFull extends JScrollPane {
 //		M.print("updating Major: "+selection+" , ordinal: "+manga.getCollection().ordinal()+" col: "+manga.getCollection());
 		collection.setSelectedIndex(manga.getCollection().ordinal());
 		setDownload.setValue(manga.getDownloaded());
+		setRead.setValue(manga.getRead());
 		updateButtons();
 		addButtons();
 		deleteButtons();
@@ -338,6 +372,8 @@ public class GuiMangaFull extends JScrollPane {
 
 	private void updateMinor() {
 		//		M.print("updating Minor: "+manga.getName());
+		setDownload.setValue(manga.getDownloaded());
+		setRead.setValue(manga.getRead());
 		updateButtons();
 		addButtons();
 	}
@@ -349,7 +385,7 @@ public class GuiMangaFull extends JScrollPane {
 	}
 
 	private void addButtons() {
-		for (int i = Math.max(buttons.size(),1); i < manga.getDownloaded() + 1; i++) {
+		for (int i = Math.max(buttons.size(),1); i <= manga.getDownloaded(); i++) {
 			JGradientButton button = new JGradientButton("" + i, i <= manga.getRead());
 			final int j = i;
 			button.addActionListener(new ActionListener() {

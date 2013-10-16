@@ -39,9 +39,9 @@ import data.Options;
 
 	private final JPanel panel;
 
-	private final String layoutTitle = "span 2, align center";
+	private final String layoutTitle = "span 2, align center, gaptop 30";
 	private final String layoutLabel = "align right";
-	private final String layoutComponent = "align left, gaptop 30";
+	private final String layoutComponent = "align left";
 
 	public GuiAbout(GuiFrame frame) {
 		this.frame = frame;
