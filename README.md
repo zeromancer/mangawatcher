@@ -33,10 +33,10 @@ Systemtray:
 [java jre](http://www.java.com/en/download/index.jsp)
 
 
-## Usage ##
+## Start ##
 
 Windows:
-	Click on MangaWatcher.exe
+	Click on MangaWatcher.jar
 	
 Linux (in terminal):
 	java -jar MangaWatcher.jar [Optional: config directory]
