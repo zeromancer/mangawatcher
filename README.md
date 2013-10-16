@@ -30,18 +30,21 @@ Systemtray:
 
 ## Requirements ##
 
-[java jre](http://www.java.com/en/download/index.jsp)
+* [java jre](http://www.java.com/en/download/index.jsp)
 
 
 ## Start ##
 
-Windows:
+* Windows:
+```
 	Click on MangaWatcher.jar
-	
-Linux:
+```
+
+* Linux:
+```
 	java -jar MangaWatcher.jar
 	java -jar MangaWatcher.jar /home/$USER/.config/MangaWatcher
-
+```
 ## New Features ##
 
 **How to do a feature requst:**
