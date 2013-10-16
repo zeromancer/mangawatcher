@@ -67,11 +67,6 @@ public @Getter class GuiFrame extends JFrame {
 	private final Options options;
 	private final Engine engine;
 
-	// Header
-	// private final GuiMenuBar menubar;
-	// private final JMenuBar menubar;
-	// private final GuiProgressBar progress;
-
 	// Content
 	private final JTabbedPane tabbed;
 	private final GuiDownloading downloading;
@@ -83,8 +78,6 @@ public @Getter class GuiFrame extends JFrame {
 	private final GuiAbout about;
 
 	private final GuiTray tray;
-
-	// private GuiMenuBar menu;
 
 	public GuiFrame(String config) {
 

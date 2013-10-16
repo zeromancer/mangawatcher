@@ -30,8 +30,9 @@ Systemtray:
 
 ## Requirements ##
 
-* [java jre](http://www.java.com/en/download/index.jsp)
-
+Download:
+* [Java Runtime Environment(JRE)](http://www.java.com/en/download/index.jsp)
+* [MangaWatcher.jar](https://github.com/zeromancer/mangawatcher/raw/master/MangaWatcher.jar)
 
 ## Start ##
 
@@ -40,7 +41,7 @@ Systemtray:
 	Click on MangaWatcher.jar
 ```
 
-* Linux:
+* Linux (in terminal):
 ```
 	java -jar MangaWatcher.jar
 	java -jar MangaWatcher.jar /home/$USER/.config/MangaWatcher
