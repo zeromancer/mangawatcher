@@ -43,12 +43,14 @@ Download:
 	Click on MangaWatcher.jar
 ```
 
-* Linux (in terminal):
+* Linux/Mac (in terminal):
 ```
 	java -jar MangaWatcher.jar
 	java -jar MangaWatcher.jar /home/$USER/.config/MangaWatcher
 ```
-## Customisations ##
+
+
+## Customisation ##
 
 How to change the default manga directory:
  * Move the Manga directory folder to desired destination
@@ -56,8 +58,9 @@ How to change the default manga directory:
 
 Default manga directory:
  * Windows: C://Mangas
- * Linux: /home/$USER/Mangas
-
+ * Linux: ~/Mangas
+ * Max: ~/Mangas
+ 
 Default config directory:
  * No command line argument given: Same directory as the executed JAR file
  * Command line argument given: the provided location in the first argument
