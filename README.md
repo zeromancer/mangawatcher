@@ -59,7 +59,7 @@ How to change the default manga directory:
 Default manga directory:
  * Windows: C://Mangas
  * Linux: ~/Mangas
- * Max: ~/Mangas
+ * Mac: ~/Mangas
  
 Default config directory:
  * No command line argument given -> Same directory as the executed JAR file
