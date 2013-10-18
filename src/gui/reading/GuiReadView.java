@@ -56,7 +56,7 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 		READING(""),
 		LOADING("Loading images..."),
 		RESIZING("Resizing images..."),
-		NOTFOUND("No Images found."),
+		NOTFOUND("No images found."),
 		ERROR("Please select a manga");
 
 		String message;
