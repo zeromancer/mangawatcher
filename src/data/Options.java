@@ -36,6 +36,8 @@ public @Data class Options {
 	private int readingZoom;
 	private int readingScroll;
 	
+	private String lastImageCopyLocation;
+	
 	public Options() {
 	}
 	

@@ -96,6 +96,14 @@ public class GuiReadToolBar extends JToolBar {
 		nextPage = new JButton(new ImageIcon(engine.getIcon(Icons.RIGHT)));
 		nextChapter = new JButton(new ImageIcon(engine.getIcon(Icons.DOUBLERIGHT)));
 		
+		resync.setFocusable(false);
+		showZoom.setFocusable(false);
+		showScroll.setFocusable(false);
+		previousChapter.setFocusable(false);
+		previousPage.setFocusable(false);
+		nextPage.setFocusable(false);
+		nextChapter.setFocusable(false);
+		
 		zoom = new JSlider(10, 400, options.getReadingZoom());
 		zoom.setPaintTicks(true);
 		zoom.setMinorTickSpacing(10);

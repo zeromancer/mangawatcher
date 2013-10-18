@@ -108,9 +108,9 @@ public class GuiMangaFull extends JScrollPane {
 
 		// Layout
 		panel.setLayout(new MigLayout("", "5:50:200[align right,grow,200::500][align left,grow,100::400,shrink]5:50:200", "[top][top]"));
-		String subheaderAddLabel = "growx, span 2, wrap";
-		String optionsAddLabel = "gapleft 40, align left";
-		String optionsAddComponent = "width 200!, wrap";
+		String layoutCenter = "growx, span 2, wrap";
+		String layoutLeft = "gapleft 40, align left";
+		String layoutRight = "width 200!, wrap";
 
 		// Title
 		title = new JLabel("Unselected");
@@ -133,10 +133,25 @@ public class GuiMangaFull extends JScrollPane {
 		scroll.setBorder(BorderFactory.createEmptyBorder());
 		panel.add(scroll, "grow, shrink, wrap");
 
+		// Sync
+		syncLabel = new JLabel("Recheck:");
+		syncLabel.setFont(frame.getOptions().getLabelFont());
+//		panel.add(syncLabel, optionsAddLabel);
+		sync = new JButton("Check for updates now");
+		sync.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.getTabbed().setSelectedComponent(frame.getDownloading());
+				frame.getDownloading().updateDeep(manga);;
+			}
+		});
+		panel.add(sync, layoutCenter);
+		
+		
 		// Chapters Title
 		JLabel label = new JLabel("Chapters");
 		label.setFont(frame.getOptions().getSubtitelFont());
-		panel.add(label, subheaderAddLabel);
+		panel.add(label, layoutCenter);
 		grid = new JPanel(new GridLayout(0, 10));
 		grid.setBorder(BorderFactory.createEmptyBorder());
 		panel.add(grid, "align center, growx, shrink, span 2, wrap");
@@ -164,12 +179,12 @@ public class GuiMangaFull extends JScrollPane {
 				repaint();
 			}
 		});
-		panel.add(show, optionsAddComponent+", gaptop 7");
+		panel.add(show, layoutRight+", gaptop 7");
 		
 		// Change Collection
 		collectionLabel = new JLabel("Change Colllection:");
 		collectionLabel.setFont(frame.getOptions().getLabelFont());
-		panel.add(collectionLabel, optionsAddLabel);
+		panel.add(collectionLabel, layoutLeft);
 		collection = new JComboBox<String>(MangaCollection.strings());
 		collection.addActionListener(new ActionListener() {
 			@Override
@@ -181,26 +196,13 @@ public class GuiMangaFull extends JScrollPane {
 				library.save(frame.getExecutors());
 			}
 		});
-		panel.add(collection, optionsAddComponent);
+		panel.add(collection, layoutRight);
 
-		// Sync
-		syncLabel = new JLabel("Recheck:");
-		syncLabel.setFont(frame.getOptions().getLabelFont());
-		panel.add(syncLabel, optionsAddLabel);
-		sync = new JButton("Now");
-		sync.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				frame.getTabbed().setSelectedComponent(frame.getDownloading());
-				frame.getDownloading().updateDeep(manga);;
-			}
-		});
-		panel.add(sync, optionsAddComponent);
 
 		// Redownload
 		redownloadLabel = new JLabel("Redownload:");
 		redownloadLabel.setFont(frame.getOptions().getLabelFont());
-		panel.add(redownloadLabel, optionsAddLabel);
+		panel.add(redownloadLabel, layoutLeft);
 		redownload = new JButton("All Chapters");
 		redownload.addActionListener(new ActionListener() {
 			@Override
@@ -210,12 +212,12 @@ public class GuiMangaFull extends JScrollPane {
 				frame.getDownloading().getDeep().doClick();
 			}
 		});
-		panel.add(redownload, optionsAddComponent);
+		panel.add(redownload, layoutRight);
 
 		// Set Downloaded
 		setDownloadLabel = new JLabel("Set Downloaded:");
 		setDownloadLabel.setFont(frame.getOptions().getLabelFont());
-		panel.add(setDownloadLabel,optionsAddLabel);
+		panel.add(setDownloadLabel,layoutLeft);
 		SpinnerModel model = new SpinnerNumberModel(0, 0, 9999, 1);
 		setDownload = new JSpinner(model);
 		setDownload.addChangeListener(new ChangeListener() {
@@ -237,12 +239,12 @@ public class GuiMangaFull extends JScrollPane {
 				frame.getTray().update();
 			}
 		});
-		panel.add(setDownload,optionsAddComponent);
+		panel.add(setDownload,layoutRight);
 
 		// Set Downloaded
 		setReadLabel = new JLabel("Set Read:");
 		setReadLabel.setFont(frame.getOptions().getLabelFont());
-		panel.add(setReadLabel,optionsAddLabel);
+		panel.add(setReadLabel,layoutLeft);
 		SpinnerModel model2 = new SpinnerNumberModel(0, 0, 9999, 1);
 		setRead = new JSpinner(model2);
 		setRead.addChangeListener(new ChangeListener() {
@@ -264,13 +266,13 @@ public class GuiMangaFull extends JScrollPane {
 				frame.getTray().update();
 			}
 		});
-		panel.add(setRead,optionsAddComponent);
+		panel.add(setRead,layoutRight);
 		
 		
 		// Remove
 		removeLabel = new JLabel("Remove:");
 		removeLabel.setFont(frame.getOptions().getLabelFont());
-		panel.add(removeLabel, optionsAddLabel);
+		panel.add(removeLabel, layoutLeft);
 		remove = new JButton("This Manga");
 		remove.addActionListener(new ActionListener() {
 			@Override
@@ -286,13 +288,13 @@ public class GuiMangaFull extends JScrollPane {
 				show.setEnabled(false);
 			}
 		});
-		panel.add(remove, optionsAddComponent);
+		panel.add(remove, layoutRight);
 		
 
 		// Save
 		saveLabel = new JLabel("Save Changes:");
 		saveLabel.setFont(frame.getOptions().getLabelFont());
-		panel.add(saveLabel, optionsAddLabel);
+		panel.add(saveLabel, layoutLeft);
 		save = new JButton("To Disk");
 		save.addActionListener(new ActionListener() {
 			@Override
@@ -300,7 +302,7 @@ public class GuiMangaFull extends JScrollPane {
 				library.save(frame.getExecutors());
 			}
 		});
-		panel.add(save, optionsAddComponent);
+		panel.add(save, layoutRight);
 		
 		
 		setOptionVisibility(false);
@@ -312,8 +314,8 @@ public class GuiMangaFull extends JScrollPane {
 		collection.setVisible(selected);
 		collectionLabel.setVisible(selected);
 		
-		sync.setVisible(selected);
-		syncLabel.setVisible(selected);
+//		sync.setVisible(selected);
+//		syncLabel.setVisible(selected);
 		
 		redownload.setVisible(selected);
 		redownloadLabel.setVisible(selected);

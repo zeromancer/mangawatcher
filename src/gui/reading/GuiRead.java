@@ -24,10 +24,13 @@ import gui.threading.BackgroundExecutors;
 import java.awt.BorderLayout;
 
 import javax.swing.BoxLayout;
+import javax.swing.InputMap;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JSlider;
+import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -71,6 +74,9 @@ public @Getter @Setter class GuiRead extends JPanel {
 		slider.setSnapToTicks(true);
 		slider.setOrientation(SwingConstants.VERTICAL);
 		slider.setInverted(true);
+		InputMap im = slider.getInputMap();
+		im.put(KeyStroke.getKeyStroke("HOME"), "maxScroll");
+		im.put(KeyStroke.getKeyStroke("END"), "minScroll");
 		slider.addChangeListener(new ChangeListener() {
 			@Override
 			public void stateChanged(ChangeEvent e) {
@@ -87,14 +93,24 @@ public @Getter @Setter class GuiRead extends JPanel {
 			}
 		});
 		add(slider, BorderLayout.EAST);
-
+		
 		view = new GuiReadView(frame, this);
-		view.requestFocus();
-		view.requestFocusInWindow();
 		add(view, BorderLayout.CENTER);
-
+		
 		bar = new GuiReadToolBar(frame, this, view);
 		add(bar, BorderLayout.NORTH);
+		
+		slider.setFocusable(false);
+		view.setFocusable(true);
+		bar.setFocusable(false);
+		
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				view.requestFocus();
+				view.requestFocusInWindow();
+				view.grabFocus();
+			}
+		});
 
 	}
 

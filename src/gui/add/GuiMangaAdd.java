@@ -29,6 +29,7 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -44,18 +45,23 @@ import data.MangaLibrary;
 
 public class GuiMangaAdd extends JPanel {
 
-	final private GuiFrame frame;
-	final private MangaLibrary library;
-	final private MangaLogic logic;
-	final private BackgroundExecutors executors;
+	private final GuiFrame frame;
+	private final MangaLibrary library;
+	private final MangaLogic logic;
+	private final BackgroundExecutors executors;
 
-	final private JLabel title;
-	final private JLabel source;
-	final private JComboBox<String> combo;
+	private final JLabel title;
+	private final JLabel source;
+	private final JComboBox<String> combo;
 
-	final private JLabel label;
-	final private JComboBox<String> collection;
-	final private JButton button;
+	private final JLabel collectionLabel;
+	private final JComboBox<String> collection;
+	private final JLabel checkLabel;
+	private final JCheckBox check;
+	private final JButton button;
+	
+	
+	
 
 	public GuiMangaAdd(final GuiFrame frame) {
 		super(new MigLayout("align center", "0:10%:20%[grow,fill]0:10%:20%", ""));
@@ -83,13 +89,23 @@ public class GuiMangaAdd extends JPanel {
 		combo.setSelectedIndex(-1);
 		add(combo, "wrap");
 
-		label = new JLabel("Add to Colllection:");
-		label.setFont(frame.getOptions().getLabelFont());
-		add(label, "split 2");
+		collectionLabel = new JLabel("Add to Colllection:");
+		collectionLabel.setFont(frame.getOptions().getLabelFont());
+		add(collectionLabel, "split 2");
 		collection = new JComboBox<String>(MangaCollection.strings());
 		collection.setSelectedIndex(0);
 		add(collection, "wrap");
 
+		
+		checkLabel = new JLabel("Start Downloading");
+		checkLabel.setFont(frame.getOptions().getLabelFont());
+		add(checkLabel,"split 2");
+		check = new JCheckBox();
+		check.setSelected(true);
+		add(check,"wrap");
+		
+		
+		
 		// button
 		button = new JButton("Add");
 		button.addActionListener(new ActionListener() {
@@ -100,6 +116,7 @@ public class GuiMangaAdd extends JPanel {
 				final JTabbedPane tabbed = frame.getTabbed();
 				final GuiDownloading down = frame.getDownloading();
 				final Engine engine = frame.getEngine();
+				final boolean selected = check.isSelected();
 				
 				if(combo.getSelectedIndex()==-1)
 					return;
@@ -122,6 +139,8 @@ public class GuiMangaAdd extends JPanel {
 					public void run() {
 						logic.add(MangaSource.MANGAREADER, name, addCollection);
 						engine.load(library.getManga(name));
+						if(selected)
+							down.updateDeep(library.getManga(name));
 						library.save(executors);
 						frame.getDownloading().enableButtonsInvoked(true);
 					}

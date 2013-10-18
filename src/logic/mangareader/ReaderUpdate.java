@@ -18,6 +18,7 @@
 package logic.mangareader;
 
 import gui.downloading.GuiDownloading;
+import gui.threading.BackgroundExecutors;
 
 import java.awt.image.BufferedImage;
 import java.io.BufferedWriter;
@@ -52,6 +53,8 @@ import data.MangaLibrary;
 public @Setter class ReaderUpdate implements MangaUpdate {
 
 	private final MangaLibrary library;
+	private BackgroundExecutors executors;
+	
 	private GuiDownloading gui;
 	private boolean spacing = false;
 	
@@ -155,10 +158,13 @@ public @Setter class ReaderUpdate implements MangaUpdate {
 				if(newRelease>manga.getDownloaded())
 					manga.setDownloaded(newRelease);
 				
-				if(downloaded.size()%11 == 10){
-					print("Downloaded more 10 Chapters");
-					print("Saving Library to "+library.getConfigDirectory());
-					library.save();
+				if(downloaded.size()%3 == 2){
+					print("Downloaded 2 or more chapters:");
+					print("Saving library to "+library.getConfigDirectory());
+					if(executors!=null)
+						library.save(executors);
+					else
+						library.save();
 				}
 			}
 		}
@@ -210,6 +216,7 @@ public @Setter class ReaderUpdate implements MangaUpdate {
 			} catch (IOException e) {
 				M.exception(e);
 				print("Error: " + e.getMessage());
+				M.print("Error: " + e.getMessage());
 			}
 			return filename;
 		}
@@ -309,6 +316,7 @@ public @Setter class ReaderUpdate implements MangaUpdate {
 	
 	public void setGui(GuiDownloading gui) {
 		this.gui = gui;
+		this.executors = gui.getExecutors();
 	}
 	
 }

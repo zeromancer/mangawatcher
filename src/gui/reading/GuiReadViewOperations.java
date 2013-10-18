@@ -93,6 +93,9 @@ public class GuiReadViewOperations {
 		if(manga == null || chapter < 1 || chapter > manga.getDownloaded())
 			return;
 		
+		if(mapImages.containsKey(chapter))
+			return;
+		
 		// Clean up if to many chapters loaded
 		if(mapImages.size()>10){
 			int doNotDelete = view.getChapter();
@@ -109,6 +112,11 @@ public class GuiReadViewOperations {
 		executors.runOnFileThread(new Runnable() {
 			@Override
 			public void run() {
+				
+
+				if(mapImages.containsKey(chapter))
+					return;
+				
 				final String path = manga.getMangaDirectory(library, chapter);
 				final File folder = new File(path);
 
@@ -188,23 +196,6 @@ public class GuiReadViewOperations {
 				backgroundZoomingFinish(mapNew);
 			}
 		});
-		// TODO Auto-generated method stub
-//		M.print("zoom: " + this.zoom + " -> " + zoom);
-//		if (this.zoom == zoom)
-//			return;
-//		state = ReadingState.RESIZING;
-//		repaint();
-//		List<BufferedImage> images = mapImages.get(chapter);
-//		for (int i = 0; i < images.size(); i++) {
-//			BufferedImage image = images.get(i);
-//			if (image == null)
-//				continue;
-//			BufferedImage newer = operations.scaleImage(image, this.zoom, zoom);
-//			// M.print(" "+image.getWidth()+ " -> "+newer.getWidth());
-//			images.set(i, newer);
-//		}
-//		this.zoom = zoom;
-//		state = ReadingState.READING;
 	}
 	
 
@@ -236,7 +227,6 @@ public class GuiReadViewOperations {
 	}
 
 	protected void defaultProgress() {
-		//progress.setValue((GuiReadView.this.chapter) * 100 / manga.getReleased());
 		progress.setValue(100);
 		progress.setText("" + view.getManga().getName() + " Chapter " + view.getChapter());
 		progress.repaint();
@@ -263,7 +253,7 @@ public class GuiReadViewOperations {
 	protected void initializeKeyShortcuts() {
 
 		ActionMap actionMap = view.getActionMap();
-		InputMap inputMap = view.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		InputMap inputMap = view.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
 
 		AbstractAction scrollUp = new AbstractAction() {
 			@Override
@@ -300,13 +290,37 @@ public class GuiReadViewOperations {
 			}
 		};
 
+		AbstractAction chapterNext = new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				view.nextChapter();
+			}
+		};
+		
+		AbstractAction chapterPrevious = new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				view.previousChapter();
+			}
+		};
+		
 		Map<Integer, AbstractAction> actions = new HashMap<>();
 		actions.put(KeyEvent.VK_W, scrollUp);
 		actions.put(KeyEvent.VK_S, scrollDown);
+		actions.put(KeyEvent.VK_A, chapterPrevious);
+		actions.put(KeyEvent.VK_D, chapterNext);
+		
+		actions.put(KeyEvent.VK_UP, scrollUp);
+		actions.put(KeyEvent.VK_DOWN, scrollDown);
+		actions.put(KeyEvent.VK_LEFT, chapterPrevious);
+		actions.put(KeyEvent.VK_RIGHT, chapterNext);
+		
 		actions.put(KeyEvent.VK_PAGE_UP, heightUp);
 		actions.put(KeyEvent.VK_PAGE_DOWN, heightDown);
 		actions.put(KeyEvent.VK_SPACE, pageDown);
 
+		
+		
 		for (Entry<Integer, AbstractAction> entry : actions.entrySet()) {
 			Integer key = entry.getKey();
 			AbstractAction value = entry.getValue();
@@ -314,7 +328,5 @@ public class GuiReadViewOperations {
 			actionMap.put("" + key, value);
 		}
 	}
-
-
 
 }

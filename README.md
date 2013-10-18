@@ -30,8 +30,10 @@ Systemtray:
 
 ## Requirements ##
 
+Install:
+* [Java Runtime Environment (JRE)](http://www.java.com/en/download/index.jsp)
+
 Download:
-* [Java Runtime Environment(JRE)](http://www.java.com/en/download/index.jsp)
 * [MangaWatcher.jar](https://github.com/zeromancer/mangawatcher/raw/master/MangaWatcher.jar)
 
 ## Start ##

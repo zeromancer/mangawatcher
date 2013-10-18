@@ -22,24 +22,35 @@ import gui.menu.GuiProgressBar;
 import gui.threading.BackgroundExecutors;
 
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.JFileChooser;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JSlider;
+import javax.swing.SwingUtilities;
 
+import logic.DiskIOManager;
 import lombok.Getter;
 import lombok.Setter;
+import misc.M;
 import data.Manga;
 import data.MangaLibrary;
 import data.Options;
 
-public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelListener {
+public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelListener,MouseListener {
 
 	public enum ReadingState {
 		READING(""),
@@ -82,7 +93,13 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 	private final Map<Integer, List<BufferedImage>> mapImages;
 	private final Map<Integer, List<File>> mapFiles;
 
-	public GuiReadView(GuiFrame frame, GuiRead gui) {
+	private JPopupMenu menu;
+	private JMenuItem newLocation;
+	private JMenuItem oldLocation;
+	private JFileChooser chooser;
+	
+	
+	public GuiReadView(final GuiFrame frame, GuiRead gui) {
 		this.frame = frame;
 		this.gui = gui;
 		this.options = frame.getOptions();
@@ -93,6 +110,7 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 		
 		setFocusable(true);
 		addMouseWheelListener(this);
+		addMouseListener(this);
 
 		mapImages = new HashMap<Integer, List<BufferedImage>>();
 		mapFiles = new HashMap<Integer, List<File>>();
@@ -102,7 +120,72 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 
 //		this.zoom = options.getReadingZoom();
 //		this.scrollAmount = frame.getOptions().getReadingScroll();
+		chooser = new JFileChooser();
+		chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		
+		final ActionListener oldLocationActionListener = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				File file = new File(options.getLastImageCopyLocation());
+				File source = mapFiles.get(chapter).get(page);
+				if(file.isDirectory()){
+					try {
+						M.copy(source, new File(file, source.getName()));
+					} catch (IOException e1) {
+						M.exception(e1);
+					}
+				}else{
+					try {
+						M.copy(source, new File(file.getParent(), source.getName()));
+					} catch (IOException e1) {
+						M.exception(e1);
+					}
+				}
+			}
+		};
+		
+		menu = new JPopupMenu();
+		newLocation = new JMenuItem("Copy to...");
+		newLocation.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int result = chooser.showOpenDialog(frame);
+				if(result == JFileChooser.APPROVE_OPTION){
+					File file = chooser.getSelectedFile();
+					File source = mapFiles.get(chapter).get(page);
+					if(file.isDirectory()){
+						try {
+							M.copy(source, new File(file, source.getName()));
+						} catch (IOException e1) {
+							M.exception(e1);
+						}
+					}else{
+						try {
+							M.copy(source, file);
+						} catch (IOException e1) {
+							M.exception(e1);
+						}
+					}
+					options.setLastImageCopyLocation(file.getAbsolutePath());
+					if(oldLocation == null || oldLocation.getName() != file.getAbsolutePath()){
+						oldLocation = new JMenuItem(file.getAbsolutePath());
+						oldLocation.addActionListener(oldLocationActionListener);
+						menu.add(oldLocation);
+						executors.runOnFileThread(new Runnable() {
+							public void run() {
+								DiskIOManager.saveOptions(getOptions(), library.getConfigDirectory());
+							}
+						});
+						
+					}
+				}
+			}
+		});
+		menu.add(newLocation);
+		
+		if(options.getLastImageCopyLocation() != null){
+			oldLocation = new JMenuItem(options.getLastImageCopyLocation());
+			oldLocation.addActionListener(oldLocationActionListener);
+			menu.add(oldLocation);
+		}
 	}
 
 	public void view(Manga manga, int chapter, int page) {
@@ -175,9 +258,9 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 
 	public void scroll(int scrollAmount) {
 		this.scroll += scrollAmount;
-		if (state != ReadingState.READING || !mapImages.containsKey(chapter))
+		if (state != ReadingState.READING || !mapImages.containsKey(chapter) || page >= mapImages.get(chapter).size())
 			return;
-
+		
 		// M.print("scroll: " + scroll);
 		int imageHeight = mapImages.get(chapter).get(page).getHeight();
 
@@ -278,6 +361,11 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 		manga.setRead(chapter);
 		library.save(executors);
 
+		if (page < 0)
+			page = 0;
+		if (page >= mapImages.get(chapter).size())
+			page = mapImages.get(chapter).size()-1;
+		
 		// preloading
 		if (!mapImages.containsKey(newChapter-1))
 			operations.backgroundLoading(manga, newChapter-1);
@@ -313,6 +401,28 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 		} else {
 			scroll(options.getReadingScroll());
 		}
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		if(SwingUtilities.isRightMouseButton(e))
+			menu.show(e.getComponent(), e.getX(), e.getY());
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
 	}
 
 }

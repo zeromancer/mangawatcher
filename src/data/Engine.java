@@ -49,6 +49,7 @@ public @Getter class Engine {
 		DOWNLOADING("categories/down-26.png"),
 		OPTIONS("categories/settings2-26.png"),
 		ABOUT("categories/about-26.png"),
+		HIDDEN("categories/skydiving_gear-26.png"),
 
 		// Reading
 		REFRESH("reading/available_updates-26.png"),
