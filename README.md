@@ -1,5 +1,5 @@
 
-# ZLauncher #
+# MangaWatcher #
 
 ![screenshot1](https://raw.github.com/zeromancer/mangawatcher/master/screenshots/3.png)
 
@@ -62,8 +62,8 @@ Default manga directory:
  * Max: ~/Mangas
  
 Default config directory:
- * No command line argument given: Same directory as the executed JAR file
- * Command line argument given: the provided location in the first argument
+ * No command line argument given -> Same directory as the executed JAR file
+ * Command line argument given -> the provided location in the first argument
 
 ## New Features ##
 
