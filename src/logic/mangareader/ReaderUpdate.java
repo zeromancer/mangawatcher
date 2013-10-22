@@ -212,7 +212,8 @@ public @Setter class ReaderUpdate implements MangaUpdate {
 			print("Downloading image: "+filename+"  from: "+url);
 			try {
 				BufferedImage image = ImageIO.read(new URL(url));
-				ImageIO.write(image, extension, new File(destination.getAbsolutePath(), filename));	
+				if(image!=null)
+					ImageIO.write(image, extension, new File(destination.getAbsolutePath(), filename));	
 			} catch (IOException e) {
 				M.exception(e);
 				print("Error: " + e.getMessage());

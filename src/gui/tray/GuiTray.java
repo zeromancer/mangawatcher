@@ -64,6 +64,9 @@ public class GuiTray {
 		} catch (AWTException e) {
 			System.err.println("Can't add to tray");
 		}
+		
+		oldAvailable = -1;
+		
 		update();
 	}
 

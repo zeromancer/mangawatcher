@@ -149,6 +149,8 @@ public @Getter class GuiFrame extends JFrame {
 		about = new GuiAbout(this);
 		addTab("Info", Icons.ABOUT, about);
 
+		tray = new GuiTray(this);
+		
 		tabbed.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
 				//System.out.println("Tab: " + tabbed.getSelectedIndex());
@@ -159,9 +161,10 @@ public @Getter class GuiFrame extends JFrame {
 					if (component == collections.get(collection))
 						((GuiMangaCollectionGrid) component).update();
 				if(component == downloading){
-					DefaultCaret caret = (DefaultCaret)downloading.getText().getCaret();
+					DefaultCaret caret = (DefaultCaret)(downloading.getText().getCaret());
 					caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
 				}
+				tray.update();
 			}
 		});
 
@@ -170,7 +173,6 @@ public @Getter class GuiFrame extends JFrame {
 		else
 			tabbed.setSelectedComponent(collections.get(MangaCollection.WATCHING));
 
-		tray = new GuiTray(this);
 	}
 
 	private JLabel addTab(String text, Icons icon, Component component) {
