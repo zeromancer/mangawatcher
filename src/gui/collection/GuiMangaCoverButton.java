@@ -58,7 +58,11 @@ public class GuiMangaCoverButton extends JPanel {
 				// M.print("" + (String) combo.getSelectedItem());
 				GuiRead read = frame.getRead();
 				JTabbedPane tabbed = frame.getTabbed();
-				read.view(manga, manga.getRead() + 1, manga.getPage());
+				
+				if(manga.getDownloaded()-manga.getRead() == 1)
+					read.view(manga, manga.getRead() + 1, 0);
+				else
+					read.view(manga, manga.getRead(), manga.getPage());
 				tabbed.setSelectedComponent(read);
 				tabbed.setEnabledAt(tabbed.indexOfComponent(read), true);
 			}
@@ -70,7 +74,10 @@ public class GuiMangaCoverButton extends JPanel {
 	public void update() {
 		if (manga.newAvailable()) {
 			button.setVisible(true);
-			button.setText("Read " + (manga.getRead() + 1));
+			int r = manga.getDownloaded()-manga.getRead() == 1 ? manga.getRead() +1 : manga.getRead();
+			if( r == 0)
+				r = 1;
+			button.setText("Read " + r);
 		} else
 			button.setVisible(false);
 	}

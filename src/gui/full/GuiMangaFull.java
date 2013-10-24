@@ -94,12 +94,14 @@ public class GuiMangaFull extends JScrollPane {
 
 	private final JButton save;
 	private final JLabel saveLabel;
+	
+	private boolean changeCollection;
 
 	public GuiMangaFull(final GuiFrame frame) {
 		this.frame = frame;
 		this.library = frame.getLibrary();
 		this.manga = null;
-
+		this.changeCollection = true;
 		// Content
 		JPanel panel = new JPanel();
 		setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -189,6 +191,7 @@ public class GuiMangaFull extends JScrollPane {
 		collection.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if(!changeCollection) return;
 				if(manga==null) return;
 				String selection = (String) collection.getSelectedItem();
 				MangaCollection newCollection = MangaCollection.parse(selection);
@@ -364,7 +367,9 @@ public class GuiMangaFull extends JScrollPane {
 
 //		String selection = (String) collection.getSelectedItem();
 //		M.print("updating Major: "+selection+" , ordinal: "+manga.getCollection().ordinal()+" col: "+manga.getCollection());
+		changeCollection = false;
 		collection.setSelectedIndex(manga.getCollection().ordinal());
+		changeCollection = true;
 		setDownload.setValue(manga.getDownloaded());
 		setRead.setValue(manga.getRead());
 		updateButtons();
