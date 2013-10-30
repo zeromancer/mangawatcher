@@ -192,6 +192,7 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 		if (this.manga != null && this.manga.equals(manga) && mapImages.containsKey(chapter)) {
 			this.chapter = chapter;
 			this.page = page;
+			repaint();
 			return;
 		} else if (this.manga != manga) {
 			mapImages.clear();
@@ -321,7 +322,6 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 
 		// if (Math.abs(diff) > 1)
 		// scroll = 0;
-
 		slider.setValue(page);
 		slider.repaint();
 		manga.setPage(page);
@@ -356,6 +356,8 @@ public @Getter @Setter class GuiReadView extends JPanel implements MouseWheelLis
 		this.chapter = newChapter;
 		repaint();
 
+		frame.getTray().update();
+		
 		operations.defaultProgress();
 
 		manga.setRead(chapter);
