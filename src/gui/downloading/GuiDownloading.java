@@ -89,7 +89,7 @@ public @Getter class GuiDownloading extends JPanel {
 							logic.updateShallow();
 							library.save(executors);
 							enableButtonsInvoked(true);
-							scheduleWaiting();
+							scheduleWaiting(frame.getOptions().getCheckInterval());
 						}
 					});
 				}
@@ -182,12 +182,11 @@ public @Getter class GuiDownloading extends JPanel {
 		});
 		panel.add(deep);
 		
-		scheduleWaiting();
+		scheduleWaiting(1);
 	}
 
-	public void scheduleWaiting() {
+	public void scheduleWaiting(int wait) {
 		
-		int wait = frame.getOptions().getCheckInterval();
 		waitingDate = new Date(System.currentTimeMillis() + wait * 60 * 1000);
 		// M.print("targetTime: " + new SimpleDateFormat("HH:mm:ss").format(dateNext));
 

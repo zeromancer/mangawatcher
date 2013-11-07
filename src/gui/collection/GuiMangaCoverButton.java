@@ -59,9 +59,11 @@ public class GuiMangaCoverButton extends JPanel {
 				GuiRead read = frame.getRead();
 				JTabbedPane tabbed = frame.getTabbed();
 				
-				if(manga.getDownloaded()-manga.getRead() == 1)
+				if(manga.getRead() == 0) // first 
+					read.view(manga, 1, 0);
+				else if(manga.getDownloaded()-manga.getRead() == 1) // last
 					read.view(manga, manga.getRead() + 1, 0);
-				else
+				else // middle
 					read.view(manga, manga.getRead(), manga.getPage());
 				tabbed.setSelectedComponent(read);
 				tabbed.setEnabledAt(tabbed.indexOfComponent(read), true);

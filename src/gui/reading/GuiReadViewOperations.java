@@ -97,7 +97,7 @@ public class GuiReadViewOperations {
 			return;
 		
 		// Clean up if to many chapters loaded
-		if(mapImages.size()>10){
+		if(mapImages.size()>3){
 			int doNotDelete = view.getChapter();
 			List<Integer> delete = new ArrayList<>();
 			for(Integer index : mapImages.keySet())
@@ -156,7 +156,7 @@ public class GuiReadViewOperations {
 				if (view.getState() == ReadingState.LOADING) {
 					view.setState(ReadingState.READING);
 					slider.setMinimum(0);
-					slider.setValue(view.getManga().getPage());
+					//slider.setValue(view.getManga().getPage());
 					slider.setMaximum(files.size() - 1);
 				}
 				view.repaint();
