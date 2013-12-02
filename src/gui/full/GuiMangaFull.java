@@ -280,15 +280,15 @@ public class GuiMangaFull extends JScrollPane {
 		remove.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MangaCollection collection = manga.getCollection();
-				library.getCollection(collection).remove(manga);
+				library.remove(manga);
 				title.setText("Unselected");
-				icon = new JLabel();
+				icon.setIcon(new ImageIcon());
 				description.setText("Please select a Manga");
 				GuiMangaFull.this.manga = null;
 				if(show.isSelected())
 					show.doClick();
 				show.setEnabled(false);
+				repaint();
 			}
 		});
 		panel.add(remove, layoutRight);

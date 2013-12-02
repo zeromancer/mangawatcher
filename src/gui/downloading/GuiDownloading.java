@@ -182,17 +182,17 @@ public @Getter class GuiDownloading extends JPanel {
 		});
 		panel.add(deep);
 		
-		scheduleWaiting(1);
+		scheduleWaiting(0.1);
 	}
 
-	public void scheduleWaiting(int wait) {
+	public void scheduleWaiting(double wait) {
 		
-		waitingDate = new Date(System.currentTimeMillis() + wait * 60 * 1000);
+		waitingDate = new Date(System.currentTimeMillis() + (int)(wait * 60 * 1000));
 		// M.print("targetTime: " + new SimpleDateFormat("HH:mm:ss").format(dateNext));
 
 		//		scheduler.schedule(waitingProgress, 1, SECONDS);
 		waitingHandler = scheduler.scheduleAtFixedRate(waitingProcess, 0, 1, SECONDS);
-		scheduler.schedule(downloadingProcess, wait * 60+1, SECONDS);
+		scheduler.schedule(downloadingProcess, (int)(wait * 60+1), SECONDS);
 		
 	}
 

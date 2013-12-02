@@ -73,8 +73,12 @@ public class GuiMangaCover extends JButton {
 		FontMetrics metrics = g.getFontMetrics();
 		int height = metrics.getHeight();
 		int width = metrics.stringWidth(text);
+		int x = getWidth() - width - 4;
+		int y = getHeight() - height / 2;
+		g.setColor(Color.WHITE);
+		g.fillRect(x, y-(height-2)+2, width, height-2);
 		g.setColor(Color.BLACK);
-		g.drawString(text, getWidth() - width - 4, getHeight() - height / 2);
+		g.drawString(text, x, y);
 		//g.drawString(getText(), getWidth() / 2 - width / 2, getHeight() - height / 2);// centered
 	}
 

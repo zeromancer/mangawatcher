@@ -98,7 +98,7 @@ public @Getter @Setter class Manga {
 //	private String releaseYear;
 
 	public void changeCollection(MangaLibrary library, MangaCollection newCollection) {
-		library.getCollections().get(collection).remove(this);
+		library.remove(this);
 		this.collection = newCollection;
 		library.getCollections().get(newCollection).add(this);
 	}
@@ -132,5 +132,13 @@ public @Getter @Setter class Manga {
 		return name;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		return name.equals(obj);
+	}
 	
+	@Override
+	public int hashCode() {
+		return name.hashCode();
+	}
 }

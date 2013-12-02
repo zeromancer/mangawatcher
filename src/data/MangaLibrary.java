@@ -143,6 +143,15 @@ public @Getter @Setter class MangaLibrary {
 	}
 
 
+	public void remove(Manga manga){
+		List<Manga> list = getCollection(manga.getCollection());
+		for (int i = list.size()-1; i > 0; i--) {
+			Manga search = list.get(i);
+			if(search.getName().equals(manga.getName()))
+				list.remove(i);
+		}
+	}
+	
 
 }
 /*
