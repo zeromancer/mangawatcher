@@ -51,7 +51,7 @@ public class ReaderAdd implements MangaAdd{
 	}
 	
 	public void tryAdd(String name, MangaCollection collection){
-		progressStartIndeterminate("Adding "+name);
+		progressStartIndeterminate(M.getTimeHHMMSS()+" Adding "+name);
 		print("Adding "+name);
 		try{
 			add(name,collection);

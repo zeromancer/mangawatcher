@@ -25,19 +25,24 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 import lombok.Getter;
 import misc.M;
 import data.Manga.MangaCollection;
 
-public @Getter class Engine {
+public @Getter
+class Engine {
 
-	public @Getter enum Icons {
+	public @Getter
+	enum Icons {
 		// Categories
 		ADD("categories/plus2-26.png"),
 		MANGA("categories/dossier-26.png"),
@@ -59,9 +64,9 @@ public @Getter class Engine {
 		DOUBLERIGHT("reading/fast_forward-26.png"),
 		ZOOM("reading/search-26.png"),
 		SCROLL("reading/line_width-26.png"),
-		
+
 		// Logo
-//		LOGO("MangaWatcher.png"),
+		//		LOGO("MangaWatcher.png"),
 		LOGO("logo/MangaWatcher.png"),
 		LOGOEMPTY("logo/MangaWatcherEmpty.png"),
 
@@ -124,36 +129,70 @@ public @Getter class Engine {
 	}
 
 	public void loadAll() {
+		List<Manga> toRemove = new ArrayList<Manga>();
+		
 		for (MangaCollection collection : MangaCollection.values())
 			for (Manga manga : library.getCollection(collection))
-				load(manga);
+				if(!load(manga))
+					toRemove.add(manga);
+		
+		for(Manga manga: toRemove)
+			library.remove(manga);
+		
 		for (Icons icon : Icons.values())
 			load(icon);
+		
+		frame.setIconImage(icons.get(Icons.LOGO));
 	}
 
-	public void load(Manga manga) {
+	public boolean load(Manga manga) {
 		final String path = manga.getMangaImagePath(library);
 		try {
 			BufferedImage image = ImageIO.read(new File(path));
 			assert image != null;
 			covers.put(manga.getName(), image);
 		} catch (IOException e) {
-			e.printStackTrace();
-			M.print(e.getMessage());
+			//e.printStackTrace();
+			M.print(e.getMessage() + " : " + path);
+			
+			String exit = "Exit";
+			String remove = "Remove Manga";
+			Object[] options = { exit,remove };
+			
+			int response = JOptionPane.showOptionDialog(null, 
+					"Do you want to remove "+"\n"+
+					"  "+manga.getName()+" Manga "+"\n"+
+					"    "+"from your Manga library ?"+"\n"+"\n"+
+					"Otherwise this program will exit, "+"\n"+
+					"  please make sure the Manga exists in "+"\n"+
+					"    "+ library.getMangaDirectory(), 
+					"Error loading Manga cover image", 
+					JOptionPane.OK_CANCEL_OPTION,
+					JOptionPane.QUESTION_MESSAGE, 
+					null, 
+					options, 
+					options[0]);
+			
+			if(options[response] == exit)
+				System.exit(0);
+			else if(options[response] == remove)
+				return false;
+			
 		}
+		return true;
 	}
 
 	public void load(Icons icon) {
 		URL url = null;
-		if(url == null)
+		if (url == null)
 			url = ClassLoader.getSystemResource(icon.getPath());
-		if(url == null)
-			url = ClassLoader.getSystemResource("../"+icon.getPath());
-		if(url == null)
-			url = ClassLoader.getSystemResource("../"+"icons/"+icon.getPath());
+		if (url == null)
+			url = ClassLoader.getSystemResource("../" + icon.getPath());
+		if (url == null)
+			url = ClassLoader.getSystemResource("../" + "icons/" + icon.getPath());
 		try {
 			BufferedImage image = ImageIO.read(url);
-//			BufferedImage image = ImageIO.read(new File(path));
+			//			BufferedImage image = ImageIO.read(new File(path));
 			icons.put(icon, image);
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -64,7 +64,7 @@ public @Setter class ReaderUpdate implements MangaUpdate {
 
 
 	public void tryUpdateShallow() {
-		progressStart("Updating from latest releases");
+		progressStart(M.getTimeHHMMSS()+" Updating from latest releases");
 		print("Updating mangas from latest mangareader.net releases");
 		try {
 			updateShallow();
@@ -101,7 +101,7 @@ public @Setter class ReaderUpdate implements MangaUpdate {
 	}
 
 	public void tryUpdateDeep(Manga manga, int from) {
-		progressStart("Updating manga "+manga.getName());
+		progressStart(M.getTimeHHMMSS()+" Updating manga "+manga.getName());
 		print("Updating manga "+manga.getName());
 		try {
 			downloadChapters(manga, from);

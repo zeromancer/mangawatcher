@@ -26,24 +26,22 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.nio.channels.FileChannel;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class M {
 
-	public static void print(String text){
+	public static void print(String text) {
 		System.out.println(text);
 	}
-	
-	public static void exception(Exception e){
+
+	public static void exception(Exception e) {
 		StringWriter sw = new StringWriter();
 		PrintWriter pw = new PrintWriter(sw);
 		e.printStackTrace(pw);
 		print(sw.toString());
 		print(e.getMessage());
 	}
-	
-	
-	
-	
 
 	public static BufferedImage scale(BufferedImage image, int fromZoom, int toZoom) {
 		int width = (int) ((float) image.getWidth() * toZoom / fromZoom);
@@ -54,7 +52,7 @@ public class M {
 		newer.getGraphics().drawImage(img, 0, 0, null);
 		return newer;
 	}
-	
+
 	@SuppressWarnings("resource")
 	public static void copy(File in, File out) throws IOException {
 		FileChannel inChannel = new FileInputStream(in).getChannel();
@@ -79,8 +77,8 @@ public class M {
 			}
 		}
 	}
-	
-	public static void sleep(int millis){
+
+	public static void sleep(int millis) {
 		try {
 			Thread.sleep(millis);
 		} catch (InterruptedException e) {
@@ -88,13 +86,18 @@ public class M {
 			print(e.getMessage());
 		}
 	}
-	
-	public static int getBounded(int min,int value, int max){
-		if(value<min)
+
+	public static int getBounded(int min, int value, int max) {
+		if (value < min)
 			return min;
-		if(value>max)
+		if (value > max)
 			return max;
 		return value;
 	}
-	
+
+	public static String getTimeHHMMSS() {
+		SimpleDateFormat format = new SimpleDateFormat("[hh:mm:ss]");
+		return format.format(new Date());
+	}
+
 }

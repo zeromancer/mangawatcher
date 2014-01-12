@@ -197,6 +197,7 @@ public class GuiMangaFull extends JScrollPane {
 				MangaCollection newCollection = MangaCollection.parse(selection);
 				manga.changeCollection(library, newCollection);
 				library.save(frame.getExecutors());
+				frame.updateAll();
 			}
 		});
 		panel.add(collection, layoutRight);
@@ -289,6 +290,7 @@ public class GuiMangaFull extends JScrollPane {
 					show.doClick();
 				show.setEnabled(false);
 				repaint();
+				frame.updateAll();
 			}
 		});
 		panel.add(remove, layoutRight);

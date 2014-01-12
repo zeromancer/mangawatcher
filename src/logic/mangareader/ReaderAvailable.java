@@ -46,7 +46,7 @@ public @Setter class ReaderAvailable implements MangaAvailable {
 	}
 
 	public void tryRefresh(){
-		progressStartIndeterminate("Refreshing mangareader.net list");
+		progressStartIndeterminate(M.getTimeHHMMSS()+" Refreshing mangareader.net list");
 		try {
 			refresh();
 			print("Successfully refreshed available mangareader.net manga list");
@@ -78,7 +78,7 @@ public @Setter class ReaderAvailable implements MangaAvailable {
 			String destination = element.attr("href");
 			String text = element.text();
 			
-			if(text.length()>2 && !tobooList.contains(text)){
+			if(text.length() > 1 && !tobooList.contains(text)){
 				print(text+"  ,  "+"www.mangareader.net"+destination);
 				all.put(text, "http://www.mangareader.net"+destination);
 			}

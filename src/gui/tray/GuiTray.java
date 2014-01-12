@@ -88,10 +88,12 @@ public class GuiTray {
 			});
 			popup.add(item);
 			
-			if (newAvailable == 0)
+			if (newAvailable == 0){
 				trayIcon.setImage(noNewerAvailableIcon);
-			else {
+				//frame.setIconImage(noNewerAvailableIcon);
+			}else {
 				trayIcon.setImage(newerAvailableIcon);
+				//frame.setIconImage(newerAvailableIcon);
 
 				popup.addSeparator();
 				
